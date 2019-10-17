@@ -4,21 +4,43 @@ using UnityEngine;
 
 public class GenerateLine : MonoBehaviour
 {
-    UnitEvent start;
-    UnitEvent stop;
+    [SerializeField] UnitEvent start;
+    [SerializeField] UnitEvent stop;
+    [SerializeField] LineConfig config;
+    Vector3[] positions;
+
+    //TODO: also add this property to collisions class
+    public Vector3[] RecordedPositions
+    {
+        get
+        {
+            return positions;
+        }
+
+        set
+        {
+            //TODO: call linerenderer.setpos(positions)?
+        }
+    }
 
     void Start()
     {
         stop.AddListener(() => StopAllCoroutines());
         start.AddListener(() => StartCoroutine(Record()));
-        // update unitevents start and stop, add listener to both
     }
 
     IEnumerator Record()
     {
-        yield return null; //WaitForSeconds(config.stepSize)
-    }
+        Vector3[] newPositions = new Vector3[positions.Length + 1];
+        newPositions[0] = transform.position;
 
-    //store array as a property in this class and in the colliissions class
-    // call setpos on line renderer every time you change array as a setter (not necessarily setPos though)
+        // Update old positions by moving them forward based on how much time has passed
+        for (int i = 1; i < positions.Length; i++)
+        {
+            //TODO: forwards or backwards?
+            newPositions[i] = positions[i - 1] + Vector3.forward * config.stepSize;
+        }
+        positions = newPositions;
+        yield return new WaitForSeconds(config.stepSize);
+    }
 }
