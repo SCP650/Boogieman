@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class HandleCollisions : MonoBehaviour
 {
+    //TODO: add in particle system
     private LineRenderer lr;
     [SerializeField] private ParticleSystem goodParticlePrefab;
     [SerializeField] private ParticleSystem badParticlePrefab;
@@ -33,7 +34,7 @@ public class HandleCollisions : MonoBehaviour
         this.points = new_points;
     }
 
-
+    //TODO: delete and reset points array when removing points
     IEnumerator CheckCollisions()
     {
         while (true)
