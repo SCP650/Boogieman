@@ -7,26 +7,29 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] UnitEvent start;
     [SerializeField] UnitEvent stop;
     [SerializeField] LineConfig config;
+    [SerializeField] GameObject lineObject;
     Vector3[] positions;
 
-    //TODO: also add this property to collisions class
+    //TODO: also keep track of current hand on here to send to instantiated object
     public Vector3[] RecordedPositions
     {
         get
         {
             return positions;
         }
-
-        set
-        {
-            //TODO: call linerenderer.setpos(positions)?
-        }
     }
 
     void Start()
     {
-        stop.AddListener(() => StopAllCoroutines());
+        stop.AddListener(() => stopListener());
         start.AddListener(() => StartCoroutine(Record()));
+    }
+
+    void stopListener()
+    {
+        StopAllCoroutines();
+        GameObject line = Instantiate(lineObject, transform.position, transform.rotation);
+        line.GetComponent<HandleCollisions>().Setup(positions);
     }
 
     IEnumerator Record()
