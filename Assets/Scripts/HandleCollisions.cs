@@ -21,16 +21,22 @@ public class HandleCollisions : MonoBehaviour
     void Start()
     {
         lr = GetComponent<LineRenderer>();
+        
+    }
+
+
+    public void Setup(Vector3[] new_points,ControllerObject new_controller)
+    {
+        this.points = new_points;
+        
+        controller = new_controller;
         if (controller == controllers.leftHand)
             otherController = controllers.rightHand;
         if (controller == controllers.rightHand)
             otherController = controllers.rightHand;
-    }
-
-
-    public void Setup(Vector3[] new_points)
-    {
-        this.points = new_points;
+        
+        
+        StartCoroutine(CheckCollisions());
     }
 
 
