@@ -18,9 +18,11 @@ public class HandleCollisions : MonoBehaviour
     
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        points = new Vector3[0];
         lr = GetComponent<LineRenderer>();
+        if (lr == null) Debug.LogError("Why isn't there a line renderer");
         if (controller == controllers.leftHand)
             otherController = controllers.rightHand;
         if (controller == controllers.rightHand)
@@ -31,6 +33,8 @@ public class HandleCollisions : MonoBehaviour
     public void Setup(Vector3[] new_points)
     {
         this.points = new_points;
+        lr.positionCount = points.Length;
+        lr.SetPositions(points);
     }
 
 

@@ -32,10 +32,10 @@ public class TestingSphere : MonoBehaviour
         while (true) {
             start.Invoke();
             Debug.Log("Try to generate line");
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(4);
             Debug.Log("Try to stop line");
             stop.Invoke();
-            yield return new WaitForSeconds(3);
+            // yield return new WaitForSeconds(1);
         }
     }
 }

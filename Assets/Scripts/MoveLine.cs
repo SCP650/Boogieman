@@ -6,10 +6,16 @@ public class MoveLine : MonoBehaviour
 {
     [SerializeField] LineConfig config;
 
+    void Start() {
+        StartCoroutine(MoveForward());
+    }
+
     IEnumerator MoveForward()
     {
-        //TODO: is this forward or backward
-        transform.position += (Vector3.forward * config.speed * Time.deltaTime);
-        yield return null;
+        while (transform.position.z != -10) {
+            //TODO: is this forward or backward
+            transform.position += (Vector3.back * config.speed * Time.deltaTime);
+            yield return null;
+        }
     }
 }

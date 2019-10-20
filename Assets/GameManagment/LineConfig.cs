@@ -6,7 +6,7 @@ using UnityEngine;
 public class LineConfig : ScriptableObject
 {
     public float speed = 1;
-    public float stepSize = 1;
+    public float stepSize = 0.05f;
     public float correctHandGrace = 1;
     public float incorrectHandGrace = 1;
 }
