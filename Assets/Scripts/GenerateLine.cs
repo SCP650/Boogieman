@@ -9,6 +9,7 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] LineConfig config;
     [SerializeField] GameObject lineObject;
     Vector3[] positions;
+    [SerializeField] ControllerObject controller;
 
     //TODO: also keep track of current hand on here to send to instantiated object
     public Vector3[] RecordedPositions
@@ -29,7 +30,7 @@ public class GenerateLine : MonoBehaviour
     {
         StopAllCoroutines();
         GameObject line = Instantiate(lineObject, transform.position, transform.rotation);
-        line.GetComponent<HandleCollisions>().Setup(positions);
+        line.GetComponent<HandleCollisions>().Setup(positions,controller);
     }
 
     IEnumerator Record()
