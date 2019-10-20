@@ -9,8 +9,8 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] LineConfig config;
     [SerializeField] GameObject lineObject;
     Vector3[] positions;
+    [SerializeField] ControllerObject controller;
 
-    //TODO: also keep track of current hand on here to send to instantiated object
     public Vector3[] RecordedPositions
     {
         get
@@ -30,8 +30,8 @@ public class GenerateLine : MonoBehaviour
     {
         StopAllCoroutines();
         GameObject line = Instantiate(lineObject, transform.position, transform.rotation);
-        line.GetComponent<HandleCollisions>().Setup(positions);
         positions = new Vector3[0];
+        line.GetComponent<HandleCollisions>().Setup(positions,controller);
     }
 
     IEnumerator Record()
@@ -43,8 +43,7 @@ public class GenerateLine : MonoBehaviour
             // Update old positions by moving them forward based on how much time has passed
             for (int i = 1; i < positions.Length + 1; i++)
             {
-                //TODO: forwards or backwards?
-                newPositions[i] = positions[i - 1] + Vector3.back * config.stepSize;
+]                newPositions[i] = positions[i - 1] + Vector3.back * config.stepSize;
                 // yield return null;
             }
             positions = newPositions;
