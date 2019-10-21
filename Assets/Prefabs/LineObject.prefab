@@ -154,10 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247a3d2897f81b54d9c50a0df99b50e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodParticlePrefab: {fileID: 0}
-  badParticlePrefab: {fileID: 0}
+  goodParticlePrefab: {fileID: 8570413783756784802, guid: 1861f623d00b50643a2034012e64e325,
+    type: 3}
+  badParticlePrefab: {fileID: 8570413783756784802, guid: 9ad558b1ce7c34745b58cc45d4499058,
+    type: 3}
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
-  controller: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
+  controller: {fileID: 0}
   controllers:
     leftHand: {fileID: 11400000, guid: 84c693b77cb1eff4980aa34a629cea7b, type: 2}
     rightHand: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
