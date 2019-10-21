@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestingSphere : MonoBehaviour
 {
+    [SerializeField] private bool shouldRotate;
     float angle = 0;
     float speed = (2 * Mathf.PI) / 5; //2*PI in degress is 360, so you get 5 seconds to complete a circle
     float radius = 1;
@@ -21,6 +22,7 @@ public class TestingSphere : MonoBehaviour
     }
     void Update()
     {
+        if (! shouldRotate) { return; }
         angle += speed * Time.deltaTime; //if you want to switch direction, use -= instead of +=
         float x = Mathf.Cos(angle) * radius + startx;
         float y = Mathf.Sin(angle) * radius + starty;
