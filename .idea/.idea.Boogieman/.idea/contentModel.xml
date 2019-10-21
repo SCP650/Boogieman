@@ -4,6 +4,7 @@
     <e p="C:\Users\Martin-Lof\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Martin-Lof\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Boogieman.-1082607513.00" t="ExcludeRecursive" />
     <e p="C:\Users\Martin-Lof\Documents\projects\sklacc\Boogieman" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="BoilerPlate" t="Include">
@@ -21,6 +22,9 @@
           <e p="UnitEvent.cs" t="Include" />
           <e p="Vector3Ref.cs" t="Include" />
         </e>
+        <e p="Editor" t="Include">
+          <e p="AutoSave.cs" t="Include" />
+        </e>
         <e p="GameManagment" t="Include">
           <e p="LineConfig.cs" t="Include" />
         </e>
@@ -30,6 +34,7 @@
           <e p="HandleCollisions.cs" t="Include" />
           <e p="MoveLine.cs" t="Include" />
           <e p="Read.cs" t="Include" />
+          <e p="TestingSphere.cs" t="Include" />
           <e p="Writer.cs" t="Include" />
         </e>
         <e p="SteamVR" t="Include">
