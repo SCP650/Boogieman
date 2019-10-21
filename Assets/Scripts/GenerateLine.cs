@@ -31,11 +31,11 @@ public class GenerateLine : MonoBehaviour
 
     void stopListener()
     {
-        Debug.Log("Stop invoked");
         StopAllCoroutines();
         GameObject line = Instantiate(lineObject, Vector3.zero, Quaternion.identity);
         line.GetComponent<HandleCollisions>().Setup(positions,controller);
         positions = new Vector3[0];
+        lr.positionCount = 0;
         lr.SetPositions(positions);
     }
 
