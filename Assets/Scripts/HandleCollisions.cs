@@ -12,7 +12,7 @@ public class HandleCollisions : MonoBehaviour
     [SerializeField] private ParticleSystem goodParticlePrefab;
     [SerializeField] private ParticleSystem badParticlePrefab;
     [SerializeField] private LineConfig config;
-    [SerializeField] private ControllerObject controller;
+    private ControllerObject controller;
     private ControllerObject otherController;
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
