@@ -31,6 +31,7 @@ public class GenerateLine : MonoBehaviour
 
     void stopListener()
     {
+        Debug.Log("Stop invoked");
         StopAllCoroutines();
         GameObject line = Instantiate(lineObject, Vector3.zero, Quaternion.identity);
         line.GetComponent<HandleCollisions>().Setup(positions,controller);
@@ -54,7 +55,6 @@ public class GenerateLine : MonoBehaviour
             lr.positionCount = positions.Length;
             lr.SetPositions(positions);
 
-            Debug.Log(positions.Length);
             yield return new WaitForSeconds(config.stepSize);
         }
     }

@@ -6,7 +6,7 @@ public class TestingSphere : MonoBehaviour
 {
     float angle = 0;
     float speed = (2 * Mathf.PI) / 5; //2*PI in degress is 360, so you get 5 seconds to complete a circle
-    float radius = 2;
+    float radius = 1;
     float startx;
     float starty;
 
@@ -30,12 +30,12 @@ public class TestingSphere : MonoBehaviour
     IEnumerator Line()
     {
         while (true) {
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
             start.Invoke();
             Debug.Log("Try to generate line");
-            yield return new WaitForSeconds(4);
-            Debug.Log("Try to stop line");
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Space));
             stop.Invoke();
-            // yield return new WaitForSeconds(1);
+            Debug.Log("Try to stop line");
         }
     }
 }

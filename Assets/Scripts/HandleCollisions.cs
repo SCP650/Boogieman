@@ -75,6 +75,7 @@ public class HandleCollisions : MonoBehaviour
 
     void DestroyRest(int j)
     {
+        Debug.Log("destroying rest");
         int drop = j;
 
         for (; j < points.Count(); j++)
@@ -84,6 +85,7 @@ public class HandleCollisions : MonoBehaviour
 
         points = points.Take(drop).ToArray();
         lr.SetPositions(points);
+        Debug.Log(points.Length);
     }
 
     bool CheckController(ControllerObject checkController, Vector3 position,float dist)
