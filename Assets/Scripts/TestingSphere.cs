@@ -17,6 +17,7 @@ public class TestingSphere : MonoBehaviour
     {
         startx = transform.position.x;
         starty = transform.position.y;
+
         StartCoroutine(Line());
     }
     void Update()
@@ -25,6 +26,7 @@ public class TestingSphere : MonoBehaviour
         //float x = Mathf.Cos(angle) * radius + startx;
         //float y = Mathf.Sin(angle) * radius + starty;
         //transform.position = new Vector3(x, y, transform.position.z);
+
     }
 
     IEnumerator Line()
@@ -32,10 +34,10 @@ public class TestingSphere : MonoBehaviour
         while (true) {
             start.Invoke();
             Debug.Log("Try to generate line");
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(4);
             Debug.Log("Try to stop line");
             stop.Invoke();
-            yield return new WaitForSeconds(3);
+            // yield return new WaitForSeconds(1);
         }
     }
 }

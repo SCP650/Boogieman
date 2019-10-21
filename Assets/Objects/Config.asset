@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Config
   m_EditorClassIdentifier: 
   speed: 1
-  stepSize: 1
+  stepSize: 0.05
+  correctHandGrace: 1
+  incorrectHandGrace: 1

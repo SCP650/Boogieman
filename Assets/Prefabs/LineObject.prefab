@@ -63,7 +63,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a1313a5fd0b97df4798c301e337a1eb8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,8 +94,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.017341614
+        value: 0.43790817
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -140,7 +140,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &873194839319794473
 MonoBehaviour:
@@ -157,7 +157,7 @@ MonoBehaviour:
   goodParticlePrefab: {fileID: 0}
   badParticlePrefab: {fileID: 0}
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
-  controller: {fileID: 0}
+  controller: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
   controllers:
     leftHand: {fileID: 11400000, guid: 84c693b77cb1eff4980aa34a629cea7b, type: 2}
     rightHand: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
