@@ -21,10 +21,10 @@ public class TestingSphere : MonoBehaviour
     }
     void Update()
     {
-        angle += speed * Time.deltaTime; //if you want to switch direction, use -= instead of +=
-        float x = Mathf.Cos(angle) * radius + startx;
-        float y = Mathf.Sin(angle) * radius + starty;
-        transform.position = new Vector3(x, y, transform.position.z);
+        //angle += speed * Time.deltaTime; //if you want to switch direction, use -= instead of +=
+        //float x = Mathf.Cos(angle) * radius + startx;
+        //float y = Mathf.Sin(angle) * radius + starty;
+        //transform.position = new Vector3(x, y, transform.position.z);
     }
 
     IEnumerator Line()
