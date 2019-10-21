@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213472e8e66a395459bc19f83b48f857, type: 3}
   m_Name: LeftHand
   m_EditorClassIdentifier: 
+  pos: {x: 0, y: -19.54, z: 0}

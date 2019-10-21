@@ -57,7 +57,7 @@ public class HandleCollisions : MonoBehaviour
                     Instantiate(goodParticlePrefab, point,Quaternion.identity);
                     DestroyRest(i + 1);
                     ScorePoint.Invoke(1);
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.0f);
                     break;
                 }
                 if (otherController != null) //our controller is not the head
@@ -82,10 +82,9 @@ public class HandleCollisions : MonoBehaviour
         {
             Instantiate(badParticlePrefab, points[j] + transform.position, Quaternion.identity);
         }
-
         points = points.Take(drop).ToArray();
+        lr.positionCount = points.Length;
         lr.SetPositions(points);
-        Debug.Log(points.Length);
     }
 
     bool CheckController(ControllerObject checkController, Vector3 position,float dist)
