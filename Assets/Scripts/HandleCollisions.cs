@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
+
 [RequireComponent(typeof(LineRenderer))]
 public class HandleCollisions : MonoBehaviour
 {
@@ -53,7 +55,7 @@ public class HandleCollisions : MonoBehaviour
                 if (CheckController(controller, point, config.correctHandGrace))
                 {
                     Instantiate(goodParticlePrefab, point,Quaternion.identity);
-                    StartCoroutine(DestroyRest(i + 1));
+                    DestroyRest(i + 1);
                     ScorePoint.Invoke(1);
                     yield return new WaitForSeconds(.05f);
                     break;
@@ -62,7 +64,7 @@ public class HandleCollisions : MonoBehaviour
                 {
                     if (CheckController(otherController, point, config.incorrectHandGrace))
                     {
-                        StartCoroutine(DestroyRest(i));
+                        DestroyRest(i);
                         break;
                     }
                 }
@@ -71,13 +73,17 @@ public class HandleCollisions : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyRest(int j)
+    void DestroyRest(int j)
     {
-        for (; j < points.Length; j++)
+        int drop = j;
+
+        for (; j < points.Count(); j++)
         {
             Instantiate(badParticlePrefab, points[j] + transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(.1f);
         }
+
+        points = points.Take(drop).ToArray();
+        lr.SetPositions(points);
     }
 
     bool CheckController(ControllerObject checkController, Vector3 position,float dist)

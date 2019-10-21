@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class GenerateLine : MonoBehaviour
 {
     [SerializeField] UnitEvent start;
@@ -10,6 +11,7 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] GameObject lineObject;
     Vector3[] positions;
     [SerializeField] ControllerObject controller;
+    LineRenderer lr;
 
     public Vector3[] RecordedPositions
     {
@@ -21,6 +23,7 @@ public class GenerateLine : MonoBehaviour
 
     void Awake()
     {
+        lr = GetComponent<LineRenderer>();
         positions = new Vector3[0];
         start.AddListener(() => StartCoroutine(Record()));
         stop.AddListener(() => stopListener());
@@ -29,9 +32,10 @@ public class GenerateLine : MonoBehaviour
     void stopListener()
     {
         StopAllCoroutines();
-        GameObject line = Instantiate(lineObject, transform.position, transform.rotation);
-        positions = new Vector3[0];
+        GameObject line = Instantiate(lineObject, Vector3.zero, Quaternion.identity);
         line.GetComponent<HandleCollisions>().Setup(positions,controller);
+        positions = new Vector3[0];
+        lr.SetPositions(positions);
     }
 
     IEnumerator Record()
@@ -47,6 +51,9 @@ public class GenerateLine : MonoBehaviour
                 // yield return null;
             }
             positions = newPositions;
+            lr.positionCount = positions.Length;
+            lr.SetPositions(positions);
+
             Debug.Log(positions.Length);
             yield return new WaitForSeconds(config.stepSize);
         }
