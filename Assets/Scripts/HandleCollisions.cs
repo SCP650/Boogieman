@@ -57,7 +57,6 @@ public class HandleCollisions : MonoBehaviour
                     Instantiate(goodParticlePrefab, point,Quaternion.identity);
                     DestroyRest(i + 1);
                     ScorePoint.Invoke(1);
-                    yield return new WaitForSeconds(.0f);
                     break;
                 }
                 if (otherController != null) //our controller is not the head
@@ -73,22 +72,34 @@ public class HandleCollisions : MonoBehaviour
         }
     }
 
-    void DestroyRest(int j)
+    IEnumerator DestroyRest(int j)
     {
-        Debug.Log("destroying rest");
-        int drop = j;
+        float speed = 1;
 
-        for (; j < points.Count(); j++)
-        {
-            Instantiate(badParticlePrefab, points[j] + transform.position, Quaternion.identity);
-        }
-        points = points.Take(drop).ToArray();
+
+        var new_points = points.Skip(j).ToArray();
+        points = points.Take(j).ToArray();
+        
         lr.positionCount = points.Length;
         lr.SetPositions(points);
+        var new_line = Instantiate();
+        var magic_wand = Instantiate(badParticlePrefab, points[j] + transform.position, Quaternion.identity);
+        
+        for (; j < points.Count(); j++)
+        {
+            var dest = points[j] + transform.position;
+            while (Vector3.Distance(magic_wand.transform.position, dest) < .1f)
+            {
+                magic_wand.transform.position += (dest - transform.position).normalized * speed * Time.deltaTime;
+                yield return null;
+            }
+        }
     }
 
     bool CheckController(ControllerObject checkController, Vector3 position,float dist)
     {
         return Vector3.Distance(checkController.pos, position) < dist;
     }
+    
+ 
 }

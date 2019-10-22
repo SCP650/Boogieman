@@ -48,7 +48,7 @@ public class GenerateLine : MonoBehaviour
             // Update old positions by moving them forward based on how much time has passed
             for (int i = 1; i < positions.Length + 1; i++)
             {
-                newPositions[i] = positions[i - 1] + Vector3.back * config.stepSize;
+                newPositions[i] = positions[i - 1] + Vector3.back * config.stepSize * config.speed;
                 // yield return null;
             }
             positions = newPositions;
