@@ -7,7 +7,6 @@ using System.Linq;
 [RequireComponent(typeof(LineRenderer))]
 public class HandleCollisions : MonoBehaviour
 {
-    //TODO: add in particle system
     private LineRenderer lr;
     [SerializeField] private ParticleSystem goodParticlePrefab;
     [SerializeField] private ParticleSystem badParticlePrefab;
@@ -75,7 +74,7 @@ public class HandleCollisions : MonoBehaviour
 
     IEnumerator DestroyRest(int j)
     {
-        float speed = 3;
+        float speed = 5;
 
 
         var new_points = points.Skip(j).ToArray();

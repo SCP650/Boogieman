@@ -120,6 +120,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &240178951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240178952}
+  - component: {fileID: 240178953}
+  m_Layer: 0
+  m_Name: the guy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240178952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240178951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &240178953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240178951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d7b19ace5324a4da7ce520b1d8a6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_config: {fileID: 11400000, guid: 88abd73f6734a1344be7788e82eee83e, type: 2}
+  l_config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
 --- !u!1 &298327112
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,8 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldRotate: 0
   trigger: 32
-  start: {fileID: 11400000, guid: 31c82d05165040645b2cd9d4f8bc9cde, type: 2}
-  stop: {fileID: 11400000, guid: b408c06017feee64aada35eafd886c51, type: 2}
+  session: {fileID: 11400000, guid: 044c358d1f39399449ac8c888c6cc8c5, type: 2}
 --- !u!95 &298327119
 Animator:
   serializedVersion: 3
@@ -392,8 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0fbdc5c1a7ae642b493d029886b537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 11400000, guid: 31c82d05165040645b2cd9d4f8bc9cde, type: 2}
-  stop: {fileID: 11400000, guid: b408c06017feee64aada35eafd886c51, type: 2}
+  session: {fileID: 11400000, guid: 044c358d1f39399449ac8c888c6cc8c5, type: 2}
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
   lineObject: {fileID: 7518707151736046340, guid: 4f05c5f3652016947a4f262ca84ec72d,
     type: 3}
