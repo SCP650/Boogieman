@@ -16,6 +16,7 @@ public class HandleCollisions : MonoBehaviour
     private ControllerObject otherController;
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
+    [SerializeField] private LineRenderer lr_prefab;
 
     private Vector3[] points;
     
@@ -55,7 +56,7 @@ public class HandleCollisions : MonoBehaviour
                 if (CheckController(controller, point, config.correctHandGrace))
                 {
                     Instantiate(goodParticlePrefab, point,Quaternion.identity);
-                    DestroyRest(i + 1);
+                    StartCoroutine(DestroyRest(i + 1));
                     ScorePoint.Invoke(1);
                     break;
                 }
@@ -63,7 +64,7 @@ public class HandleCollisions : MonoBehaviour
                 {
                     if (CheckController(otherController, point, config.incorrectHandGrace))
                     {
-                        DestroyRest(i);
+                        StartCoroutine(DestroyRest(i));
                         break;
                     }
                 }
@@ -74,26 +75,36 @@ public class HandleCollisions : MonoBehaviour
 
     IEnumerator DestroyRest(int j)
     {
-        float speed = 1;
+        float speed = 3;
 
 
         var new_points = points.Skip(j).ToArray();
-        points = points.Take(j).ToArray();
+
+        
+        points = points.Take(j - 1).ToArray();
         
         lr.positionCount = points.Length;
         lr.SetPositions(points);
-        var new_line = Instantiate();
-        var magic_wand = Instantiate(badParticlePrefab, points[j] + transform.position, Quaternion.identity);
+        if(new_points.Length == 0)
+            yield break;
         
-        for (; j < points.Count(); j++)
+        var new_line = Instantiate(lr_prefab,transform,false);
+        new_line.positionCount = new_points.Count();
+        new_line.SetPositions(new_points);
+        var magic_wand = Instantiate(badParticlePrefab, new_points[0] + transform.position, Quaternion.identity);
+        
+        for (; new_points.Length > 0;new_points = new_points.Skip(1).ToArray())
         {
-            var dest = points[j] + transform.position;
-            while (Vector3.Distance(magic_wand.transform.position, dest) < .1f)
+            var dest = new_points[0] + transform.position;
+            while (Vector3.Distance(magic_wand.transform.position, dest) > .1f)
             {
-                magic_wand.transform.position += (dest - transform.position).normalized * speed * Time.deltaTime;
+                magic_wand.transform.position += (dest - magic_wand.transform.position).normalized * speed * Time.deltaTime;
                 yield return null;
             }
+            new_line.positionCount = new_points.Count();
+            new_line.SetPositions(new_points);
         }
+        Destroy(new_line);
     }
 
     bool CheckController(ControllerObject checkController, Vector3 position,float dist)

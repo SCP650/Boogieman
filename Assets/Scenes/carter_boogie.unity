@@ -227,6 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee0434906a1440d4ae5b5537957968e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldRotate: 0
+  trigger: 32
   start: {fileID: 11400000, guid: 31c82d05165040645b2cd9d4f8bc9cde, type: 2}
   stop: {fileID: 11400000, guid: b408c06017feee64aada35eafd886c51, type: 2}
 --- !u!95 &298327119

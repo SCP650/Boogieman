@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   stepSize: 0.05
-  correctHandGrace: 1
-  incorrectHandGrace: 1
+  correctHandGrace: 0.5
+  incorrectHandGrace: 0.15
