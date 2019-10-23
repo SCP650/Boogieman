@@ -11,7 +11,7 @@ public class set_boogie_distance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = ((m_config.bpm / 60) / m_config.beats_per_measure) * Vector3.forward * l_config.speed;
+        transform.position = Vector3.forward * l_config.speed * 60 * (1 / m_config.bpm) * m_config.beats_per_measure;
     }
 
     // Update is called once per frame
