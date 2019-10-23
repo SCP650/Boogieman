@@ -5,8 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class GenerateLine : MonoBehaviour
 {
-    [SerializeField] UnitEvent start;
-    [SerializeField] UnitEvent stop;
+    [SerializeField] Session session;
     [SerializeField] LineConfig config;
     [SerializeField] GameObject lineObject;
     Vector3[] positions;
@@ -25,8 +24,8 @@ public class GenerateLine : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         positions = new Vector3[0];
-        start.AddListener(() => StartCoroutine(Record()));
-        stop.AddListener(() => stopListener());
+        session.AddStartListener(() => StartCoroutine(Record()));
+        session.AddStopListener(() => stopListener());
     }
 
     void stopListener()

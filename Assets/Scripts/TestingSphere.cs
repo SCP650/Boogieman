@@ -12,8 +12,7 @@ public class TestingSphere : MonoBehaviour
     float startx;
     float starty;
 
-    [SerializeField] UnitEvent start;
-    [SerializeField] UnitEvent stop;
+    [SerializeField] Session session;
 
     private void Start()
     {
@@ -35,10 +34,10 @@ public class TestingSphere : MonoBehaviour
     {
         while (true) {
             yield return new WaitUntil(() => Input.GetKeyDown(trigger));
-            start.Invoke();
+            session.Invoke();
             Debug.Log("Try to generate line");
             yield return new WaitUntil(() => Input.GetKeyUp(trigger));
-            stop.Invoke();
+            session.Invoke();
             Debug.Log("Try to stop line");
         }
     }
