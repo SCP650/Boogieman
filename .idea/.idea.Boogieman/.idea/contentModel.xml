@@ -39,6 +39,9 @@
           <e p="Set_MConfig_Asset.cs" t="Include" />
           <e p="Set_MConfigPlayable.cs" t="Include" />
           <e p="Set_MConfigTrack.cs" t="Include" />
+          <e p="Set_SessionAsset.cs" t="Include" />
+          <e p="Set_SessionPlayable.cs" t="Include" />
+          <e p="Set_SessionTrack.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="Calibration.cs" t="Include" />
