@@ -16,7 +16,8 @@ public class HandleCollisions : MonoBehaviour
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private LineRenderer lr_prefab;
-
+    [SerializeField] private GameObject endIndicator;
+    
     private Vector3[] points;
     
     
@@ -40,8 +41,35 @@ public class HandleCollisions : MonoBehaviour
             otherController = controllers.rightHand;
         if (controller == controllers.rightHand)
             otherController = controllers.rightHand;
-        
+        endIndicator = Instantiate(endIndicator,transform);
         StartCoroutine(CheckCollisions());
+        StartCoroutine(set_hitable());
+    }
+
+
+    IEnumerator set_hitable()
+    {
+        while (true)
+        {
+            yield return null;
+            
+            for(int i = 0; i < points.Length;i++)
+            {
+                if (points[i].z + transform.position.z < config.hit_threshold)
+                {
+                    GradientAlphaKey[] ks = new[]
+                    {
+                        new GradientAlphaKey(.3f, i / (float) points.Length + .05f),
+                        new GradientAlphaKey(1, 1 / (float) points.Length),
+                        new GradientAlphaKey(1,1) 
+                    };
+                    lr.colorGradient.SetKeys(lr.colorGradient.colorKeys,ks);
+                    print($"key count {lr.colorGradient.alphaKeys.Length}");
+                    break;
+                }
+
+            }
+        }
     }
 
     //TODO: delete and reset points array when removing points
@@ -49,11 +77,14 @@ public class HandleCollisions : MonoBehaviour
     {
         while (true)
         {
-            for (int i = points.Length - 1; i >= 0; --i)
+            for (int i = 0; i < points.Length; ++i)
             {
                 var point = points[i] + transform.position;
                 if (CheckController(controller, point, config.correctHandGrace))
                 {
+                    if(config.hit_from_the_end_only && i != points.Length - 1)
+                        continue;
+                    
                     Instantiate(goodParticlePrefab, point,Quaternion.identity);
                     StartCoroutine(DestroyRest(i + 1));
                     ScorePoint.Invoke(1);
@@ -61,6 +92,9 @@ public class HandleCollisions : MonoBehaviour
                 }
                 if (otherController != null) //our controller is not the head
                 {
+                    if(config.hit_from_the_end_only)
+                        continue;
+                    
                     if (CheckController(otherController, point, config.incorrectHandGrace))
                     {
                         StartCoroutine(DestroyRest(i));
@@ -68,8 +102,17 @@ public class HandleCollisions : MonoBehaviour
                     }
                 }
             }
+
+            if (points.Length == 0)
+            {
+                Destroy(endIndicator);
+                Destroy(gameObject);
+                yield break;
+            }
+            endIndicator.transform.localPosition = points.Last();
             yield return null;
         }
+
     }
 
     IEnumerator DestroyRest(int j)

@@ -9,4 +9,7 @@ public class LineConfig : ScriptableObject
     public float stepSize = 0.05f;
     public float correctHandGrace = 1;
     public float incorrectHandGrace = 1;
+    
+    public bool hit_from_the_end_only = true;
+    public float hit_threshold = 2;
 }
