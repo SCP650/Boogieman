@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 298327115}
   - component: {fileID: 298327114}
   - component: {fileID: 298327118}
-  - component: {fileID: 6935289241687529703}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -33,7 +32,6 @@ Transform:
   m_LocalScale: {x: 0.24999999, y: 0.25, z: 0.25000003}
   m_Children:
   - {fileID: 1441491016}
-  - {fileID: 6935289243444353474}
   m_Father: {fileID: 3512239080434852583}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,20 +109,6 @@ MonoBehaviour:
   shouldRotate: 0
   trigger: 32
   session: {fileID: 11400000, guid: 80ef0afe991152d42a451e57f2932b62, type: 2}
---- !u!114 &6935289241687529703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298327112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e746b141a902524aab43b817e5aca56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger: 275
-  session: {fileID: 11400000, guid: 49a025d289c520a40bd9d9d4c88d87c5, type: 2}
 --- !u!1 &1441491015
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +157,7 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
   lineObject: {fileID: 7518707151736046340, guid: 4f05c5f3652016947a4f262ca84ec72d,
     type: 3}
+  blockObject: {fileID: 0}
   controller: {fileID: 11400000, guid: 84c693b77cb1eff4980aa34a629cea7b, type: 2}
 --- !u!120 &1441491018
 LineRenderer:
@@ -2064,51 +2049,6 @@ Transform:
   m_Father: {fileID: 3512239080434852583}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6935289243444353475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6935289243444353474}
-  - component: {fileID: 6935289243444353473}
-  m_Layer: 0
-  m_Name: Block Generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6935289243444353474
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935289243444353475}
-  m_LocalRotation: {x: -0.19337705, y: 0.8646744, z: -0.24957824, w: 0.3907099}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 298327117}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6935289243444353473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935289243444353475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e801a2af40d3a4a91a1c2cb9dac0ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  session: {fileID: 11400000, guid: 49a025d289c520a40bd9d9d4c88d87c5, type: 2}
-  block: {fileID: 2171179165114670059, guid: 658c3ea6e51d14a48982341af0718493, type: 3}
 --- !u!1 &7046242102557526969
 GameObject:
   m_ObjectHideFlags: 0
