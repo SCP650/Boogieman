@@ -44,12 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0fbdc5c1a7ae642b493d029886b537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  session: {fileID: 11400000, guid: 80ef0afe991152d42a451e57f2932b62, type: 2}
+  session: {fileID: 11400000, guid: 38ac5b0555cbff947b30bc95dc92a431, type: 2}
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
   lineObject: {fileID: 7518707151736046340, guid: 4f05c5f3652016947a4f262ca84ec72d,
     type: 3}
-  blockObject: {fileID: 0}
-  controller: {fileID: 11400000, guid: 84c693b77cb1eff4980aa34a629cea7b, type: 2}
+  blockObject: {fileID: 2171179165114670059, guid: 658c3ea6e51d14a48982341af0718493,
+    type: 3}
+  controller: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
 --- !u!120 &325951293
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850535247}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -254,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldRotate: 0
   trigger: 100
-  session: {fileID: 11400000, guid: 80ef0afe991152d42a451e57f2932b62, type: 2}
+  session: {fileID: 11400000, guid: 38ac5b0555cbff947b30bc95dc92a431, type: 2}
 --- !u!1 &347061184784091225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,6 +2548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5377338058354959418}
   - component: {fileID: 2605939009565428032}
+  - component: {fileID: 292149925}
   m_Layer: 0
   m_Name: xbot@Dancing Variant
   m_TagString: Untagged
@@ -2561,7 +2563,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9005930013169112617}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.88, y: 0.248, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
@@ -2590,6 +2592,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &292149925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005930013169112617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d7b19ace5324a4da7ce520b1d8a6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_config: {fileID: 11400000, guid: 88abd73f6734a1344be7788e82eee83e, type: 2}
+  l_config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
 --- !u!1 &9064509058155522928
 GameObject:
   m_ObjectHideFlags: 0

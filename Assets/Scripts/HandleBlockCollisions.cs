@@ -46,9 +46,14 @@ public class HandleBlockCollisions : MonoBehaviour
         while (true) {
             yield return null;
 
-            if (transform.position.z <= config.hit_threshold) {
+            if (transform.position.z <= config.hit_threshold && _MeshRenderer.material.color.a < 1) {
                 var mat = _MeshRenderer.material.color;
                 _MeshRenderer.material.color = new Color(mat.r, mat.g, mat.b, 1);
+                Color colour = _MeshRenderer.material.GetColor("_EmissionColor");
+
+
+                // Make color brighter
+                _MeshRenderer.material.SetColor("_EmissionColor", colour * 3.0f);
             }
         }
     }
