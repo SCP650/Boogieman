@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 [RequireComponent(typeof(LineRenderer))]
 public class HandleCollisions : MonoBehaviour
@@ -52,23 +53,26 @@ public class HandleCollisions : MonoBehaviour
         while (true)
         {
             yield return null;
-            
-            for(int i = 0; i < points.Length;i++)
+            int i = 0;
+            for(; i < points.Length;i++)
             {
                 if (points[i].z + transform.position.z < config.hit_threshold)
                 {
-                    GradientAlphaKey[] ks = new[]
-                    {
-                        new GradientAlphaKey(.3f, i / (float) points.Length + .05f),
-                        new GradientAlphaKey(1, 1 / (float) points.Length),
-                        new GradientAlphaKey(1,1) 
-                    };
-                    lr.colorGradient.SetKeys(lr.colorGradient.colorKeys,ks);
-                    print($"key count {lr.colorGradient.alphaKeys.Length}");
                     break;
                 }
 
             }
+            
+            var grad = new Gradient();
+            GradientAlphaKey[] ks = new[]
+            {
+                new GradientAlphaKey(.2f,0), 
+                new GradientAlphaKey(.2f, i / (float) points.Length - .05f),
+                new GradientAlphaKey(1, i / (float) points.Length +.05f),
+                new GradientAlphaKey(1,1) 
+            };
+            grad.SetKeys(lr.colorGradient.colorKeys,ks);
+            lr.colorGradient = grad;
         }
     }
 

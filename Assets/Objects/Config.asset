@@ -17,4 +17,4 @@ MonoBehaviour:
   correctHandGrace: 1
   incorrectHandGrace: 0.15
   hit_from_the_end_only: 1
-  hit_threshold: 7.97
+  hit_threshold: 3
