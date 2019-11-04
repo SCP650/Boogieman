@@ -8,13 +8,16 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private ParticleSystem goodParticlePrefab;
     [SerializeField] private ParticleSystem badParticlePrefab;
     [SerializeField] private LineConfig config;
-    private ControllerObject controller;
-    private ControllerObject otherController;
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
 
+    private ControllerObject controller;
+    private ControllerObject otherController;
+    private MeshRenderer _MeshRenderer;
+
     public void Setup(ControllerObject new_controller)
     {
+        _MeshRenderer = this.GetComponent<MeshRenderer>();
         controller = new_controller;
         if (controller == controllers.leftHand)
             otherController = controllers.rightHand;
@@ -22,6 +25,7 @@ public class HandleBlockCollisions : MonoBehaviour
             otherController = controllers.rightHand;
 
         StartCoroutine(CheckCollisions());
+        StartCoroutine(SetHitable());
     }
 
     IEnumerator CheckCollisions()
@@ -35,6 +39,17 @@ public class HandleBlockCollisions : MonoBehaviour
                 Destroy(gameObject);
             }
             yield return null;
+        }
+    }
+
+    IEnumerator SetHitable() {
+        while (true) {
+            yield return null;
+
+            if (transform.position.z <= config.hit_threshold) {
+                var mat = _MeshRenderer.material.color;
+                _MeshRenderer.material.color = new Color(mat.r, mat.g, mat.b, 1);
+            }
         }
     }
 
