@@ -6,6 +6,7 @@ public class discoTile : MonoBehaviour
 {
     private Color[] colors;
     private Color[] emitColor;
+    [SerializeField] float bpm;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class discoTile : MonoBehaviour
             Color color = colors[val];
             this.GetComponent<Renderer>().material.SetColor("_Color", color);
             //this.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f/(110f/60f));
         }
         yield return null;
 
