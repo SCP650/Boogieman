@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: a65653fd7598d487594ec521c8fab95e
+guid: 0de3b5a017e4e40bb98a94e98e205ce5
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Shopping Cart Dance
+    second: Hip Hop Dancing (2)
+  - first:
+      74: -6508319523170976072
+    second: Hip Hop Dancing
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -17,7 +20,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: mixamorig:Hips
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -35,18 +38,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Shopping Cart Dance
+      name: Hip Hop Dancing
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 134
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
