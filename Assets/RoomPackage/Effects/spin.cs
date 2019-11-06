@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spin : MonoBehaviour
 {
-    float speed=100f;
+    [SerializeField] float speed=100f;
     // Start is called before the first frame update
     void Start()
     {
