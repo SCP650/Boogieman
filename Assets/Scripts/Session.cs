@@ -24,8 +24,13 @@ public class Session : ScriptableObject
         }
     }
 
+    public void SetToggle(bool b) {
+        toggle = b;
+    }
+
     public void Invoke()
     {
+        Debug.Log(toggle);
         if (!toggle) start.Invoke();
         else stop.Invoke();
         toggle = !toggle;

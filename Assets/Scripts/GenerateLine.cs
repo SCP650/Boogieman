@@ -8,6 +8,7 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] Session session;
     [SerializeField] LineConfig config;
     [SerializeField] GameObject lineObject;
+    [SerializeField] GameObject blockObject;
     Vector3[] positions;
     [SerializeField] ControllerObject controller;
     LineRenderer lr;
@@ -30,9 +31,18 @@ public class GenerateLine : MonoBehaviour
 
     void stopListener()
     {
+        Debug.Log("stop invoked");
         StopAllCoroutines();
-        GameObject line = Instantiate(lineObject, Vector3.zero, Quaternion.identity);
-        line.GetComponent<HandleCollisions>().Setup(positions,controller);
+
+        if (positions.Length > 3) {
+            GameObject line = Instantiate(lineObject, Vector3.zero, Quaternion.identity);
+            line.GetComponent<HandleCollisions>().Setup(positions, controller);
+        } else {
+            Debug.Log("making block");
+            var b = Instantiate(blockObject, transform.position, Quaternion.identity);
+            b.GetComponent<HandleBlockCollisions>().Setup(controller);
+        }
+
         positions = new Vector3[0];
         lr.positionCount = 0;
         lr.SetPositions(positions);
@@ -40,6 +50,7 @@ public class GenerateLine : MonoBehaviour
 
     IEnumerator Record()
     {
+        Debug.Log("starting record");
         while (true) {
             Vector3[] newPositions = new Vector3[positions.Length + 1];
             newPositions[0] = transform.position;
@@ -50,6 +61,7 @@ public class GenerateLine : MonoBehaviour
                 newPositions[i] = positions[i - 1] + Vector3.back * config.stepSize * config.speed;
                 // yield return null;
             }
+            //TODO: hide line renderer when making blocks
             positions = newPositions;
             lr.positionCount = positions.Length;
             lr.SetPositions(positions);

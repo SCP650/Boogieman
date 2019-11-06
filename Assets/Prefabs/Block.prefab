@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2171179165114670062}
   - component: {fileID: 2171179165114670061}
   - component: {fileID: 2171179165114670060}
-  - component: {fileID: 8531601249094088889}
   - component: {fileID: 1416605090745375466}
+  - component: {fileID: -1344200393448107981}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -94,19 +94,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8531601249094088889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2171179165114670059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af13b22bcdac2242a9eb93ea23d0e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {fileID: 11400000, guid: 214a7d17725136348a28e98d8c226479, type: 2}
 --- !u!114 &1416605090745375466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +116,16 @@ MonoBehaviour:
     rightHand: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
     head: {fileID: 11400000, guid: b3293209f4f03c249860b1ea25f86948, type: 2}
   ScorePoint: {fileID: 11400000, guid: d5d85d366ffe8254cba2026203c2f288, type: 2}
+--- !u!114 &-1344200393448107981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171179165114670059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335810e4e424be14fa3f530ae23fb968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
