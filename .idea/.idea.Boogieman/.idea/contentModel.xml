@@ -42,6 +42,8 @@
           <e p="Set_SessionAsset.cs" t="Include" />
           <e p="Set_SessionPlayable.cs" t="Include" />
           <e p="Set_SessionTrack.cs" t="Include" />
+          <e p="Set_UnitEventPlayable.cs" t="Include" />
+          <e p="UnitSignalAsset.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="Calibration.cs" t="Include" />
@@ -54,12 +56,14 @@
           <e p="GenerateLine.cs" t="Include" />
           <e p="HandleBlockCollisions.cs" t="Include" />
           <e p="HandleCollisions.cs" t="Include" />
+          <e p="lightning.cs" t="Include" />
           <e p="MoveBlock.cs" t="Include" />
           <e p="MoveLine.cs" t="Include" />
           <e p="music_config.cs" t="Include" />
           <e p="PlaySound.cs" t="Include" />
           <e p="Read.cs" t="Include" />
           <e p="Session.cs" t="Include" />
+          <e p="SessionHandler.cs" t="Include" />
           <e p="set_boogie_distance.cs" t="Include" />
           <e p="set_to_mouse.cs" t="Include" />
           <e p="set_vector3.cs" t="Include" />
