@@ -28,8 +28,8 @@ public class Calibration : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Debug.Log("Calibration Of Width and height Starts");
-            widths = new List<float>();
-            heights = new List<float>();
+            widths.RemoveRange(0, widths.Count);
+            heights.RemoveRange(0, heights.Count);
             StartCoroutine(AverageWidthAndHeight());
         }
         if (Input.GetKeyUp(KeyCode.C))
@@ -63,7 +63,7 @@ public class Calibration : MonoBehaviour
             
             widths.Add(Vector3.Distance(lefthand.pos, righthand.pos));
             
-            heights.Add(Vector3.Distance(Vector3.zero, head.pos));
+            heights.Add( head.pos.y);
 
             yield return null;
         }
