@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -7664126697779433279}
   - component: {fileID: 6573076875586370873}
   - component: {fileID: 873194839319794473}
+  - component: {fileID: 2830394645095328545}
   m_Layer: 0
   m_Name: LineObject
   m_TagString: Untagged
@@ -46,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
+  beat:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!120 &6573076875586370873
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -168,3 +172,30 @@ MonoBehaviour:
     type: 3}
   endIndicator: {fileID: 2142306782644575864, guid: aede27591cac6b84eb493c28671f1c9a,
     type: 3}
+--- !u!114 &2830394645095328545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518707151736046340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae735bceb6a9aa4887b960bbfcf8329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 11400000, guid: d67bdc3479095374f8f4bab7b4e39b39, type: 2}
+  listener:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6573076875586370873}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

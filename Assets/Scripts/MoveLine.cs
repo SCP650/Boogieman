@@ -19,4 +19,9 @@ public class MoveLine : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    void palse()
+    {
+
+    }
 }

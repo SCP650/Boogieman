@@ -27,7 +27,10 @@ public class GenerateLine : MonoBehaviour
         positions = new Vector3[0];
         session.AddStartListener(() => StartCoroutine(Record()));
         session.AddStopListener(() => stopListener());
+        
     }
+
+
 
     void stopListener()
     {
