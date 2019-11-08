@@ -7,10 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="3DTOYS" t="Include">
-          <e p="readme.txt" t="Include" />
-          <e p="rotatecamera.cs" t="Include" />
-        </e>
         <e p="BoilerPlate" t="Include">
           <e p="BoolEvent.cs" t="Include" />
           <e p="BoolRef.cs" t="Include" />
@@ -33,6 +29,7 @@
           <e p="LineConfig.cs" t="Include" />
         </e>
         <e p="Playables" t="Include">
+          <e p="find_beat.cs" t="Include" />
           <e p="Set_FloatAsset.cs" t="Include" />
           <e p="Set_FloatPlayable.cs" t="Include" />
           <e p="Set_FloatTrack.cs" t="Include" />
@@ -45,13 +42,15 @@
           <e p="Set_UnitEventPlayable.cs" t="Include" />
           <e p="UnitSignalAsset.cs" t="Include" />
         </e>
-        <e p="Scripts" t="Include">
-          <e p="Calibration.cs" t="Include" />
-          <e p="ControllerObject.cs" t="Include" />
+        <e p="RoomPackage" t="Include">
           <e p="Effects" t="Include">
             <e p="discoTile.cs" t="Include" />
             <e p="spin.cs" t="Include" />
           </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Calibration.cs" t="Include" />
+          <e p="ControllerObject.cs" t="Include" />
           <e p="GenerateBlock.cs" t="Include" />
           <e p="GenerateLine.cs" t="Include" />
           <e p="HandleBlockCollisions.cs" t="Include" />
