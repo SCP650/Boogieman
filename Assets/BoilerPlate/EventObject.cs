@@ -10,6 +10,7 @@ public class EventObject<T,TEventType> : ScriptableObject where TEventType : Uni
     [SerializeField]
     TEventType Event;
 
+    
     void Start()
     {
         Event = new TEventType();
@@ -63,4 +64,12 @@ public class EventObject<T,TEventType> : ScriptableObject where TEventType : Uni
         }
         m.StartCoroutine(Invoke());
     }
+
+    public Action AddRemovableListener(Action<T> f)
+    {
+        UnityAction<T> temp = t => f(t);
+        Event.AddListener(temp);
+        return () => Event.RemoveListener(temp);
+    }
+    
 }
