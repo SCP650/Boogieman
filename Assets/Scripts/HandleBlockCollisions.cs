@@ -12,17 +12,21 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
+    [SerializeField] private UnitEvent beat;
 
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
 
     private ControllerObject controller;
     private ControllerObject otherController;
     private MeshRenderer _MeshRenderer;
+    private Color originalColor;
 
     private void Awake()
     {
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
+        originalColor = this.GetComponent<Renderer>().material.color;
+        beat.AddListener(() => StartCoroutine(PulsateBlock()));
     }
 
     public void Setup(ControllerObject new_controller)
@@ -81,5 +85,12 @@ public class HandleBlockCollisions : MonoBehaviour
     bool CheckController(ControllerObject checkController, Vector3 position, float dist)
     {
         return Vector3.Distance(checkController.pos, position) < dist;
+    }
+
+    IEnumerator PulsateBlock()
+    {
+        this.GetComponent<Renderer>().material.color = Color.white;
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<Renderer>().material.color = originalColor;
     }
 }
