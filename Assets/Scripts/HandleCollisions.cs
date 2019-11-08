@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using Valve.VR;
 
 [RequireComponent(typeof(LineRenderer))]
 public class HandleCollisions : MonoBehaviour
@@ -18,7 +19,9 @@ public class HandleCollisions : MonoBehaviour
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private LineRenderer lr_prefab;
     [SerializeField] private GameObject endIndicator;
+    [SerializeField] private SteamVR_Action_Vibration HapticAction;
     
+    private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
     private Vector3[] points;
     
     
@@ -28,6 +31,8 @@ public class HandleCollisions : MonoBehaviour
         points = new Vector3[0];
         lr = GetComponent<LineRenderer>();
         if (lr == null) Debug.LogError("Why isn't there a line renderer");
+        leftControllerHand = SteamVR_Input_Sources.LeftHand;
+        rightControllerHand = SteamVR_Input_Sources.RightHand;
     }
 
 
@@ -88,8 +93,18 @@ public class HandleCollisions : MonoBehaviour
                 {
                     if(config.hit_from_the_end_only && i != points.Length - 1)
                         continue;
-                    
+
+                    if (controller == controllers.leftHand)
+                    {
+                        hapticController = leftControllerHand;
+                    }
+                    else
+                    {
+                        hapticController = rightControllerHand;
+                    }
+
                     Instantiate(goodParticlePrefab, point,Quaternion.identity);
+                    HapticAction.Execute(0, 0.2f, 30, 0.5f, hapticController);
                     StartCoroutine(DestroyRest(i + 1));
                     ScorePoint.Invoke(1);
                     break;

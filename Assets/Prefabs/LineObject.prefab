@@ -47,9 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
-  beat:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!120 &6573076875586370873
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -172,6 +169,9 @@ MonoBehaviour:
     type: 3}
   endIndicator: {fileID: 2142306782644575864, guid: aede27591cac6b84eb493c28671f1c9a,
     type: 3}
+  HapticAction:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
 --- !u!114 &2830394645095328545
 MonoBehaviour:
   m_ObjectHideFlags: 0

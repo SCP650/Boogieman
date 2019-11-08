@@ -116,6 +116,9 @@ MonoBehaviour:
     rightHand: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
     head: {fileID: 11400000, guid: b3293209f4f03c249860b1ea25f86948, type: 2}
   ScorePoint: {fileID: 11400000, guid: d5d85d366ffe8254cba2026203c2f288, type: 2}
+  HapticAction:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
 --- !u!114 &-1344200393448107981
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class HandleBlockCollisions : MonoBehaviour
 {
@@ -10,10 +11,19 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private LineConfig config;
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
+    [SerializeField] private SteamVR_Action_Vibration HapticAction;
+
+    private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
 
     private ControllerObject controller;
     private ControllerObject otherController;
     private MeshRenderer _MeshRenderer;
+
+    private void Awake()
+    {
+        leftControllerHand = SteamVR_Input_Sources.LeftHand;
+        rightControllerHand = SteamVR_Input_Sources.RightHand;
+    }
 
     public void Setup(ControllerObject new_controller)
     {
@@ -34,6 +44,16 @@ public class HandleBlockCollisions : MonoBehaviour
         {
             if (CheckController(controller, transform.position, config.correctHandGrace))
             {
+                if (controller == controllers.leftHand)
+                {
+                    hapticController = leftControllerHand;
+                }
+                else
+                {
+                    hapticController = rightControllerHand;
+                }
+
+                HapticAction.Execute(0, 0.2f, 30, 0.5f, hapticController);
                 Instantiate(goodParticlePrefab, transform.position, Quaternion.identity);
                 ScorePoint.Invoke(1);
                 Destroy(gameObject);
