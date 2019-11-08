@@ -117,11 +117,8 @@ public class HandleBlockCollisions : MonoBehaviour
         */
 
         //green and white change in one beat
-        if (this.gameObject != null)
-        {
-            this.GetComponent<Renderer>().material.color = Color.white;
-            yield return new WaitForSeconds(0.2f);
-            this.GetComponent<Renderer>().material.color = originalColor;
-        }
+        this.GetComponent<Renderer>().material.color = Color.white;
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<Renderer>().material.color = originalColor;
     }
 }
