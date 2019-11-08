@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Valve.VR;
 
 public class HandleBlockCollisions : MonoBehaviour
@@ -26,7 +27,12 @@ public class HandleBlockCollisions : MonoBehaviour
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
         originalColor = this.GetComponent<Renderer>().material.color;
-        beat.AddListener(() => StartCoroutine(PulsateBlock()));
+        beat.AddListener(Pulsate);
+    }
+
+    private void OnDestroy()
+    {
+        //beat.RemoveListener(Pulsate);
     }
 
     public void Setup(ControllerObject new_controller)
@@ -87,10 +93,35 @@ public class HandleBlockCollisions : MonoBehaviour
         return Vector3.Distance(checkController.pos, position) < dist;
     }
 
+    void Pulsate()
+    {
+        StartCoroutine(PulsateBlock());
+    }
+
     IEnumerator PulsateBlock()
     {
-        this.GetComponent<Renderer>().material.color = Color.white;
-        yield return new WaitForSeconds(0.2f);
-        this.GetComponent<Renderer>().material.color = originalColor;
+        //one color change per beat
+        /*
+        Color colorOfBlock = this.GetComponent<Renderer>().material.color;
+
+        if(colorOfBlock == Color.white)
+        {
+            this.GetComponent<Renderer>().material.color = originalColor;
+        }
+        else
+        {
+            this.GetComponent<Renderer>().material.color = Color.white;
+        }
+        
+        yield return null;
+        */
+
+        //green and white change in one beat
+        if (this.gameObject != null)
+        {
+            this.GetComponent<Renderer>().material.color = Color.white;
+            yield return new WaitForSeconds(0.2f);
+            this.GetComponent<Renderer>().material.color = originalColor;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class GenerateBlock : MonoBehaviour
     [SerializeField] GameObject block;
     [SerializeField] ControllerObject controller;
 
+
     private void Awake() {
         session.AddStartListener(() => StartCoroutine(Record()));
         session.AddStopListener(() => stopListener());

@@ -13,6 +13,11 @@ public class UnitEvent : EventObject<TypeUtil.Unit, UnitUnityEvent>
         this.AddListener(_ => a());
     }
 
+    public void RemoveListener(System.Action a)
+    {
+        //this.RemoveListener(a);
+    }
+
     public void Invoke()
     {
         this.Invoke(new Unit());

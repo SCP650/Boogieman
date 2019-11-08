@@ -119,6 +119,7 @@ MonoBehaviour:
   HapticAction:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
+  beat: {fileID: 11400000, guid: d67bdc3479095374f8f4bab7b4e39b39, type: 2}
 --- !u!114 &-1344200393448107981
 MonoBehaviour:
   m_ObjectHideFlags: 0
