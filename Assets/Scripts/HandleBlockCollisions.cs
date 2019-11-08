@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
+using System;
 
 public class HandleBlockCollisions : MonoBehaviour
 {
@@ -27,12 +28,13 @@ public class HandleBlockCollisions : MonoBehaviour
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
         originalColor = this.GetComponent<Renderer>().material.color;
-        beat.AddListener(Pulsate);
+        var removeme = beat.AddRemovableListener(unit => Pulsate());
     }
 
     private void OnDestroy()
     {
-        //beat.RemoveListener(Pulsate);
+        removeme();
+        StopAllCoroutines();
     }
 
     public void Setup(ControllerObject new_controller)
