@@ -23,12 +23,14 @@ public class HandleBlockCollisions : MonoBehaviour
     private MeshRenderer _MeshRenderer;
     private Color originalColor;
 
+    private System.Action removeme;
+
     private void Awake()
     {
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
         originalColor = this.GetComponent<Renderer>().material.color;
-        var removeme = beat.AddRemovableListener(unit => Pulsate());
+        removeme = beat.AddRemovableListener(unit => Pulsate());
     }
 
     private void OnDestroy()
