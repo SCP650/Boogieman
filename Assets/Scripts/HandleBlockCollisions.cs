@@ -15,6 +15,9 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
     [SerializeField] private UnitEvent beat;
+    [SerializeField] private AnimationCurve curve;
+
+
 
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
 
@@ -99,10 +102,11 @@ public class HandleBlockCollisions : MonoBehaviour
 
     void Pulsate()
     {
-        StartCoroutine(PulsateBlock());
+        StartCoroutine(PulsateBlockColor());
+        StartCoroutine(PulsateBlockSize());
     }
 
-    IEnumerator PulsateBlock()
+    IEnumerator PulsateBlockColor()
     {
         //one color change per beat
         /*
@@ -124,5 +128,13 @@ public class HandleBlockCollisions : MonoBehaviour
         this.GetComponent<Renderer>().material.color = Color.white;
         yield return new WaitForSeconds(0.2f);
         this.GetComponent<Renderer>().material.color = originalColor;
+    }
+    IEnumerator PulsateBlockSize()
+    {
+        for(float dur = 0; dur < 1; dur += Time.deltaTime)
+        {
+            transform.localScale = Vector3.one * curve.Evaluate(dur);
+            yield return null;
+        }
     }
 }
