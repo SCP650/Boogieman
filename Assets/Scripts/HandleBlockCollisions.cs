@@ -33,6 +33,7 @@ public class HandleBlockCollisions : MonoBehaviour
     private void OnDestroy()
     {
         //beat.RemoveListener(Pulsate);
+        StopCoroutine(PulsateBlock());
     }
 
     public void Setup(ControllerObject new_controller)
