@@ -3,7 +3,7 @@ using UnityEngine.Playables;
 public class Set_MConfigPlayable : PlayableBehaviour
 {
     public float bpm = 110;
-    public float beats_per_measure = 4;
+    public float beats_per_measure = 11;
     public int measures_between_p_and_boog = 1;
     public music_config Reference;
 

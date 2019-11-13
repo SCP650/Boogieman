@@ -17,4 +17,9 @@ public class UnitEvent : EventObject<TypeUtil.Unit, UnitUnityEvent>
     {
         this.Invoke(new Unit());
     }
+
+    public System.Action AddRemovableListener(System.Action a)
+    {
+        return AddRemovableListener(_ => a());
+    }
 }

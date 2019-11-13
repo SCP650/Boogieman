@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
+using System;
 
 public class HandleBlockCollisions : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
     [SerializeField] private UnitEvent beat;
+    [SerializeField] private AnimationCurve curve;
+
+
 
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
 
@@ -22,18 +26,20 @@ public class HandleBlockCollisions : MonoBehaviour
     private MeshRenderer _MeshRenderer;
     private Color originalColor;
 
+    private System.Action removeme;
+
     private void Awake()
     {
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
         originalColor = this.GetComponent<Renderer>().material.color;
-        beat.AddListener(Pulsate);
+        removeme = beat.AddRemovableListener(unit => Pulsate());
     }
 
     private void OnDestroy()
     {
-        //beat.RemoveListener(Pulsate);
-        StopCoroutine(PulsateBlock());
+        removeme();
+        StopAllCoroutines();
     }
 
     public void Setup(ControllerObject new_controller)
@@ -96,10 +102,11 @@ public class HandleBlockCollisions : MonoBehaviour
 
     void Pulsate()
     {
-        StartCoroutine(PulsateBlock());
+        StartCoroutine(PulsateBlockColor());
+        StartCoroutine(PulsateBlockSize());
     }
 
-    IEnumerator PulsateBlock()
+    IEnumerator PulsateBlockColor()
     {
         //one color change per beat
         /*
@@ -121,5 +128,13 @@ public class HandleBlockCollisions : MonoBehaviour
         this.GetComponent<Renderer>().material.color = Color.white;
         yield return new WaitForSeconds(0.2f);
         this.GetComponent<Renderer>().material.color = originalColor;
+    }
+    IEnumerator PulsateBlockSize()
+    {
+        for(float dur = 0; dur < 1; dur += Time.deltaTime)
+        {
+            transform.localScale = Vector3.one * curve.Evaluate(dur);
+            yield return null;
+        }
     }
 }
