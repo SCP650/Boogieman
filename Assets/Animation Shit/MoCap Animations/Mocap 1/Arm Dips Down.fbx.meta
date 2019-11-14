@@ -419,7 +419,7 @@ ModelImporter:
     second: Spine3
   - first:
       74: 7400000
-    second: Arm_Dips_down
+    second: Arm_Dips_Down
   - first:
       95: 9500000
     second: //RootNode
@@ -455,11 +455,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Arm_Dips_down
+      name: Arm_Dips_Down
       takeName: Take 001
       internalID: 0
-      firstFrame: 123
-      lastFrame: 394
+      firstFrame: 345
+      lastFrame: 380
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -458,8 +458,8 @@ ModelImporter:
       name: Arms_Cross_Above_head
       takeName: Take 001
       internalID: 0
-      firstFrame: 123
-      lastFrame: 394
+      firstFrame: 281
+      lastFrame: 312
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
