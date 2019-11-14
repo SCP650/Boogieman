@@ -29,10 +29,20 @@ public class discoTile : MonoBehaviour
         colors[4] = new Color(100f, 70f, 0f);
         colors[5] = new Color(25f, 85f, 0f);
         colors[6] = new Color(80f, 0f, 0f);
-        StartCoroutine(materialChange());
+        //StartCoroutine(materialChange());
     }
-
-    IEnumerator materialChange()
+    /*public void changeColor()
+    {
+        int val = Random.Range(0, 7);
+        Color color = colors[val];
+        Color emitColor = emitColors[0];
+        this.GetComponent<Renderer>().material.SetColor("_Color", color);
+        foreach (Light l in lights)
+        {
+            l.color = colors[val];
+        }
+    }*/
+    /*IEnumerator materialChange()
     {
         while (true)
         {
@@ -49,5 +59,5 @@ public class discoTile : MonoBehaviour
         }
         yield return null;
 
-    }
+    }*/
 }
