@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2171179165114670060}
   - component: {fileID: 1416605090745375466}
   - component: {fileID: -1344200393448107981}
+  - component: {fileID: 4444934582225022906}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -119,85 +120,6 @@ MonoBehaviour:
   HapticAction:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
-  beat: {fileID: 11400000, guid: d67bdc3479095374f8f4bab7b4e39b39, type: 2}
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.34550476
-      inSlope: 0.38978013
-      outSlope: 0.38978013
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.04662464
-      value: 0.35775116
-      inSlope: 0.33619365
-      outSlope: 0.33619365
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 1
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.095972
-      value: 0.37865013
-      inSlope: 0.469195
-      outSlope: 0.469195
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.17595296
-      value: 0.4166172
-      inSlope: 0.3839892
-      outSlope: 0.3839892
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.32666442
-      value: 0.47576147
-      inSlope: 0.25306785
-      outSlope: 0.25306785
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.24002539
-    - serializedVersion: 3
-      time: 0.6072659
-      value: 0.5319342
-      inSlope: 0.22507192
-      outSlope: 0.22507192
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.12588276
-      outWeight: 0.16277102
-    - serializedVersion: 3
-      time: 0.90116155
-      value: 0.61216664
-      inSlope: 0.43077898
-      outSlope: 0.43077898
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9986923
-      value: 0.45577967
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &-1344200393448107981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +133,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
+--- !u!114 &4444934582225022906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171179165114670059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dd6e80b947eb74da049f53c8b91b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beat: {fileID: 11400000, guid: d67bdc3479095374f8f4bab7b4e39b39, type: 2}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.0037231
+      inSlope: 0.5025348
+      outSlope: 0.5025348
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.76997364
+    - serializedVersion: 3
+      time: 0.031898193
+      value: 1.5358772
+      inSlope: -0.17615704
+      outSlope: -0.17615704
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.520068
+      outWeight: 0.057512987
+    - serializedVersion: 3
+      time: 1
+      value: 1.0167198
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
