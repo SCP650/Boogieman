@@ -20,17 +20,17 @@ public class TileMap : MonoBehaviour
     void Start()
     {
         beat.AddListener(unit => change());
-        pattern = "checkered";
+        pattern = "center";
         colors = new Color[7];
         options = new Color[7];
         options[0] = new Color(255f, 0f, 0f);
-        options[1] = new Color(255f, 157f, 0f);
-        options[2] = new Color(255f, 255f, 0f);
-        options[3] = new Color(0f, 255f, 25f);
-        options[4] = new Color(0, 251f, 255f);
-        options[5] = new Color(214, 0f, 255f);
-        options[6] = new Color(255f, 0f, 188f);
-        changeCheckered();
+        //options[1] = new Color(255f, 157f, 0f);
+        options[1] = new Color(255f, 255f, 0f);
+        //options[3] = new Color(0f, 255f, 25f);
+        options[2] = new Color(0, 251f, 255f);
+        //options[5] = new Color(214, 0f, 255f);
+        options[3] = new Color(255f, 0f, 188f);
+        centerPattern();
         materials = new Material[75];
         int count = 0;
         foreach (GameObject tile in tiles)
@@ -77,15 +77,15 @@ public class TileMap : MonoBehaviour
             {
                lights = tile.GetComponentsInChildren<Light>();
                 //tile.GetComponent<Renderer>().material.SetColor("_Color", colors[(currCol + startVal) % 7]);
-                materials[count].SetColor("_Color", colors[(currCol + startVal) % 7]);
+                materials[count].SetColor("_Color", colors[(currCol + startVal) % 3]);
                 foreach (Light l in lights)
                 {
                     l.color = colors[(currCol + startVal) % 7];
                 }
-                currCol += 1;
+                currCol += 2;
                 count += 1;
             }
-            //startVal += 1;
+            startVal += 1;
 
 
         }
@@ -136,33 +136,33 @@ public class TileMap : MonoBehaviour
 
     public void changeCheckered()
     {
-        int val = Random.Range(0, 7);
+        int val = Random.Range(0, 3);
         colors[0] = options[val];
-        colors[1] = options[6 - val];
+        colors[1] = options[3 - val];
         pattern = "checkered";
 
     }
     public void spinPattern()
     {
         //startVal = Random.Range(0, 7);
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 3; i++)
         {
             colors[i] = options[i];
         }
     }
     public void centerPattern()
     {
-        int val = Random.Range(0, 7);
-        int val2 = Random.Range(0, 7);
-        int val3 = Random.Range(0, 7);
+        int val = Random.Range(0, 3);
+        int val2 = Random.Range(0, 3);
+        int val3 = Random.Range(0, 3);
         while (val2 == val)
         {
-            val2 = Random.Range(0, 7);
+            val2 = Random.Range(0, 3);
         }
        
         while(val3 == val || val3 == val2)
         {
-            val3 = Random.Range(0, 7);
+            val3 = Random.Range(0, 3);
         }
         colors[0] = options[val];
         colors[1] = options[val2];
