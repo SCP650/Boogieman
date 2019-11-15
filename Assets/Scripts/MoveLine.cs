@@ -12,7 +12,7 @@ public class MoveLine : MonoBehaviour
 
     IEnumerator MoveForward()
     {
-        while (transform.position.z >= -10) {
+        while (transform.position.z >= -100) {
             //TODO: is this forward or backward
             transform.position += (Vector3.back * config.speed * Time.deltaTime);
             yield return null;
