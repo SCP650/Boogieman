@@ -10,6 +10,7 @@
         <e p="BoilerPlate" t="Include">
           <e p="BoolEvent.cs" t="Include" />
           <e p="BoolRef.cs" t="Include" />
+          <e p="EventHook.cs" t="Include" />
           <e p="EventObject.cs" t="Include" />
           <e p="FloatRef.cs" t="Include" />
           <e p="Inl.cs" t="Include" />
@@ -20,6 +21,7 @@
           <e p="Sum.cs" t="Include" />
           <e p="Unit.cs" t="Include" />
           <e p="UnitEvent.cs" t="Include" />
+          <e p="Vector3Event.cs" t="Include" />
           <e p="Vector3Ref.cs" t="Include" />
         </e>
         <e p="Editor" t="Include">
@@ -29,7 +31,11 @@
           <e p="LineConfig.cs" t="Include" />
         </e>
         <e p="Playables" t="Include">
+          <e p="Editor" t="Include">
+            <e p="PolarPropertyDrawer.cs" t="Include" />
+          </e>
           <e p="find_beat.cs" t="Include" />
+          <e p="PolarAttribute.cs" t="Include" />
           <e p="Set_FloatAsset.cs" t="Include" />
           <e p="Set_FloatPlayable.cs" t="Include" />
           <e p="Set_FloatTrack.cs" t="Include" />
@@ -40,15 +46,20 @@
           <e p="Set_SessionPlayable.cs" t="Include" />
           <e p="Set_SessionTrack.cs" t="Include" />
           <e p="Set_UnitEventPlayable.cs" t="Include" />
+          <e p="spawn_beat_asset.cs" t="Include" />
+          <e p="spawn_beat_playable.cs" t="Include" />
+          <e p="spawn_beat_track.cs" t="Include" />
           <e p="UnitSignalAsset.cs" t="Include" />
         </e>
         <e p="RoomPackage" t="Include">
           <e p="Effects" t="Include">
             <e p="discoTile.cs" t="Include" />
             <e p="spin.cs" t="Include" />
+            <e p="TileMap.cs" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="BeatInvoke.cs" t="Include" />
           <e p="Calibration.cs" t="Include" />
           <e p="ControllerObject.cs" t="Include" />
           <e p="GenerateBlock.cs" t="Include" />

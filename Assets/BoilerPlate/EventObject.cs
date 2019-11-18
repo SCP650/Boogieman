@@ -73,3 +73,4 @@ public class EventObject<T,TEventType> : ScriptableObject where TEventType : Uni
     }
     
 }
+
