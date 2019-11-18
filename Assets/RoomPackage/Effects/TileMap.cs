@@ -23,20 +23,20 @@ public class TileMap : MonoBehaviour
         pattern = "center";
         colors = new Color[7];
         options = new Color[7];
-        options[0] = new Color(255f, 0f, 0f);
-        //options[1] = new Color(255f, 157f, 0f);
-        options[1] = new Color(255f, 255f, 0f);
-        //options[3] = new Color(0f, 255f, 25f);
-        options[2] = new Color(0, 251f, 255f);
-        //options[5] = new Color(214, 0f, 255f);
-        options[3] = new Color(255f, 0f, 188f);
+        options[0] = new Color(243f/255, 160f/255, 160f/255);
+        options[1] = new Color(1, 157f/255, 0);
+        options[2] = new Color(1, 1, 0);
+        options[3] = new Color(0f, 1, 25/255f);
+        options[4] = new Color(0, 1, 1);
+        options[5] = new Color(214f/255, 0f, 1);
+        options[6] = new Color(1, 0, 188f/255f);
         centerPattern();
         materials = new Material[75];
         int count = 0;
         foreach (GameObject tile in tiles)
         {
             materials[count] = new Material(tile.GetComponent<Renderer>().sharedMaterial);
-            tile.GetComponent<Renderer>().material = materials[count];
+            tile.GetComponent<Renderer>().sharedMaterial = materials[count];
             count += 1;
         }
 
@@ -95,10 +95,11 @@ public class TileMap : MonoBehaviour
             foreach (GameObject tile in tiles)
             {
                 lights = tile.GetComponentsInChildren<Light>();
+                Color c = new Color(0,0,0,0);
                 if (tileNum < 36)
                 {
                     //tile.GetComponent<Renderer>().material.SetColor("_Color", colors[0]);
-                    materials[tileNum].SetColor("_Color", colors[0]);
+                    c = colors[0];
                     foreach (Light l in lights)
                     {
                         l.color = colors[0];
@@ -107,7 +108,7 @@ public class TileMap : MonoBehaviour
                 }
                 else if (tileNum < (28 + 36))
                 {
-                    materials[tileNum].SetColor("_Color", colors[1]);
+                    c = colors[1];
                    // tile.GetComponent<Renderer>().material.SetColor("_Color", colors[1]);
                     foreach (Light l in lights)
                     {
@@ -116,16 +117,27 @@ public class TileMap : MonoBehaviour
                 }
                 else if (tileNum < (11 + 28 + 36))
                 {
-                    materials[tileNum].SetColor("_Color", colors[2]);
+                    c = colors[2];
                     //tile.GetComponent<Renderer>().material.SetColor("_Color", colors[2]);
                     foreach (Light l in lights)
                     {
                         l.color = colors[2];
                     }
                 }
+
+                float h, s, v;
+                Color.RGBToHSV(c, out h, out s, out v);
+                Color desat = Color.HSVToRGB(h, s * 0.2f, v);
+               // materials[tileNum].SetColor("_BaseColor", c);
+                //materials[tileNum].SetVector("_EmissionColor", desat);
+
                 tileNum += 1;
              
             }
+
+            
+
+
             Color temp = colors[0];
             colors[0] = colors[2];
             colors[2] = colors[1];
