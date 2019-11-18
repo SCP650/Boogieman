@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 public class Set_MConfig_Asset : PlayableAsset
 {
     public float bpm = 110;
-    public float beats_per_measure = 4;
+    public float beats_per_measure = 11;
     public int measures_between_p_and_boog = 1;
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {

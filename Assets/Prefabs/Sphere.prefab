@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2189799603046593052}
   - component: {fileID: 5303504727554986342}
   - component: {fileID: 6177815223166285903}
+  - component: {fileID: 3438483456883249420}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -78,3 +79,49 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3438483456883249420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142306782644575864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28dd6e80b947eb74da049f53c8b91b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beat: {fileID: 11400000, guid: d67bdc3479095374f8f4bab7b4e39b39, type: 2}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.002945
+      inSlope: 0.5129605
+      outSlope: 0.5129605
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.46831074
+    - serializedVersion: 3
+      time: 0.060051143
+      value: 1.5042233
+      inSlope: -0.2606752
+      outSlope: -0.2606752
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.50688565
+      outWeight: 0.15593357
+    - serializedVersion: 3
+      time: 1.0084839
+      value: 1.0055847
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bpm: 110
   beats_per_measure: 4
+  measures_between_p_and_boog: 11

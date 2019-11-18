@@ -13,6 +13,10 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] ControllerObject controller;
     LineRenderer lr;
 
+    float runtime = .55f;
+
+    bool recording;
+
     public Vector3[] RecordedPositions
     {
         get
@@ -25,8 +29,8 @@ public class GenerateLine : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         positions = new Vector3[0];
-        session.AddStartListener(() => StartCoroutine(Record()));
-        session.AddStopListener(() => stopListener());
+        session.AddStartListener(() => { recording = true; StopAllCoroutines(); StartCoroutine(Record()); });
+        session.AddStopListener(() => recording = false);
         
     }
 
@@ -54,7 +58,8 @@ public class GenerateLine : MonoBehaviour
     IEnumerator Record()
     {
         Debug.Log("starting record");
-        while (true) {
+
+        for (float dur = 0; dur < runtime;dur += Time.deltaTime) {
             Vector3[] newPositions = new Vector3[positions.Length + 1];
             newPositions[0] = transform.position;
 
@@ -70,6 +75,17 @@ public class GenerateLine : MonoBehaviour
             lr.SetPositions(positions);
 
             yield return new WaitForSeconds(config.stepSize);
+        }
+        stopListener();
+        yield return new WaitForSeconds(runtime);
+        if(recording)
+        {
+            yield return null;
+
+            StartCoroutine(Record());
+            yield break;
+        } else
+        {
         }
     }
 }

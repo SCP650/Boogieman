@@ -13,13 +13,13 @@ public class UnitEvent : EventObject<TypeUtil.Unit, UnitUnityEvent>
         this.AddListener(_ => a());
     }
 
-    public void RemoveListener(System.Action a)
-    {
-        //this.RemoveListener(a);
-    }
-
     public void Invoke()
     {
         this.Invoke(new Unit());
+    }
+
+    public System.Action AddRemovableListener(System.Action a)
+    {
+        return AddRemovableListener(_ => a());
     }
 }

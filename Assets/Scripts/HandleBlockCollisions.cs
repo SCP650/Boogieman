@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
+using System;
 
 public class HandleBlockCollisions : MonoBehaviour
 {
@@ -13,26 +14,31 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
-    [SerializeField] private UnitEvent beat;
+    
+    
+
+
 
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
 
     private ControllerObject controller;
     private ControllerObject otherController;
     private MeshRenderer _MeshRenderer;
-    private Color originalColor;
+
+    
 
     private void Awake()
     {
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
-        originalColor = this.GetComponent<Renderer>().material.color;
-        beat.AddListener(Pulsate);
+        
+        
     }
 
     private void OnDestroy()
     {
-        //beat.RemoveListener(Pulsate);
+        
+        StopAllCoroutines();
     }
 
     public void Setup(ControllerObject new_controller)
@@ -93,35 +99,5 @@ public class HandleBlockCollisions : MonoBehaviour
         return Vector3.Distance(checkController.pos, position) < dist;
     }
 
-    void Pulsate()
-    {
-        StartCoroutine(PulsateBlock());
-    }
 
-    IEnumerator PulsateBlock()
-    {
-        //one color change per beat
-        /*
-        Color colorOfBlock = this.GetComponent<Renderer>().material.color;
-
-        if(colorOfBlock == Color.white)
-        {
-            this.GetComponent<Renderer>().material.color = originalColor;
-        }
-        else
-        {
-            this.GetComponent<Renderer>().material.color = Color.white;
-        }
-        
-        yield return null;
-        */
-
-        //green and white change in one beat
-        if (this.gameObject != null)
-        {
-            this.GetComponent<Renderer>().material.color = Color.white;
-            yield return new WaitForSeconds(0.2f);
-            this.GetComponent<Renderer>().material.color = originalColor;
-        }
-    }
 }

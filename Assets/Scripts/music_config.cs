@@ -5,6 +5,6 @@ using UnityEngine.Serialization;
 public class music_config : ScriptableObject
 {
     [SerializeField] public float bpm = 110;
-    [SerializeField] public float beats_per_measure = 4;
+    [SerializeField] public float beats_per_measure = 10;
     [SerializeField] public int measures_between_p_and_boog = 1;
 }
