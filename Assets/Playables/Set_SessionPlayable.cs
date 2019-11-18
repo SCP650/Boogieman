@@ -7,6 +7,7 @@ using UnityEngine.Playables;
 public class Set_SessionPlayable : PlayableBehaviour
 {
     public Session s;
+    public PlayableGraph pg;
     // Called when the owning graph starts playing
     public override void OnGraphStart(Playable playable)
     {
@@ -28,7 +29,8 @@ public class Set_SessionPlayable : PlayableBehaviour
     // Called when the state of the playable is set to Paused
     public override void OnBehaviourPause(Playable playable, FrameData info)
     {
-        s.StopEvent.Invoke();
+        if(pg.IsPlaying())
+            s.StopEvent.Invoke();
     }
 
     // Called each frame while the state is set to Play
@@ -43,6 +45,7 @@ public class Set_SessionPlayable : PlayableBehaviour
         {
             s = playerData as Session;
             s.StartEvent.Invoke();
+            pg = playable.GetGraph();
         }
     }
 }

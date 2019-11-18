@@ -24,6 +24,44 @@
           <e p="Vector3Event.cs" t="Include" />
           <e p="Vector3Ref.cs" t="Include" />
         </e>
+        <e p="Dance_MoCap_Collection" t="Include">
+          <e p="Dance MoCap 01" t="Include">
+            <e p="Dance MoCap 01 Description.txt" t="Include" />
+            <e p="DemoScene" t="Include">
+              <e p="dance_mocap_01_follow_player.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Dance MoCap 02" t="Include">
+            <e p="Dance MoCap 02 Description.txt" t="Include" />
+            <e p="DemoScene" t="Include">
+              <e p="dance_mocap_02_follow_player.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Dance MoCap 03" t="Include">
+            <e p="Dance MoCap 03 Description.txt" t="Include" />
+            <e p="DemoScene" t="Include">
+              <e p="dance_mocap_03_follow_player.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Dance MoCap 04" t="Include">
+            <e p="Dance MoCap 04 Description.txt" t="Include" />
+            <e p="DemoScene" t="Include">
+              <e p="Dance_mocap_04_follow_player.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Dance MoCap 05" t="Include">
+            <e p="Dance MoCap 05 Description.txt" t="Include" />
+            <e p="DemoScene" t="Include">
+              <e p="dance_mocap_05_follow_player.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Dance MoCap 06" t="Include">
+            <e p="Dance MoCap 06 Description.txt" t="Include" />
+            <e p="DemoScene" t="Include">
+              <e p="dance_mocap_06_follow_player.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Editor" t="Include">
           <e p="AutoSave.cs" t="Include" />
         </e>
@@ -54,8 +92,12 @@
         <e p="RoomPackage" t="Include">
           <e p="Effects" t="Include">
             <e p="discoTile.cs" t="Include" />
+            <e p="rotateMove.cs" t="Include" />
             <e p="spin.cs" t="Include" />
             <e p="TileMap.cs" t="Include" />
+          </e>
+          <e p="Models" t="Include">
+            <e p="Something.shader" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
@@ -71,6 +113,7 @@
           <e p="MoveLine.cs" t="Include" />
           <e p="music_config.cs" t="Include" />
           <e p="PlaySound.cs" t="Include" />
+          <e p="PulseToBeat.cs" t="Include" />
           <e p="Read.cs" t="Include" />
           <e p="Session.cs" t="Include" />
           <e p="SessionHandler.cs" t="Include" />
