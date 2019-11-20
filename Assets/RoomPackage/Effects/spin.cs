@@ -6,13 +6,14 @@ public class spin : MonoBehaviour
 {
     [SerializeField] float speed=100f;
     [SerializeField] float direction = 1f;
-    [SerializeField] float time = 0f;
+    [SerializeField] float time;
     // Start is called before the first frame update
     void Start()
     {
         if (time > 0)
         {
             StartCoroutine(switchDirection());
+            Debug.Log("spin");
         }
         
     }
@@ -29,7 +30,7 @@ public class spin : MonoBehaviour
         while (true)
         {
             direction = -direction;
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(2);
         }
         yield return null;
 

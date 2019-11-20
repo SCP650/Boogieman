@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: a1bc99585db584bcdade817bf9fa0891,
         type: 3}
       propertyPath: m_Name
-      value: teddyBear@Samba Dancing
+      value: teddy
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1bc99585db584bcdade817bf9fa0891,
         type: 3}
@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: a1bc99585db584bcdade817bf9fa0891,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 96919c927d4264e7ba134ad658c0009c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1bc99585db584bcdade817bf9fa0891, type: 3}

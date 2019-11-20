@@ -17,6 +17,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -5159484176455789065, guid: e7a4e796358434f24b3a2cdda89916b2, type: 2}
     value: {fileID: 6415638310441647254}
+  - key: {fileID: 7477795997961287340, guid: e7a4e796358434f24b3a2cdda89916b2, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &8284470480976476918
@@ -31,16 +33,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: armyPre
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: e0ffc980f355d46d29787c02c2eb29c6,
-        type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: a2dae1e388134432090153e7b9b013a5, type: 3}
-    - target: {fileID: -6057140222963153312, guid: e0ffc980f355d46d29787c02c2eb29c6,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 27d34ec12e048014faa0d49da4c283b1, type: 2}
     - target: {fileID: -4216859302048453862, guid: e0ffc980f355d46d29787c02c2eb29c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,6 +103,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e0ffc980f355d46d29787c02c2eb29c6,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: a2dae1e388134432090153e7b9b013a5, type: 3}
+    - target: {fileID: -6057140222963153312, guid: e0ffc980f355d46d29787c02c2eb29c6,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 27d34ec12e048014faa0d49da4c283b1, type: 2}
     - target: {fileID: -1587395830074780913, guid: e0ffc980f355d46d29787c02c2eb29c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
