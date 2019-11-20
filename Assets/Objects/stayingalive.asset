@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: stayingalive
   m_EditorClassIdentifier: 
   bpm: 110
-  beats_per_measure: 4
-  measures_between_p_and_boog: 11
+  beats_per_measure: 2
+  measures_between_p_and_boog: 1

@@ -141,6 +141,143 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 860665934}
+--- !u!1 &3026084595626858563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4406767817433556964}
+  - component: {fileID: 188625872571510507}
+  - component: {fileID: 5830049841145417103}
+  - component: {fileID: 9203098999737115948}
+  - component: {fileID: 3104553170658021808}
+  m_Layer: 0
+  m_Name: Grid objects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4406767817433556964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026084595626858563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.23799998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8047813703880369190}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188625872571510507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026084595626858563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d7b19ace5324a4da7ce520b1d8a6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_config: {fileID: 11400000, guid: 88abd73f6734a1344be7788e82eee83e, type: 2}
+  l_config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
+--- !u!114 &5830049841145417103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026084595626858563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b774ff2009e02bb4aa4bb676dc70db10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpherePrefab: {fileID: 2171179165114670059, guid: 658c3ea6e51d14a48982341af0718493,
+    type: 3}
+  width: 1
+  height: 1
+  lefthand: {fileID: 11400000, guid: 84c693b77cb1eff4980aa34a629cea7b, type: 2}
+  righthand: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
+  head: {fileID: 11400000, guid: b3293209f4f03c249860b1ea25f86948, type: 2}
+  blue: {fileID: 2100000, guid: dd062cf0f05bc4e109d372f9e06b80a5, type: 2}
+  red: {fileID: 2100000, guid: b4f88458f8528493390af3843b35e898, type: 2}
+  numBeatWait: 2
+--- !u!114 &9203098999737115948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026084595626858563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 8af873bf8eca82c489b41ba493020772, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5830049841145417103}
+          m_MethodName: TestingRoutine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: d67bdc3479095374f8f4bab7b4e39b39, type: 2}
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &3104553170658021808
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026084595626858563}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -5159484176455789065, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1521653604646551590, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2695715650447282599, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 11400000, guid: 80ef0afe991152d42a451e57f2932b62, type: 2}
+  - key: {fileID: 6458896393164362177, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 11400000, guid: 38ac5b0555cbff947b30bc95dc92a431, type: 2}
+  - key: {fileID: -1708271977753324597, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 11400000, guid: 57162161fb0df45e4864868933d84469, type: 2}
+  m_ExposedReferences:
+    m_References: []
 --- !u!114 &551680713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_Name
+      value: '[CameraRig] Variant'
+      objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -311,12 +452,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
