@@ -29,8 +29,9 @@ public class Set_SessionPlayable : PlayableBehaviour
     // Called when the state of the playable is set to Paused
     public override void OnBehaviourPause(Playable playable, FrameData info)
     {
-        if(pg.IsPlaying())
-            s.StopEvent.Invoke();
+        if(pg.IsValid())
+            if( pg.IsPlaying())
+                s.StopEvent.Invoke();
     }
 
     // Called each frame while the state is set to Play

@@ -201,6 +201,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!82 &240178955
 AudioSource:
   m_ObjectHideFlags: 0
@@ -341,6 +343,8 @@ PlayableDirector:
     value: {fileID: 11400000, guid: 88abd73f6734a1344be7788e82eee83e, type: 2}
   - key: {fileID: -7199230278801271280, guid: e8622d345a93f544e83f4cbba698cf7f, type: 2}
     value: {fileID: 240178951}
+  - key: {fileID: -6116773686618104243, guid: e8622d345a93f544e83f4cbba698cf7f, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &298327112

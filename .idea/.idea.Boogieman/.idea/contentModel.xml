@@ -101,6 +101,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AttackController.cs" t="Include" />
           <e p="BeatInvoke.cs" t="Include" />
           <e p="Calibration.cs" t="Include" />
           <e p="ControllerObject.cs" t="Include" />
@@ -117,6 +118,9 @@
           <e p="Read.cs" t="Include" />
           <e p="Session.cs" t="Include" />
           <e p="SessionHandler.cs" t="Include" />
+          <e p="Set_AttackAsset.cs" t="Include" />
+          <e p="Set_AttackPlayable.cs" t="Include" />
+          <e p="Set_AttackTrack.cs" t="Include" />
           <e p="set_boogie_distance.cs" t="Include" />
           <e p="set_to_mouse.cs" t="Include" />
           <e p="set_vector3.cs" t="Include" />
