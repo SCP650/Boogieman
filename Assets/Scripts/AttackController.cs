@@ -65,6 +65,6 @@ public class AttackController : ScriptableObject
     [SerializeField] public Session LineSession;
     [SerializeField] public Session LassoSession;
     
-    [SerializeField] public Vector3 Place;
-    [SerializeField] public Vector3 Orientation;
+    [SerializeField] public Vector3Ref Place;
+    [SerializeField] public Vector3Ref Orientation;
 }

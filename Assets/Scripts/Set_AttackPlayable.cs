@@ -44,8 +44,8 @@ public class Set_AttackPlayable : PlayableBehaviour
                     throw new ArgumentOutOfRangeException();
             }
 
-            contr.Place = val.pos();
-            contr.Orientation = val.dir();
+            contr.Place.val = val.pos();
+            contr.Orientation.val = val.dir();
             s.StartEvent.Invoke();
             pg = playable.GetGraph();
         }

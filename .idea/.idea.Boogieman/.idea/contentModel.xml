@@ -103,6 +103,7 @@
         <e p="Scripts" t="Include">
           <e p="AttackController.cs" t="Include" />
           <e p="BeatInvoke.cs" t="Include" />
+          <e p="BoogiemanPoof.cs" t="Include" />
           <e p="Calibration.cs" t="Include" />
           <e p="ControllerObject.cs" t="Include" />
           <e p="GenerateBlock.cs" t="Include" />
@@ -113,6 +114,7 @@
           <e p="MoveBlock.cs" t="Include" />
           <e p="MoveLine.cs" t="Include" />
           <e p="music_config.cs" t="Include" />
+          <e p="NewGenerateSphere.cs" t="Include" />
           <e p="PlaySound.cs" t="Include" />
           <e p="PulseToBeat.cs" t="Include" />
           <e p="Read.cs" t="Include" />
