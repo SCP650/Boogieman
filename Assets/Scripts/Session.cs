@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Boogieman/Session")]
 public class Session : ScriptableObject
@@ -12,6 +13,8 @@ public class Session : ScriptableObject
     public UnitEvent StartEvent {
         get
         {
+            if (start == null)
+                start = CreateInstance<UnitEvent>();
             return start;
         }
     }
@@ -20,6 +23,8 @@ public class Session : ScriptableObject
     {
         get
         {
+            if (stop == null)
+                stop = CreateInstance<UnitEvent>();
             return stop;
         }
     }
@@ -38,11 +43,11 @@ public class Session : ScriptableObject
 
     public void AddStartListener(System.Action listener)
     {
-        start.AddListener(listener);
+        StartEvent.AddListener(() => listener());
     }
     
     public void AddStopListener(System.Action listener)
     {
-        stop.AddListener(listener);
+        StopEvent.AddListener(() => listener());
     }
 }
