@@ -17,13 +17,17 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] private ControllerObject lefthand;
     [SerializeField] private ControllerObject righthand;
     [SerializeField] private ControllerObject head;
+    [SerializeField] Material blue;
+    [SerializeField] Material red;
     private int counter = 0;
     public int numBeatWait = 4;
+    private ControllerObject currController;
 
     private void Start()
     {
         widths = new List<float>();
         heights = new List<float>();
+        currController = righthand;
 
         // StartCoroutine(TestingRoutine())
     }
@@ -83,8 +87,17 @@ public class NewGenerateSphere : MonoBehaviour
     
     void GiveMeSphere(Vector3 location)
     {
-        var obj = Instantiate(SpherePrefab, location, Quaternion.identity, transform);
-        obj.transform.parent = null;
+        var block = Instantiate(SpherePrefab, location, Quaternion.identity);
+        block.GetComponent<HandleBlockCollisions>().Setup(currController);
+        var _MeshRenderer = block.GetComponent<MeshRenderer>();
+        if (currController.Equals(lefthand))
+        {
+            _MeshRenderer.material = blue;
+        }
+        else
+        {
+            _MeshRenderer.material = red;
+        }
     }
 
     public void TestingRoutine() {
@@ -100,6 +113,26 @@ public class NewGenerateSphere : MonoBehaviour
         // Scale location to width and height
         float xScale = width/2.0f;
         float yScale = height/2.0f;
-        GiveMeSphere(new Vector3(Random.Range(-1f, 1f) * xScale + transform.position.x, Random.Range(-1f, 1f) * yScale + transform.position.y, transform.position.z));
+        Vector3 v = new Vector3(Random.Range(-1, 2) * xScale + transform.position.x, Random.Range(0, 2) * yScale + yScale, transform.position.z);
+        if (v.x < 0)
+        {
+            currController = lefthand;
+        } else if (v.x > 0)
+        {
+            currController = righthand;
+        } else
+        {
+            var i = Random.Range(0, 2);
+            switch (i)
+            {
+                case 0:
+                    currController = lefthand;
+                    break;
+                default:
+                    currController = righthand;
+                    break;
+            }
+        }
+        GiveMeSphere(v);
     }
 }

@@ -9,9 +9,14 @@ public class GenerateLine : MonoBehaviour
     [SerializeField] LineConfig config;
     [SerializeField] GameObject lineObject;
     [SerializeField] GameObject blockObject;
+    [SerializeField] private ControllerObject lefthand;
+    [SerializeField] private ControllerObject righthand;
+    [SerializeField] private ControllerObject head;
     Vector3[] positions;
     [SerializeField] ControllerObject controller;
     LineRenderer lr;
+    [SerializeField] Material blue;
+    [SerializeField] Material red;
 
     float runtime = .55f;
 
@@ -48,6 +53,16 @@ public class GenerateLine : MonoBehaviour
             Debug.Log("making block");
             var b = Instantiate(blockObject, transform.position, Quaternion.identity);
             b.GetComponent<HandleBlockCollisions>().Setup(controller);
+            var _MeshRenderer = b.GetComponent<MeshRenderer>();
+            if (controller.Equals(lefthand))
+            {
+                _MeshRenderer.material = blue;
+            }
+            else
+            {
+                _MeshRenderer.material = red;
+            }
+            //TODO: change colors in here
         }
 
         positions = new Vector3[0];
