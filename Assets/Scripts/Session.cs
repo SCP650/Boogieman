@@ -36,18 +36,18 @@ public class Session : ScriptableObject
     public void Invoke()
     {
         Debug.Log(toggle);
-        if (!toggle) start.Invoke();
-        else stop.Invoke();
+        if (!toggle) StartEvent.Invoke();
+        else StopEvent.Invoke();
         toggle = !toggle;
     }
 
     public void AddStartListener(System.Action listener)
     {
-        StartEvent.AddListener(() => listener());
+        StartEvent.AddListener(listener);
     }
     
     public void AddStopListener(System.Action listener)
     {
-        StopEvent.AddListener(() => listener());
+        StopEvent.AddListener(listener);
     }
 }
