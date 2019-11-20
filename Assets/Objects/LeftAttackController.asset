@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72d812d72e6defa409604973eaf4bf3d, type: 3}
-  m_Name: RightAttackController
+  m_Name: LeftAttackController
   m_EditorClassIdentifier: 
   BallSession: {fileID: 11400000, guid: 78e3ef2490a85a746accdde389235173, type: 2}
   LineSession: {fileID: 11400000, guid: 66d4ad8621053a64ba3795cb7633d832, type: 2}
   LassoSession: {fileID: 11400000, guid: aee4fa37e941f8c40b5c0a4212acb5ee, type: 2}
-  Place: {fileID: 11400000, guid: 4417d8ee87d1d4d49b35d7ce283113d0, type: 2}
-  Orientation: {fileID: 11400000, guid: 2898f93cb70035f469446684c358481a, type: 2}
+  Place: {fileID: 11400000, guid: 6b3e2794ee7fd6e4a8277712b4e88138, type: 2}
+  Orientation: {fileID: 11400000, guid: 5b05f068f0ff7864b92cdcec428a1dfe, type: 2}
