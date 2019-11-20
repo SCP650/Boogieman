@@ -10,6 +10,9 @@ public class BoogiemanPoof : MonoBehaviour
     [SerializeField]
     private GameObject boogieMan;
 
+    [SerializeField]
+    private ParticleSystem boogiePoof;
+
     void Start()
     {
         //StartCoroutine(InvokePoofEvent());
@@ -19,6 +22,7 @@ public class BoogiemanPoof : MonoBehaviour
 
     IEnumerator PoofInBoogieman()
     {
+        boogiePoof.Play();
         boogieMan.SetActive(true);
         yield return null;
     }
