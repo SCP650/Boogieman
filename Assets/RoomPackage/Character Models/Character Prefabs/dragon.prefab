@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c5433b5f7aa450095b89525594e66f,
         type: 3}
       propertyPath: m_Name
-      value: dragpm@Bellydancing
+      value: dragon
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e5c5433b5f7aa450095b89525594e66f,
         type: 3}
@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e5c5433b5f7aa450095b89525594e66f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cc53966c629684517a4006c11c050d5d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5c5433b5f7aa450095b89525594e66f, type: 3}

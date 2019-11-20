@@ -12,16 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ugly2
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: c5380fc2a0ecc4c06a3c6989cfbd1f11,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3e2afb8d89f0246c69cb12a05e049ec0, type: 2}
-    - target: {fileID: -6057140222963153312, guid: c5380fc2a0ecc4c06a3c6989cfbd1f11,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5380fc2a0ecc4c06a3c6989cfbd1f11,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,6 +66,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: c5380fc2a0ecc4c06a3c6989cfbd1f11,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f0f4c03ab279e46de9302e6927e56d7a, type: 2}
+    - target: {fileID: -6057140222963153312, guid: c5380fc2a0ecc4c06a3c6989cfbd1f11,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5380fc2a0ecc4c06a3c6989cfbd1f11, type: 3}
