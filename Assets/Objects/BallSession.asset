@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174c3ab50249c40b6d6f319997780e, type: 3}
   m_Name: BallSession
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
-  stop: {fileID: 0}
+  start: {fileID: 11400000, guid: c9c18a857dc19a24189563477c02527a, type: 2}
+  stop: {fileID: 11400000, guid: 6e68f58823cea784c91e6f4c31596817, type: 2}

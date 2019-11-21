@@ -7,7 +7,7 @@ public enum Face {front, back, left, right, top, bot}
 
 public enum Column {left, center, right}
 
-public enum Row {top, mid, bot}
+public enum Row {bot, mid, top}
 
 public enum AttackType { ball, line, lasso }
 
@@ -26,7 +26,7 @@ public struct AttackOption
     {
         float r = (float) row - 1;
         float c = (float) col - 1;
-        return Vector3.right * c + Vector3.up * c;
+        return Vector3.right * c + Vector3.up * r;
     }
 
     public Vector3 dir()
