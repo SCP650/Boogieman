@@ -13,22 +13,30 @@ public class BoogiemanPoof : MonoBehaviour
     [SerializeField]
     private ParticleSystem boogiePoof;
 
+    private set_boogie_distance _DistanceComponent;
+
+    bool onDanceFloor = true;
+
     void Start()
     {
         //StartCoroutine(InvokePoofEvent());
         poof.AddStartListener(() => StartCoroutine(PoofInBoogieman()));
         poof.AddStopListener(() => StartCoroutine(PoofOutBoogieman()));
+        _DistanceComponent = GetComponent<set_boogie_distance>();
+        _DistanceComponent.enabled = false;
     }
 
     IEnumerator PoofInBoogieman()
     {
         boogiePoof.Play();
+        _DistanceComponent.enabled = true;
         boogieMan.SetActive(true);
         yield return null;
     }
 
     IEnumerator PoofOutBoogieman()
     {
+        _DistanceComponent.enabled = false;
         boogieMan.SetActive(false);
         yield return null;
     }
