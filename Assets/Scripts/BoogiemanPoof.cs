@@ -14,22 +14,34 @@ public class BoogiemanPoof : MonoBehaviour
     private ParticleSystem boogiePoof;
 
     private set_boogie_distance _DistanceComponent;
+    private Vector3 initPos;
 
-    bool onDanceFloor = true;
+    bool onDanceFloor = false;
 
-    void Start()
+    void Awake()
     {
         //StartCoroutine(InvokePoofEvent());
         poof.AddStartListener(() => StartCoroutine(PoofInBoogieman()));
         poof.AddStopListener(() => StartCoroutine(PoofOutBoogieman()));
         _DistanceComponent = GetComponent<set_boogie_distance>();
         _DistanceComponent.enabled = false;
+        initPos = transform.position;
     }
 
     IEnumerator PoofInBoogieman()
     {
+        onDanceFloor = !onDanceFloor;
         boogiePoof.Play();
-        _DistanceComponent.enabled = true;
+        if (onDanceFloor)
+        {
+            _DistanceComponent.enabled = true;
+            _DistanceComponent.UpdatePosition();
+        }
+        else
+        {
+            _DistanceComponent.enabled = false;
+            transform.position = initPos;
+        }
         boogieMan.SetActive(true);
         yield return null;
     }

@@ -26,6 +26,8 @@ public struct AttackOption
     {
         float r = (float) row - 1;
         float c = (float) col - 1;
+        //TODO: un-hardcode
+        if (r == 0) r = 0.5f;
         return Vector3.right * c + Vector3.up * r;
     }
 
