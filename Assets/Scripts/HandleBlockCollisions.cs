@@ -62,6 +62,7 @@ public class HandleBlockCollisions : MonoBehaviour
         {
             if (CheckController(controller, transform.position, config.correctHandGrace))
             {
+                audio.PlayOneShot(audio.clip);
                 if (controller == controllers.leftHand)
                 {
                     hapticController = leftControllerHand;
@@ -74,7 +75,6 @@ public class HandleBlockCollisions : MonoBehaviour
                 HapticAction.Execute(0, 0.2f, 30, 0.5f, hapticController);
                 Instantiate(goodParticlePrefab, transform.position, Quaternion.identity);
                 ScorePoint.Invoke(1);
-                audio.PlayOneShot(audio.clip);
                 Destroy(gameObject);
             }
             yield return null;

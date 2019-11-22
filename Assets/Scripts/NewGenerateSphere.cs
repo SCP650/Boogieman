@@ -26,7 +26,7 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] Material red;
     // [SerializeField] AttackController leftAttackController;
     // [SerializeField] AttackController rightAttackController;
-    [SerializeField] Vector3Ref rightAttackPos;
+    [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
     
     private int counter = 0;
     public int numBeatWait = 4;
