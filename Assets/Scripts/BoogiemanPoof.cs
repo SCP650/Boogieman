@@ -8,9 +8,6 @@ public class BoogiemanPoof : MonoBehaviour
     private Session poof;
 
     [SerializeField]
-    private GameObject boogieMan;
-
-    [SerializeField]
     private ParticleSystem boogiePoof;
 
     private set_boogie_distance _DistanceComponent;
@@ -21,35 +18,32 @@ public class BoogiemanPoof : MonoBehaviour
     void Awake()
     {
         //StartCoroutine(InvokePoofEvent());
-        poof.AddStartListener(PoofInBoogieman);
-        poof.AddStopListener(PoofOutBoogieman);
+        poof.AddStartListener(() => PoofBoogieman());
+        poof.AddStopListener(() => PoofBoogieman());
         _DistanceComponent = GetComponent<set_boogie_distance>();
         _DistanceComponent.enabled = false;
         initPos = transform.position;
+        onDanceFloor = false;
     }
 
-    public void PoofInBoogieman()
+    public void PoofBoogieman()
     {
         onDanceFloor = !onDanceFloor;
-        boogiePoof.Play();
+        _DistanceComponent.enabled = true;
+        Debug.Log(onDanceFloor);
         if (onDanceFloor)
         {
-            _DistanceComponent.enabled = true;
             _DistanceComponent.UpdatePosition();
+            Debug.Log("dance" + transform.position);
         }
         else
         {
             transform.position = initPos;
+            Debug.Log(transform.position);
         }
-        boogieMan.SetActive(true);
-         
-    }
+        boogiePoof.Play();
+        //boogieMan.SetActive(true);
 
-    public void PoofOutBoogieman()
-    {
-        _DistanceComponent.enabled = false;
-        boogieMan.SetActive(false);
-      
     }
 
     // IEnumerator InvokePoofEvent()
