@@ -96,7 +96,7 @@ public class NewGenerateSphere : MonoBehaviour
     {
         Debug.Log("giving me sphere");
         // Vector3 v = new Vector3(Random.Range(-1, 2) * width + transform.position.x, Random.Range(0, 2) * height + height, transform.position.z);
-        Vector3 v = new Vector3(location.x * width + transform.position.x, location.y * height + height, transform.position.z);
+        Vector3 v = new Vector3(location.x * width + transform.position.x, location.y * height + height*(5/4f), transform.position.z);
         if (v.x < 0) {
             currController = lefthand;
         } else if (v.x > 0) {

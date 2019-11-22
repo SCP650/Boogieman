@@ -172,6 +172,8 @@ MonoBehaviour:
   HapticAction:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
+  blue: {fileID: 2100000, guid: dd062cf0f05bc4e109d372f9e06b80a5, type: 2}
+  red: {fileID: 2100000, guid: b4f88458f8528493390af3843b35e898, type: 2}
 --- !u!114 &2830394645095328545
 MonoBehaviour:
   m_ObjectHideFlags: 0

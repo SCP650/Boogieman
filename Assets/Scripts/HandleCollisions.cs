@@ -20,7 +20,10 @@ public class HandleCollisions : MonoBehaviour
     [SerializeField] private LineRenderer lr_prefab;
     [SerializeField] private GameObject endIndicator;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
-    
+    [SerializeField] Material blue;
+    [SerializeField] Material red;
+
+
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
     private Vector3[] points;
     
@@ -48,6 +51,15 @@ public class HandleCollisions : MonoBehaviour
         if (controller == controllers.rightHand)
             otherController = controllers.rightHand;
         endIndicator = Instantiate(endIndicator,transform);
+        var _MeshRenderer = endIndicator.GetComponent<MeshRenderer>();
+        if (controller.Equals(controllers.leftHand))
+        {
+            _MeshRenderer.material = blue;
+        }
+        else
+        {
+            _MeshRenderer.material = red;
+        }
         StartCoroutine(CheckCollisions());
         StartCoroutine(set_hitable());
     }
