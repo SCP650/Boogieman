@@ -17,7 +17,7 @@ public class set_boogie_distance : MonoBehaviour
 
     public void UpdatePosition()
     {
-        transform.position = new Vector3(0, transform.position.y, 0);
+        //transform.position = new Vector3(0, transform.position.y, 0);
         transform.position += Vector3.forward * l_config.speed * 60 * (1 / m_config.bpm) *
                              m_config.beats_per_measure * m_config.measures_between_p_and_boog;
     }

@@ -54,10 +54,14 @@ public class HandleCollisions : MonoBehaviour
         var _MeshRenderer = endIndicator.GetComponent<MeshRenderer>();
         if (controller.Equals(controllers.leftHand))
         {
+            lr_prefab.startColor = (Color.blue);
+            lr_prefab.endColor = Color.blue;
             _MeshRenderer.material = blue;
         }
         else
         {
+            lr_prefab.startColor = (Color.red);
+            lr_prefab.endColor = Color.red;
             _MeshRenderer.material = red;
         }
         StartCoroutine(CheckCollisions());

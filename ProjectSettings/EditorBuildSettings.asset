@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/RoomPackage/GreyBox2.0.unity
     guid: 5051e9afea8d6434e8695496b7fb93ce
+  - enabled: 1
+    path: Assets/RoomPackage/ColorBox4.0.unity
+    guid: b9d5d633af4114b5eb926729a81bd710
   m_configObjects: {}
