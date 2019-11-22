@@ -21,14 +21,14 @@ public class BoogiemanPoof : MonoBehaviour
     void Awake()
     {
         //StartCoroutine(InvokePoofEvent());
-        poof.AddStartListener(() => StartCoroutine(PoofInBoogieman()));
-        poof.AddStopListener(() => StartCoroutine(PoofOutBoogieman()));
+        poof.AddStartListener(PoofInBoogieman);
+        poof.AddStopListener(PoofOutBoogieman);
         _DistanceComponent = GetComponent<set_boogie_distance>();
         _DistanceComponent.enabled = false;
         initPos = transform.position;
     }
 
-    IEnumerator PoofInBoogieman()
+    public void PoofInBoogieman()
     {
         onDanceFloor = !onDanceFloor;
         boogiePoof.Play();
@@ -39,18 +39,17 @@ public class BoogiemanPoof : MonoBehaviour
         }
         else
         {
-            _DistanceComponent.enabled = false;
             transform.position = initPos;
         }
         boogieMan.SetActive(true);
-        yield return null;
+         
     }
 
-    IEnumerator PoofOutBoogieman()
+    public void PoofOutBoogieman()
     {
         _DistanceComponent.enabled = false;
         boogieMan.SetActive(false);
-        yield return null;
+      
     }
 
     // IEnumerator InvokePoofEvent()
