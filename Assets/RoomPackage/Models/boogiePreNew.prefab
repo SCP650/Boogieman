@@ -8182,6 +8182,22 @@ PlayableDirector:
     value: {fileID: 11400000, guid: 2031f7ee3df9b0648aee201b3847c1ef, type: 2}
   - key: {fileID: 2742230174008611957, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
     value: {fileID: 11400000, guid: 86ac4583b17ace743b9bc5944e8662e3, type: 2}
+  - key: {fileID: -3586957139173312154, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8243738417280993287, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9017450277272381463, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8618607669423430056, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4751944268063891011, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3307877478178457126, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4894019207847921190, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7209390187780565421, guid: 27ff553eb32f24be1855fed4adf81780, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1632414464914008827
@@ -8197,7 +8213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poof: {fileID: 11400000, guid: 2031f7ee3df9b0648aee201b3847c1ef, type: 2}
-  boogieMan: {fileID: 3160768626975813564}
   boogiePoof: {fileID: 870429663796300739}
 --- !u!114 &1632414464914008826
 MonoBehaviour:
