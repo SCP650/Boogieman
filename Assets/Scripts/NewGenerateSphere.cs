@@ -8,10 +8,6 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] Vec3UnityEvent spherelocation;
     [SerializeField] GameObject SpherePrefab;
 
-    [SerializeField] Session ballSession;
-    [SerializeField] Session lineSession;
-    [SerializeField] Session lassoSession;
-
 
     // Testing
     //TODO: use existing Calibration script
@@ -21,11 +17,11 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] private ControllerObject lefthand;
     [SerializeField] private ControllerObject righthand;
     [SerializeField] private ControllerObject head;
-    [SerializeField] Material blue;
-    [SerializeField] Material red;
+    [SerializeField] Material left;
+    [SerializeField] Material right;
     [SerializeField] AttackController leftAttackController;
     [SerializeField] AttackController rightAttackController;
-    [SerializeField] float scaler = 0.6f;
+    private float scaler = 0.8f;
     // [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
     
     private int counter = 0;
@@ -39,8 +35,8 @@ public class NewGenerateSphere : MonoBehaviour
         currController = righthand;
 
         //TODO: add in lasso and line generation here
-        ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
-        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
+        leftAttackController.BallSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
+        rightAttackController.BallSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
         StartCoroutine(startCalibration());
@@ -51,6 +47,7 @@ public class NewGenerateSphere : MonoBehaviour
         yield return StartCoroutine(AverageHeight());
         height = ListAverage(heights) - transform.parent.position.y; //need to minuse the height of the dance floor
         width = scaler * height;
+        Debug.Log(height);
     }
 
 
@@ -69,7 +66,7 @@ public class NewGenerateSphere : MonoBehaviour
     IEnumerator AverageHeight()
     {
 
-        while (!Input.GetKeyUp(KeyCode.C))
+        while (Time.time <5)
         {
             heights.Add( head.pos.y);
             yield return null;
@@ -80,7 +77,7 @@ public class NewGenerateSphere : MonoBehaviour
     void GiveMeSphere(Vector3 location, ControllerObject cObject)
     {
         Debug.Log("giving me sphere");
-        Vector3 v = new Vector3(location.x * width/2.0f + transform.position.x, location.y * height/2.0f + height/2.0f*(5/4f), transform.position.z);
+        Vector3 v = new Vector3(location.x * width/2.0f + transform.position.x, location.y * height/2.0f + height/2.0f*(5/4f) + transform.parent.position.y, transform.position.z);
         currController = cObject;
 
         var block = Instantiate(SpherePrefab, v, Quaternion.identity, null);
@@ -90,12 +87,12 @@ public class NewGenerateSphere : MonoBehaviour
         if (currController.Equals(lefthand))
         {
             bL.color = new Color(209, 157, 0);
-            _MeshRenderer.material = blue;
+            _MeshRenderer.material = left;
         }
         else
         {
             bL.color = new Color(255, 255, 255);
-            _MeshRenderer.material = red;
+            _MeshRenderer.material = right;
         }
     }
 
