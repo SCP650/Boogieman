@@ -8,9 +8,9 @@ public class is_lassoing : MonoBehaviour
 {
     [SerializeField] public BoolRef hand_is_lassoing;
 
-    private Vector3 reverse_dir;
-
-    private Vector3 cur_dir;
+    [Range(0, 2)]
+    [SerializeField]
+    float cur_fill;
 
     private Vector3 velocity;
     
@@ -19,22 +19,50 @@ public class is_lassoing : MonoBehaviour
         StartCoroutine(go());
     }
 
-
     IEnumerator go()
     {
+        StartCoroutine(record_vel());
+        cur_fill = 0.0f;
+        var max_fill = 2;
+        var decay = .25f;
+        while(true)
+        {
+            var prev_vel = velocity;
+
+            hand_is_lassoing.val = cur_fill > 0.01f;
+            yield return null;
+            cur_fill -= decay * Time.deltaTime;
+
+            var points = Vector3.SqrMagnitude(velocity - prev_vel) > .0005f ? Vector3.Dot(velocity, prev_vel) * 5 : 0;
+            if (points < 0)
+            {
+                yield return new WaitForSeconds(.01f);
+                cur_fill *= 1f - Time.deltaTime;
+            }
+            else
+                cur_fill += points;
+
+            cur_fill = Mathf.Clamp(cur_fill, 0.0f, max_fill);
+        }
+    }
+
+    /*
+    IEnumerator go()
+    {
+        StartCoroutine(record_vel());
         while (true)
         {
             yield return null;
             var time = Time.time;
             cur_dir = velocity;
-            yield return new WaitUntil(() => Time.time > time + 2 || Vector3.Angle(cur_dir,velocity) > 90);
+            yield return new WaitUntil(() => Time.time >= time + 2 || Vector3.Angle(cur_dir,velocity) > 90);
             
-            hand_is_lassoing.val = reverse_dir != Vector3.zero && Vector3.Angle(velocity, reverse_dir) > 45;
+            hand_is_lassoing.val = time + 2 < Time.time && (reverse_dir == Vector3.zero || Vector3.Angle(velocity, reverse_dir) < 135);
             
             reverse_dir = -cur_dir;
 
         }
-    }
+    }*/
 
 
     IEnumerator record_vel()
@@ -43,11 +71,12 @@ public class is_lassoing : MonoBehaviour
         while (true)
         {
             var avg = Vector3.zero;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
-                pos = transform.position;
-                yield return null;
-                avg += (transform.position - pos) / Time.deltaTime;
+                pos = transform.position + transform.up * .25f;
+                var t = Time.time;
+                yield return new WaitUntil(() => (transform.position + transform.up * .25f - pos).sqrMagnitude > .001f);
+                avg += (transform.position + transform.up * .25f - pos) / (Time.time - t);
             }
 
             velocity = avg / 10;
