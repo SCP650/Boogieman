@@ -8,10 +8,6 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] Vec3UnityEvent spherelocation;
     [SerializeField] GameObject SpherePrefab;
 
-    [SerializeField] Session ballSession;
-    [SerializeField] Session lineSession;
-    [SerializeField] Session lassoSession;
-
 
     // Testing
     //TODO: use existing Calibration script
@@ -39,8 +35,8 @@ public class NewGenerateSphere : MonoBehaviour
         currController = righthand;
 
         //TODO: add in lasso and line generation here
-        //ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
-        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
+        leftAttackController.BallSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
+        rightAttackController.BallSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
         StartCoroutine(startCalibration());
