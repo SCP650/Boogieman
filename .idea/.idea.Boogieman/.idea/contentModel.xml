@@ -114,6 +114,7 @@
           <e p="GenerateLine.cs" t="Include" />
           <e p="HandleBlockCollisions.cs" t="Include" />
           <e p="HandleCollisions.cs" t="Include" />
+          <e p="is_lassoing.cs" t="Include" />
           <e p="lightning.cs" t="Include" />
           <e p="MoveBlock.cs" t="Include" />
           <e p="MoveLine.cs" t="Include" />
