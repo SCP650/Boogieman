@@ -40,8 +40,8 @@ public class NewGenerateSphere : MonoBehaviour
         currController = righthand;
 
         //TODO: add in lasso and line generation here
-        ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.place.val, lefthand));
-        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.place.val, righthand));
+        ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
+        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
     }
