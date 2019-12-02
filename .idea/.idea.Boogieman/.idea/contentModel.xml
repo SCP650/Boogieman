@@ -94,9 +94,11 @@
         <e p="RoomPackage" t="Include">
           <e p="Effects" t="Include">
             <e p="discoTile.cs" t="Include" />
+            <e p="onOffLight.cs" t="Include" />
             <e p="rotateMove.cs" t="Include" />
             <e p="spin.cs" t="Include" />
             <e p="TileMap.cs" t="Include" />
+            <e p="TileMap1.cs" t="Include" />
           </e>
           <e p="Models" t="Include">
             <e p="Something.shader" t="Include" />
@@ -120,6 +122,7 @@
           <e p="PlaySound.cs" t="Include" />
           <e p="PulseToBeat.cs" t="Include" />
           <e p="Read.cs" t="Include" />
+          <e p="RotateHand.cs" t="Include" />
           <e p="Session.cs" t="Include" />
           <e p="SessionHandler.cs" t="Include" />
           <e p="Set_AttackAsset.cs" t="Include" />
