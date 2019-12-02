@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Calibration : MonoBehaviour
 {
-    [SerializeField] private ControllerObject lefthand;
-    [SerializeField] private ControllerObject righthand;
+    [SerializeField] private float scaler = 0.4f;
     [SerializeField] private ControllerObject head;
     [SerializeField] private GameObject Dancer;
     [SerializeField] private float BMHeight;
@@ -18,11 +17,22 @@ public class Calibration : MonoBehaviour
 
     private void Start()
     {
-        widths = new List<float>();
         heights = new List<float>();
+        StartCoroutine(startCalibration());
+    }
+    
+    IEnumerator startCalibration()
+    {
+        Debug.Log("Calibration Of Width and height Starts");
+        yield return StartCoroutine(AverageHeight());
+        height = ListAverage(heights);
+        width = scaler * height;
+        Debug.Log("The average width is " + width + "the average height is " + height);
+        Debug.Log("Start resizing boogie man");
+        Dancer.transform.localScale = new Vector3(width / BMWidth, height / BMHeight, 1);
     }
 
-    // Update is called once per frame
+    /* Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
@@ -41,7 +51,7 @@ public class Calibration : MonoBehaviour
             Dancer.transform.localScale = new Vector3(width / BMWidth, height / BMHeight, 1);
 
         }
-    }
+    }*/
     
     private float ListAverage(List<float> temp)
     {
@@ -55,16 +65,12 @@ public class Calibration : MonoBehaviour
         return sum / count;
     }
 
-    IEnumerator AverageWidthAndHeight()
+    IEnumerator AverageHeight()
     {
 
-        while (!Input.GetKeyUp(KeyCode.C))
+        while (Time.time < 5)
         {
-            
-            widths.Add(Vector3.Distance(lefthand.pos, righthand.pos));
-            
-            heights.Add( head.pos.y);
-
+            heights.Add(head.pos.y);
             yield return null;
         }
         
