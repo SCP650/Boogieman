@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Calibration : MonoBehaviour
 {
-    [SerializeField] private float scaler = 0.4f;
+    [SerializeField] private float scaler = 0.6f;
     [SerializeField] private ControllerObject head;
     [SerializeField] private GameObject Dancer;
     [SerializeField] private float BMHeight;
@@ -18,14 +18,14 @@ public class Calibration : MonoBehaviour
     private void Start()
     {
         heights = new List<float>();
-        StartCoroutine(startCalibration());
+        //StartCoroutine(startCalibration());
     }
     
     IEnumerator startCalibration()
     {
         Debug.Log("Calibration Of Width and height Starts");
         yield return StartCoroutine(AverageHeight());
-        height = ListAverage(heights);
+        height = ListAverage(heights); //- transform.parent.position.y; need to minuse the height of the dance floor
         width = scaler * height;
         Debug.Log("The average width is " + width + "the average height is " + height);
         Debug.Log("Start resizing boogie man");
@@ -71,6 +71,7 @@ public class Calibration : MonoBehaviour
         while (Time.time < 5)
         {
             heights.Add(head.pos.y);
+            Debug.Log(head.pos.y);
             yield return null;
         }
         
