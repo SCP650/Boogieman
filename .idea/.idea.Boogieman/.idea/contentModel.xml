@@ -70,6 +70,7 @@
         </e>
         <e p="Playables" t="Include">
           <e p="Editor" t="Include">
+            <e p="AttackOptionDrawer.cs" t="Include" />
             <e p="PolarPropertyDrawer.cs" t="Include" />
           </e>
           <e p="find_beat.cs" t="Include" />
@@ -89,6 +90,7 @@
           <e p="spawn_beat_track.cs" t="Include" />
           <e p="UnitSignalAsset.cs" t="Include" />
         </e>
+        <e p="point_testser.cs" t="Include" />
         <e p="RoomPackage" t="Include">
           <e p="Effects" t="Include">
             <e p="discoTile.cs" t="Include" />

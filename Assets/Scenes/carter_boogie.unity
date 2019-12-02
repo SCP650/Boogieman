@@ -667,7 +667,12 @@ MonoBehaviour:
   lineObject: {fileID: 7518707151736046340, guid: 4f05c5f3652016947a4f262ca84ec72d,
     type: 3}
   blockObject: {fileID: 0}
+  lefthand: {fileID: 0}
+  righthand: {fileID: 0}
+  head: {fileID: 0}
   controller: {fileID: 11400000, guid: b3293209f4f03c249860b1ea25f86948, type: 2}
+  blue: {fileID: 0}
+  red: {fileID: 0}
 --- !u!120 &1441491018
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -774,6 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477365707}
   - component: {fileID: 1477365708}
+  - component: {fileID: 1477365709}
   m_Layer: 0
   m_Name: bpm_controller
   m_TagString: Untagged
@@ -807,3 +813,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09e64188c14d3646a8f4202c2b81b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1477365709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477365706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f159ef52d1e89439cd0f15bbf90d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.1490773
+      value: 0.05314362
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
