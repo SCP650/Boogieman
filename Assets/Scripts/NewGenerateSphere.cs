@@ -24,13 +24,14 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] private ControllerObject head;
     [SerializeField] Material blue;
     [SerializeField] Material red;
-    // [SerializeField] AttackController leftAttackController;
-    // [SerializeField] AttackController rightAttackController;
-    [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
+    [SerializeField] AttackController leftAttackController;
+    [SerializeField] AttackController rightAttackController;
+    // [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
     
     private int counter = 0;
     public int numBeatWait = 4;
     private ControllerObject currController;
+
 
     private void Start()
     {
@@ -39,8 +40,9 @@ public class NewGenerateSphere : MonoBehaviour
         currController = righthand;
 
         //TODO: add in lasso and line generation here
-        // ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.place));
-        ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
+        ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
+        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
+        // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
     }
 
@@ -92,74 +94,26 @@ public class NewGenerateSphere : MonoBehaviour
         
     }
     
-    void GiveMeSphere(Vector3 location)
+    void GiveMeSphere(Vector3 location, ControllerObject cObject)
     {
         Debug.Log("giving me sphere");
-        // Vector3 v = new Vector3(Random.Range(-1, 2) * width + transform.position.x, Random.Range(0, 2) * height + height, transform.position.z);
         Vector3 v = new Vector3(location.x * width + transform.position.x, location.y * height + height*(5/4f), transform.position.z);
-        if (v.x < 0) {
-            currController = lefthand;
-        } else if (v.x > 0) {
-            currController = righthand;
-        } else {
-            var i = Random.Range(0, 2);
-            switch (i)
-            {
-                case 0:
-                    currController = lefthand;
-                    break;
-                default:
-                    currController = righthand;
-                    break;
-            }
-        }
+        currController = cObject;
 
         var block = Instantiate(SpherePrefab, v, Quaternion.identity, null);
         block.GetComponent<HandleBlockCollisions>().Setup(currController);
+        Light bL = block.GetComponent<Light>();
         var _MeshRenderer = block.GetComponent<MeshRenderer>();
         if (currController.Equals(lefthand))
         {
+            bL.color = new Color(209, 157, 0);
             _MeshRenderer.material = blue;
         }
         else
         {
+            bL.color = new Color(255, 255, 255);
             _MeshRenderer.material = red;
         }
     }
 
-    // public void TestingRoutine() {
-    //     // Debug.Log("Testing routine called");
-    //     // Get calibrated width and height
-    //     counter++;
-    //     if (counter < numBeatWait) {
-    //         return;
-    //     } else {
-    //         counter = 0;
-    //     }
-
-    //     // Scale location to width and height
-    //     float xScale = width;
-    //     float yScale = height;
-    //     Vector3 v = new Vector3(Random.Range(-1, 2) * xScale + transform.position.x, Random.Range(0, 2) * yScale + yScale, transform.position.z);
-    //     if (v.x < 0)
-    //     {
-    //         currController = lefthand;
-    //     } else if (v.x > 0)
-    //     {
-    //         currController = righthand;
-    //     } else
-    //     {
-    //         var i = Random.Range(0, 2);
-    //         switch (i)
-    //         {
-    //             case 0:
-    //                 currController = lefthand;
-    //                 break;
-    //             default:
-    //                 currController = righthand;
-    //                 break;
-    //         }
-    //     }
-    //     GiveMeSphere(v);
-    // }
 }

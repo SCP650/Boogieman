@@ -15,12 +15,12 @@ public enum AttackType { ball, line, lasso }
 public struct AttackOption
 {
     public AttackType attackType;
-    
+    [HideInInspector]
     public Face direction;
 
-    public Column col;
+    public int col;
 
-    public Row row;
+    public int row;
 
     public Vector3 pos()
     {
