@@ -27,7 +27,7 @@ public class is_lassoing : MonoBehaviour
             yield return null;
             var time = Time.time;
             cur_dir = velocity;
-            yield return new WaitUntil(() => Vector3.Angle(cur_dir,velocity) > 90);
+            yield return new WaitUntil(() => Time.time > time + 2 || Vector3.Angle(cur_dir,velocity) > 90);
             
             hand_is_lassoing.val = reverse_dir != Vector3.zero && Vector3.Angle(velocity, reverse_dir) > 45;
             
