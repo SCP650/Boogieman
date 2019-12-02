@@ -8,25 +8,42 @@ public class BoogiemanPoof : MonoBehaviour
     private Session poof;
 
     [SerializeField]
-    private GameObject boogieMan;
+    private ParticleSystem boogiePoof;
 
-    void Start()
+    private set_boogie_distance _DistanceComponent;
+    private Vector3 initPos;
+
+    bool onDanceFloor = false;
+
+    void Awake()
     {
         //StartCoroutine(InvokePoofEvent());
-        poof.AddStartListener(() => StartCoroutine(PoofInBoogieman()));
-        poof.AddStopListener(() => StartCoroutine(PoofOutBoogieman()));
+        poof.AddStartListener(() => PoofBoogieman());
+        poof.AddStopListener(() => PoofBoogieman());
+        _DistanceComponent = GetComponent<set_boogie_distance>();
+        _DistanceComponent.enabled = false;
+        initPos = transform.position;
+        onDanceFloor = false;
     }
 
-    IEnumerator PoofInBoogieman()
+    public void PoofBoogieman()
     {
-        boogieMan.SetActive(true);
-        yield return null;
-    }
+        onDanceFloor = !onDanceFloor;
+        _DistanceComponent.enabled = true;
+        Debug.Log(onDanceFloor);
+        if (onDanceFloor)
+        {
+            _DistanceComponent.UpdatePosition();
+            Debug.Log("dance" + transform.position);
+        }
+        else
+        {
+            transform.position = initPos;
+            Debug.Log(transform.position);
+        }
+        boogiePoof.Play();
+        //boogieMan.SetActive(true);
 
-    IEnumerator PoofOutBoogieman()
-    {
-        boogieMan.SetActive(false);
-        yield return null;
     }
 
     // IEnumerator InvokePoofEvent()

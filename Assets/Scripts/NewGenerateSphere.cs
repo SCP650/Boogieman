@@ -8,6 +8,11 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] Vec3UnityEvent spherelocation;
     [SerializeField] GameObject SpherePrefab;
 
+    [SerializeField] Session ballSession;
+    [SerializeField] Session lineSession;
+    [SerializeField] Session lassoSession;
+
+
     // Testing
     //TODO: use existing Calibration script
     public float width; // the width of player's arm streach out
@@ -19,6 +24,10 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] private ControllerObject head;
     [SerializeField] Material blue;
     [SerializeField] Material red;
+    // [SerializeField] AttackController leftAttackController;
+    // [SerializeField] AttackController rightAttackController;
+    [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
+    
     private int counter = 0;
     public int numBeatWait = 4;
     private ControllerObject currController;
@@ -29,13 +38,11 @@ public class NewGenerateSphere : MonoBehaviour
         heights = new List<float>();
         currController = righthand;
 
-        // StartCoroutine(TestingRoutine())
+        //TODO: add in lasso and line generation here
+        // ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.place));
+        ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
+        // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
     }
-
-    // void Start()
-    // {
-        // spherelocation.AddListener(GiveMeSphere);
-    // }
 
     
     void Update()
@@ -49,8 +56,8 @@ public class NewGenerateSphere : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.C))
         {
-            width = ListAverage(widths);
-            height = ListAverage(heights);
+            width = ListAverage(widths)/2.0f;
+            height = ListAverage(heights)/2.0f;
             // Debug.Log("The average width is " + width + "the average height is " + height);
             // Debug.Log("Start resizing boogie man");
             // Dancer.transform.localScale = new Vector3(width / BMWidth, height / BMHeight, 1);
@@ -87,7 +94,27 @@ public class NewGenerateSphere : MonoBehaviour
     
     void GiveMeSphere(Vector3 location)
     {
-        var block = Instantiate(SpherePrefab, location, Quaternion.identity);
+        Debug.Log("giving me sphere");
+        // Vector3 v = new Vector3(Random.Range(-1, 2) * width + transform.position.x, Random.Range(0, 2) * height + height, transform.position.z);
+        Vector3 v = new Vector3(location.x * width + transform.position.x, location.y * height + height*(5/4f), transform.position.z);
+        if (v.x < 0) {
+            currController = lefthand;
+        } else if (v.x > 0) {
+            currController = righthand;
+        } else {
+            var i = Random.Range(0, 2);
+            switch (i)
+            {
+                case 0:
+                    currController = lefthand;
+                    break;
+                default:
+                    currController = righthand;
+                    break;
+            }
+        }
+
+        var block = Instantiate(SpherePrefab, v, Quaternion.identity, null);
         block.GetComponent<HandleBlockCollisions>().Setup(currController);
         var _MeshRenderer = block.GetComponent<MeshRenderer>();
         if (currController.Equals(lefthand))
@@ -100,39 +127,39 @@ public class NewGenerateSphere : MonoBehaviour
         }
     }
 
-    public void TestingRoutine() {
-        // Debug.Log("Testing routine called");
-        // Get calibrated width and height
-        counter++;
-        if (counter < numBeatWait) {
-            return;
-        } else {
-            counter = 0;
-        }
+    // public void TestingRoutine() {
+    //     // Debug.Log("Testing routine called");
+    //     // Get calibrated width and height
+    //     counter++;
+    //     if (counter < numBeatWait) {
+    //         return;
+    //     } else {
+    //         counter = 0;
+    //     }
 
-        // Scale location to width and height
-        float xScale = width/2.0f;
-        float yScale = height/2.0f;
-        Vector3 v = new Vector3(Random.Range(-1, 2) * xScale + transform.position.x, Random.Range(0, 2) * yScale + yScale, transform.position.z);
-        if (v.x < 0)
-        {
-            currController = lefthand;
-        } else if (v.x > 0)
-        {
-            currController = righthand;
-        } else
-        {
-            var i = Random.Range(0, 2);
-            switch (i)
-            {
-                case 0:
-                    currController = lefthand;
-                    break;
-                default:
-                    currController = righthand;
-                    break;
-            }
-        }
-        GiveMeSphere(v);
-    }
+    //     // Scale location to width and height
+    //     float xScale = width;
+    //     float yScale = height;
+    //     Vector3 v = new Vector3(Random.Range(-1, 2) * xScale + transform.position.x, Random.Range(0, 2) * yScale + yScale, transform.position.z);
+    //     if (v.x < 0)
+    //     {
+    //         currController = lefthand;
+    //     } else if (v.x > 0)
+    //     {
+    //         currController = righthand;
+    //     } else
+    //     {
+    //         var i = Random.Range(0, 2);
+    //         switch (i)
+    //         {
+    //             case 0:
+    //                 currController = lefthand;
+    //                 break;
+    //             default:
+    //                 currController = righthand;
+    //                 break;
+    //         }
+    //     }
+    //     GiveMeSphere(v);
+    // }
 }

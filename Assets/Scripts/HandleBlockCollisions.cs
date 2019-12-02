@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
 using System;
-
+[RequireComponent(typeof(AudioSource))]
 public class HandleBlockCollisions : MonoBehaviour
 {
     private LineRenderer lr;
@@ -14,9 +14,8 @@ public class HandleBlockCollisions : MonoBehaviour
     [SerializeField] private controllerSet controllers;
     [SerializeField] private IntEvent ScorePoint;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
-    
-    
 
+    private AudioSource audio;
 
 
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
@@ -34,7 +33,10 @@ public class HandleBlockCollisions : MonoBehaviour
         
         
     }
-
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     private void OnDestroy()
     {
         
@@ -60,6 +62,7 @@ public class HandleBlockCollisions : MonoBehaviour
         {
             if (CheckController(controller, transform.position, config.correctHandGrace))
             {
+                audio.PlayOneShot(audio.clip);
                 if (controller == controllers.leftHand)
                 {
                     hapticController = leftControllerHand;
