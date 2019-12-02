@@ -116,13 +116,17 @@ public class NewGenerateSphere : MonoBehaviour
 
         var block = Instantiate(SpherePrefab, v, Quaternion.identity, null);
         block.GetComponent<HandleBlockCollisions>().Setup(currController);
+        Light bL = block.GetComponent<Light>();
         var _MeshRenderer = block.GetComponent<MeshRenderer>();
         if (currController.Equals(lefthand))
         {
+            bL.color = new Color(209, 157, 0);
             _MeshRenderer.material = blue;
         }
         else
         {
+            bL.color = new Color(255, 255, 255);
+            
             _MeshRenderer.material = red;
         }
     }
