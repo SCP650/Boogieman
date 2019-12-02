@@ -17,7 +17,6 @@ public class NewGenerateSphere : MonoBehaviour
     //TODO: use existing Calibration script
     public float width; // the width of player's arm streach out
     public float height; // the height of player's head;
-    private List<float> widths;
     private List<float> heights;
     [SerializeField] private ControllerObject lefthand;
     [SerializeField] private ControllerObject righthand;
@@ -26,6 +25,7 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] Material red;
     [SerializeField] AttackController leftAttackController;
     [SerializeField] AttackController rightAttackController;
+    [SerializeField] float scaler = 0.6f;
     // [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
     
     private int counter = 0;
@@ -35,37 +35,24 @@ public class NewGenerateSphere : MonoBehaviour
 
     private void Start()
     {
-        widths = new List<float>();
         heights = new List<float>();
         currController = righthand;
 
         //TODO: add in lasso and line generation here
-        ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.place.val, lefthand));
-        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.place.val, righthand));
+        ballSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
+        ballSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
+        StartCoroutine(startCalibration());
     }
 
-    
-    void Update()
+    IEnumerator startCalibration()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            // Debug.Log("Calibration Of Width and height Starts");
-            widths.RemoveRange(0, widths.Count);
-            heights.RemoveRange(0, heights.Count);
-            StartCoroutine(AverageWidthAndHeight());
-        }
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            width = ListAverage(widths)/2.0f;
-            height = ListAverage(heights)/2.0f;
-            // Debug.Log("The average width is " + width + "the average height is " + height);
-            // Debug.Log("Start resizing boogie man");
-            // Dancer.transform.localScale = new Vector3(width / BMWidth, height / BMHeight, 1);
-
-        }
+        yield return StartCoroutine(AverageHeight());
+        height = ListAverage(heights) - transform.parent.position.y; //need to minuse the height of the dance floor
+        width = scaler * height;
     }
+
 
     private float ListAverage(List<float> temp)
     {
@@ -79,16 +66,12 @@ public class NewGenerateSphere : MonoBehaviour
         return sum / count;
     }
 
-    IEnumerator AverageWidthAndHeight()
+    IEnumerator AverageHeight()
     {
 
         while (!Input.GetKeyUp(KeyCode.C))
         {
-            
-            widths.Add(Vector3.Distance(lefthand.pos, righthand.pos));
-            
             heights.Add( head.pos.y);
-
             yield return null;
         }
         
@@ -97,7 +80,7 @@ public class NewGenerateSphere : MonoBehaviour
     void GiveMeSphere(Vector3 location, ControllerObject cObject)
     {
         Debug.Log("giving me sphere");
-        Vector3 v = new Vector3(location.x * width + transform.position.x, location.y * height + height*(5/4f), transform.position.z);
+        Vector3 v = new Vector3(location.x * width/2.0f + transform.position.x, location.y * height/2.0f + height/2.0f*(5/4f), transform.position.z);
         currController = cObject;
 
         var block = Instantiate(SpherePrefab, v, Quaternion.identity, null);

@@ -16,11 +16,13 @@ public class RotateHand : MonoBehaviour
     private float z;
     private float x;
     private float y;
+    private Vector3 originalPos; 
     private void Start()
     {
         z = 0;
         x = 0;
         y = 0;
+        originalPos = transform.localPosition;
         switch (direction)
         {
             case Direction.Up:
@@ -35,7 +37,7 @@ public class RotateHand : MonoBehaviour
             case Direction.Center:
                 if (is_right_hand)
                 {
-                    transform.Rotate(-180, 90, 0);
+                    transform.Rotate(0, -90, 0);
                 }
                 else
                 {
@@ -59,18 +61,32 @@ public class RotateHand : MonoBehaviour
             case Direction.Left:
                 y = Mathf.Cos(timeCount) * radius;
                 z = Mathf.Sin(timeCount) * radius;
-                x = -5;
+                x = 0;
                 break;
             case Direction.Right:
                 y = Mathf.Cos(timeCount) * radius;
                 z = Mathf.Sin(timeCount) * radius;
-                x = 5;
+                x = 0;
+                break;
+            case Direction.Center:
+                if (is_right_hand)
+                {
+                    y = -Mathf.Cos(timeCount) * radius;
+                    z = -Mathf.Sin(timeCount) * radius;
+                    x = 0;
+                }
+                else
+                {
+                    y = Mathf.Sin(timeCount) * radius;
+                    z = Mathf.Cos(timeCount) * radius;
+                    x = 0;
+                }
                 break;
             default:
-                Debug.Log("F**k you, you didn't enter direction in editor.");
+                Debug.Log(" you didn't enter direction in editor.");
                 break;
         }
-        transform.position = new Vector3(x, y, z);
+        transform.position = new Vector3(x, y, z)+originalPos;
 
 
 
