@@ -57,7 +57,7 @@ public class PulseToBeat : MonoBehaviour
     }
     IEnumerator PulsateBlockSize()
     {
-        for (float dur = 0; dur < 1; dur += Time.deltaTime)
+        for (float dur = 0; dur < 1; dur += Time.deltaTime*3)
         {
             transform.localScale = originalSize * curve.Evaluate(dur);
             yield return null;
