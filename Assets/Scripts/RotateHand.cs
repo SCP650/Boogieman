@@ -86,7 +86,7 @@ public class RotateHand : MonoBehaviour
                 Debug.Log(" you didn't enter direction in editor.");
                 break;
         }
-        transform.position = new Vector3(x, y, z)+originalPos;
+        transform.localPosition = new Vector3(x, y, z)+originalPos;
 
 
 
