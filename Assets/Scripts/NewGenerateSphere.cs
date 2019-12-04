@@ -77,7 +77,7 @@ public class NewGenerateSphere : MonoBehaviour
     void GiveMeSphere(Vector3 location, ControllerObject cObject)
     {
         Debug.Log("giving me sphere");
-        Vector3 v = new Vector3(location.x * width/2.0f + transform.position.x, location.y * height, transform.position.z);
+        Vector3 v = new Vector3(location.x * width/2.0f + transform.position.x, location.y * height + transform.parent.position.y, transform.position.z);
         currController = cObject;
 
         var block = Instantiate(SpherePrefab, v, Quaternion.identity, null);
