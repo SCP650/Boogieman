@@ -8,12 +8,12 @@ public class ScoreUpdate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScorePoint.AddListener(UpdateScore);
+        ScorePoint.AddListener(unit => UpdateScore());
     }
 
     // Update is called once per frame
-    void UpdateScore()
+    IEnumerator UpdateScore()
     {
-        
+        yield return null;
     }
 }

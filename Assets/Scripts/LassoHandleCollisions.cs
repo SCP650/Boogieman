@@ -164,7 +164,7 @@ public class LassoHandleCollisions : MonoBehaviour
 
     bool CheckController( Vector3 position,float dist)
     {
-        return Vector3.Distance(LeftController.pos, position) < dist && Vector3.Distance(rightControllerHand.pos, position) < dist; 
+        return Vector3.Distance(LeftController.pos, position) < dist && Vector3.Distance(RightController.pos, position) < dist; 
     }
     
  
