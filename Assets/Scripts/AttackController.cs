@@ -24,10 +24,10 @@ public struct AttackOption
 
     public Vector3 pos()
     {
-        float r = (float) row - 1;
-        float c = (float) col - 1;
-        //TODO: un-hardcode
-        if (r == 0) r = 0.5f;
+        float r = (float) row * 0.25f + 0.5;
+        float c = (float) col;
+        // //TODO: un-hardcode
+        // if (r == 0) r = 1f;
         return Vector3.right * c + Vector3.up * r;
     }
 

@@ -50,6 +50,8 @@ public class EventObject<T,TEventType> : ScriptableObject where TEventType : Uni
 
     public void Invoke(T t)
     {
+        if (Event == null)
+            Event = new TEventType();
         Event.Invoke(t);
     }
 
