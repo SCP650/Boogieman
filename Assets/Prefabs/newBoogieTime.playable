@@ -184,7 +184,7 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 2
+    col: -2
     row: 2
 --- !u!114 &-9073542153321758131
 MonoBehaviour:
@@ -1327,7 +1327,7 @@ MonoBehaviour:
     attackType: 0
     direction: 0
     col: 2
-    row: 2
+    row: 1
 --- !u!114 &-7947586524301717460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3130,7 +3130,7 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 4
+    col: 2
     row: 1
 --- !u!114 &-6233433068537394301
 MonoBehaviour:
@@ -8110,8 +8110,8 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 2
-    row: 1
+    col: -2
+    row: 2
 --- !u!114 &-3950121752495590556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9336,7 +9336,7 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 0
+    col: -2
     row: 1
 --- !u!114 &-2734648188401057180
 MonoBehaviour:
@@ -10294,7 +10294,7 @@ MonoBehaviour:
     attackType: 0
     direction: 0
     col: -2
-    row: 2
+    row: 1
 --- !u!114 &-1731887649121608851
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10326,8 +10326,8 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 0
-    row: 1
+    col: -2
+    row: 0
 --- !u!114 &-1720132236169789034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14804,7 +14804,7 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 1
+    col: -2
     row: 1
 --- !u!114 &2265454506962482432
 MonoBehaviour:
@@ -26126,8 +26126,8 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 0
-    row: 2
+    col: 2
+    row: 1
 --- !u!114 &4843310365849536226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -38501,7 +38501,7 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 3
+    col: 2
     row: 1
 --- !u!114 &8441740414419810647
 MonoBehaviour:
@@ -40154,7 +40154,7 @@ MonoBehaviour:
   option:
     attackType: 0
     direction: 0
-    col: 0
+    col: -2
     row: 2
 --- !u!114 &9126155119099299828
 MonoBehaviour:

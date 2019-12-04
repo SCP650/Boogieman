@@ -24,7 +24,7 @@ public struct AttackOption
 
     public Vector3 pos()
     {
-        float r = (float) row * 0.25f + 0.5;
+        float r = (float) row * 0.25f + 0.5f;
         float c = (float) col;
         // //TODO: un-hardcode
         // if (r == 0) r = 1f;
