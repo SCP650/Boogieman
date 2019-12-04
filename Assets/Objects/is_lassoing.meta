@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Objects/is_lassoing.meta
 guid: d395b3d0146f7814b9c5899b470ded7e
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 5266222284e7046d9b38acd9e059a23f
+PrefabImporter:
+>>>>>>> 1fe21bf4580b2c0c4e1cc0577a52752b85e9b425:Assets/RoomPackage/Models/RoomPrefabs/lampStar.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
