@@ -45,7 +45,7 @@ public class NewGenerateSphere : MonoBehaviour
         rightAttackController.BallSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
-        leftAttackController.LassoSession.AddStartListener(() => { recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
+        leftAttackController.LassoSession.AddStartListener(() => { initPos = UpdateInitPos(leftAttackController.Place.val); recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
         leftAttackController.LassoSession.AddStopListener(() => recording = false);
 
         StartCoroutine(startCalibration());
@@ -135,7 +135,7 @@ public class NewGenerateSphere : MonoBehaviour
     {
         Debug.Log("starting record");
 
-        for (float dur = 0; dur < runtime; dur += Time.deltaTime)
+        while(recording)
         {
             Vector3[] newPositions = new Vector3[positions.Length + 1];
             newPositions[0] = iniPos;
@@ -154,16 +154,6 @@ public class NewGenerateSphere : MonoBehaviour
             yield return new WaitForSeconds(config.stepSize);
         }
         stopListener();
-        yield return new WaitForSeconds(runtime);
-        if (recording)
-        {
-            yield return null;
-
-            StartCoroutine(Record(iniPos));
-            yield break;
-        }
-        else
-        {
-        }
+     
     }
 }
