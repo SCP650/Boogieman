@@ -140,6 +140,9 @@
           <e p="Writer.cs" t="Include" />
         </e>
         <e p="session_instance.cs" t="Include" />
+        <e p="Shaders" t="Include">
+          <e p="GlitterShader.shader" t="Include" />
+        </e>
         <e p="SteamVR" t="Include">
           <e p="Editor" t="Include">
             <e p="SteamVR_AutoEnableVR.cs" t="Include" />
