@@ -93,6 +93,7 @@
         <e p="point_testser.cs" t="Include" />
         <e p="RoomPackage" t="Include">
           <e p="Effects" t="Include">
+            <e p="allLights.cs" t="Include" />
             <e p="discoTile.cs" t="Include" />
             <e p="onOffLight.cs" t="Include" />
             <e p="rotateMove.cs" t="Include" />
@@ -115,6 +116,7 @@
           <e p="HandleBlockCollisions.cs" t="Include" />
           <e p="HandleCollisions.cs" t="Include" />
           <e p="is_lassoing.cs" t="Include" />
+          <e p="LassoHandleCollisions.cs" t="Include" />
           <e p="lightning.cs" t="Include" />
           <e p="MoveBlock.cs" t="Include" />
           <e p="MoveLine.cs" t="Include" />
@@ -124,6 +126,7 @@
           <e p="PulseToBeat.cs" t="Include" />
           <e p="Read.cs" t="Include" />
           <e p="RotateHand.cs" t="Include" />
+          <e p="ScoreUpdate.cs" t="Include" />
           <e p="Session.cs" t="Include" />
           <e p="SessionHandler.cs" t="Include" />
           <e p="Set_AttackAsset.cs" t="Include" />

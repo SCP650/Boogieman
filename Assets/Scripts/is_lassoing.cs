@@ -24,19 +24,19 @@ public class is_lassoing : MonoBehaviour
         StartCoroutine(record_vel());
         cur_fill = 0.0f;
         var max_fill = 2;
-        var decay = .25f;
+        var decay = .2f;
         while(true)
         {
             var prev_vel = velocity;
 
-            hand_is_lassoing.val = cur_fill > 0.01f;
+            hand_is_lassoing.val = cur_fill > 0.005f;
             yield return null;
             cur_fill -= decay * Time.deltaTime;
 
-            var points = Vector3.SqrMagnitude(velocity - prev_vel) > .0005f ? Vector3.Dot(velocity, prev_vel) * 5 : 0;
+            var points = Vector3.SqrMagnitude(velocity - prev_vel) > .0005f ? Vector3.Dot(velocity, prev_vel) * 6 : 0;
             if (points < 0)
             {
-                yield return new WaitForSeconds(.01f);
+                yield return new WaitForSeconds(.005f);
                 cur_fill *= 1f - Time.deltaTime;
             }
             else

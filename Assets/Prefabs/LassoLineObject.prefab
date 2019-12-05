@@ -172,6 +172,8 @@ MonoBehaviour:
   HapticAction:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
+  left_lasso: {fileID: 11400000, guid: 70e36e02dcf7a8c488664b7cabf2e35f, type: 2}
+  right_lasso: {fileID: 11400000, guid: 0259b343c5b781842955b03f01735567, type: 2}
 --- !u!114 &2830394645095328545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,3 +201,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
