@@ -45,7 +45,7 @@ public class NewGenerateSphere : MonoBehaviour
         rightAttackController.BallSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
-        leftAttackController.LassoSession.AddStartListener(() => { initPos = UpdateInitPos((leftAttackController.Place.val); recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
+        leftAttackController.LassoSession.AddStartListener(() => { initPos = UpdateInitPos(leftAttackController.Place.val); recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
         leftAttackController.LassoSession.AddStopListener(() => recording = false);
 
         StartCoroutine(startCalibration());
