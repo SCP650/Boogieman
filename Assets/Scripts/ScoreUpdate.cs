@@ -5,6 +5,10 @@ using UnityEngine;
 public class ScoreUpdate : MonoBehaviour
 {
     [SerializeField] IntEvent ScorePoint;
+
+    [SerializeField]
+    private GameObject starPointsObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +18,7 @@ public class ScoreUpdate : MonoBehaviour
     // Update is called once per frame
     IEnumerator UpdateScore()
     {
+        //starPointsObject;
         yield return null;
     }
 }

@@ -20,7 +20,10 @@ public class LassoHandleCollisions : MonoBehaviour
     [SerializeField] private LineRenderer lr_prefab;
     [SerializeField] private GameObject endIndicator;
     [SerializeField] private SteamVR_Action_Vibration HapticAction;
-
+    [SerializeField] private BoolRef left_lasso;     
+    [SerializeField] private BoolRef right_lasso;
+    
+    
     private SteamVR_Input_Sources leftControllerHand, rightControllerHand, hapticController;
     private Vector3[] points;
     
@@ -66,7 +69,6 @@ public class LassoHandleCollisions : MonoBehaviour
                 {
                     break;
                 }
-
             }
             
             var grad = new Gradient();
@@ -90,7 +92,7 @@ public class LassoHandleCollisions : MonoBehaviour
             for (int i = 0; i < points.Length; ++i)
             {
                 var point = points[i] + transform.position;
-                if (CheckController(point, config.correctHandGrace))
+                if (CheckController(point, config.correctHandGrace + Vector3.Distance(LeftController.pos,RightController.pos)))
                 {
                     if(config.hit_from_the_end_only && i != points.Length - 1)
                         continue;
@@ -164,7 +166,7 @@ public class LassoHandleCollisions : MonoBehaviour
 
     bool CheckController( Vector3 position,float dist)
     {
-        return Vector3.Distance(LeftController.pos, position) < dist && Vector3.Distance(RightController.pos, position) < dist; 
+        return (right_lasso.val && left_lasso.val) && (Vector3.Distance(LeftController.pos, position) < dist || Vector3.Distance(RightController.pos, position) < dist); 
     }
     
  
