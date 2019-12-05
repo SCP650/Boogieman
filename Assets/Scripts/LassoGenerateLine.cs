@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class LassoGenerateLine : MonoBehaviour
 {
-    [SerializeField] Session session;
+  
     [SerializeField] LineConfig config;
     [SerializeField] GameObject lineObject;
     [SerializeField] GameObject blockObject;
@@ -15,6 +15,7 @@ public class LassoGenerateLine : MonoBehaviour
     Vector3[] positions;
     public Vector3 initPos;
     [SerializeField] ControllerObject controller;
+    [SerializeField] AttackController leftAttackController;
     LineRenderer lr;
 
 
@@ -34,8 +35,9 @@ public class LassoGenerateLine : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         positions = new Vector3[0];
-        session.AddStartListener(() => { recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
-        session.AddStopListener(() => recording = false);
+
+        leftAttackController.LassoSession.AddStartListener(() => { recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
+        leftAttackController.LassoSession.AddStopListener(() => recording = false);
       }
 
 
