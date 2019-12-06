@@ -6,32 +6,32 @@ public class ScoreUpdate : MonoBehaviour
 {
     [SerializeField] IntEvent ScorePoint;
     [SerializeField] int scoreIncreaseNumber;
+    [SerializeField]private GameObject[] starLamps;
 
-    private GameObject starLamps;
-    private int ScorePointInvokes, starIndex;
+    public int ScorePointInvokes, starIndex;
 
     // Start is called before the first frame update
     void Start()
     {
         ScorePointInvokes = 0;
         starIndex = 0;
-        starLamps = this.gameObject;
-        ScorePoint.AddListener(unit => UpdateScore());
+        ScorePoint.AddListener(i => UpdateScore(i));
     }
 
     // Update is called once per frame
-    IEnumerator UpdateScore()
+    void UpdateScore(int i)
     {
-        ScorePointInvokes++;
+        ScorePointInvokes += i;
 
         if(ScorePointInvokes >= scoreIncreaseNumber)
         {
-            if(starIndex < starLamps.transform.childCount)
+            ScorePointInvokes = 0;
+            if(starIndex < starLamps.Length)
             {
-                Material m = starLamps.transform.GetChild(starIndex++).gameObject.GetComponent<Renderer>().material;
+                starLamps[starIndex].GetComponent<Light>().enabled = true;
+                Material m = starLamps[starIndex++].GetComponent<Renderer>().material;
                 m.EnableKeyword("_EMISSION");
             }
         }
-        yield return null;
     }
 }
