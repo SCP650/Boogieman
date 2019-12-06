@@ -26,7 +26,7 @@ public class ScoreUpdate : MonoBehaviour
 
         if(ScorePointInvokes >= scoreIncreaseNumber)
         {
-            if(starIndex < starLamps.transform.ChildCount)
+            if(starIndex < starLamps.transform.childCount)
             {
                 Material m = starLamps.transform.GetChild(starIndex++).gameObject.GetComponent<Renderer>().material;
                 m.EnableKeyword("_EMISSION");
