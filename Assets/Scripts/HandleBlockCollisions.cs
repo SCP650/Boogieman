@@ -48,7 +48,7 @@ public class HandleBlockCollisions : MonoBehaviour
         _MeshRenderer = this.GetComponent<MeshRenderer>();
         controller = new_controller;
         if (controller == controllers.leftHand)
-            otherController = controllers.rightHand;
+            otherController = controllers.leftHand;
         if (controller == controllers.rightHand)
             otherController = controllers.rightHand;
 

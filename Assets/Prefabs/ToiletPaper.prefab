@@ -114,6 +114,11 @@ PrefabInstance:
       propertyPath: radius
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6093242022141812448, guid: 2be7bcd4872395b4f80ad3c0b37a2f52,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2be7bcd4872395b4f80ad3c0b37a2f52, type: 3}
 --- !u!4 &658787103073973407 stripped
@@ -203,6 +208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: radius
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507415027384833150, guid: 19c3f5cf27eaf7a45bb25675d70b3daf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c3f5cf27eaf7a45bb25675d70b3daf, type: 3}

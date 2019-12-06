@@ -36,6 +36,8 @@ public class LassoHandleCollisions : MonoBehaviour
         if (lr == null) Debug.LogError("Why isn't there a line renderer");
         leftControllerHand = SteamVR_Input_Sources.LeftHand;
         rightControllerHand = SteamVR_Input_Sources.RightHand;
+        LeftController = controllers.leftHand;
+        RightController = controllers.rightHand;
       
     }
 
@@ -92,6 +94,9 @@ public class LassoHandleCollisions : MonoBehaviour
             for (int i = 0; i < points.Length; ++i)
             {
                 var point = points[i] + transform.position;
+                Debug.Log(config == null);
+                Debug.Log(LeftController == null);
+                Debug.Log(RightController == null);
                 if (CheckController(point, config.correctHandGrace + Vector3.Distance(LeftController.pos,RightController.pos)))
                 {
                     if(config.hit_from_the_end_only && i != points.Length - 1)
