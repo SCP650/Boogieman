@@ -27,6 +27,7 @@ public class NewGenerateSphere : MonoBehaviour
     private int counter = 0;
     public int numBeatWait = 4;
     [SerializeField] LineConfig config;
+    [SerializeField] music_config m_config;
     [SerializeField] GameObject lineObject;
     private ControllerObject currController;
     private bool recording;
@@ -39,22 +40,28 @@ public class NewGenerateSphere : MonoBehaviour
     {
         heights = new List<float>();
         currController = righthand;
+        lr = GetComponent<LineRenderer>();
+        positions = new Vector3[0];
 
         //TODO: add in lasso and line generation here
         leftAttackController.BallSession.AddStartListener(() => GiveMeSphere(leftAttackController.Place.val, lefthand));
         rightAttackController.BallSession.AddStartListener(() => GiveMeSphere(rightAttackController.Place.val, righthand));
         // ballSession.AddStartListener(() => GiveMeSphere(rightAttackPos.val));
         // ballSession.AddStopListener(() => GiveMeSphere(rightAttackPos.val));
-        leftAttackController.LassoSession.AddStartListener(() => { initPos = UpdateInitPos(leftAttackController.Place.val); recording = true; StopAllCoroutines(); StartCoroutine(Record(initPos)); });
+        leftAttackController.LassoSession.AddStartListener(() => { initPos = UpdateInitPos(leftAttackController.Place.val, true); recording = true; StartCoroutine(Record(initPos)); });
         leftAttackController.LassoSession.AddStopListener(() => recording = false);
 
         StartCoroutine(startCalibration());
 
     }
 
-    private Vector3 UpdateInitPos(Vector3 location)
+    private Vector3 UpdateInitPos(Vector3 location, bool lasso)
     {
-        return new Vector3(location.x * width / 2.0f + transform.position.x, location.y * height + transform.parent.position.y, transform.position.z);
+       
+        var v = new Vector3(location.x * width / 2.0f + transform.position.x, location.y * height + transform.parent.position.y, transform.position.z);
+        if (lasso) return v + Vector3.forward * config.speed * 60 * (1 / m_config.bpm) *
+                             m_config.beats_per_measure * m_config.measures_between_p_and_boog;
+        else return v;
 
     }
 
@@ -63,7 +70,7 @@ public class NewGenerateSphere : MonoBehaviour
         yield return StartCoroutine(AverageHeight());
         height = ListAverage(heights) - transform.parent.position.y; //need to minuse the height of the dance floor
         width = scaler * height;
-        Debug.Log(height);
+        Debug.Log("the height is :" + height + "the width is " + width);
     }
 
 
@@ -92,8 +99,8 @@ public class NewGenerateSphere : MonoBehaviour
     
     void GiveMeSphere(Vector3 location, ControllerObject cObject)
     {
-        Debug.Log("giving me sphere");
-        initPos = UpdateInitPos(location);
+
+        initPos = UpdateInitPos(location, false);
         currController = cObject;
 
         var block = Instantiate(SpherePrefab, initPos, Quaternion.identity, null);
@@ -127,8 +134,6 @@ public class NewGenerateSphere : MonoBehaviour
        
 
         positions = new Vector3[0];
-        lr.positionCount = 0;
-        lr.SetPositions(positions);
     }
 
     IEnumerator Record(Vector3 iniPos)
@@ -148,8 +153,6 @@ public class NewGenerateSphere : MonoBehaviour
             }
             //TODO: hide line renderer when making blocks
             positions = newPositions;
-            lr.positionCount = positions.Length;
-            lr.SetPositions(positions);
 
             yield return new WaitForSeconds(config.stepSize);
         }

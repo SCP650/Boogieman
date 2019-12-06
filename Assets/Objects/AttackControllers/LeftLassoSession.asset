@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9174c3ab50249c40b6d6f319997780e, type: 3}
   m_Name: LeftLassoSession
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
-  stop: {fileID: 0}
+  start: {fileID: 11400000, guid: 9f531f05b03ecc24c91ae8a8e2677fd0, type: 2}
+  stop: {fileID: 11400000, guid: 59ed21449bd1f7847b86eecea0f16a80, type: 2}

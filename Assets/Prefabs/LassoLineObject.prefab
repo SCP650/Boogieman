@@ -64,7 +64,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1948f832ad9a8f647a00b90b97547722, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,9 +161,9 @@ MonoBehaviour:
     type: 3}
   config: {fileID: 11400000, guid: 4ef5dbb61295ce84a91c2d80b9420052, type: 2}
   controllers:
-    leftHand: {fileID: 0}
-    rightHand: {fileID: 0}
-    head: {fileID: 0}
+    leftHand: {fileID: 11400000, guid: 84c693b77cb1eff4980aa34a629cea7b, type: 2}
+    rightHand: {fileID: 11400000, guid: ca8943839edc7654fbb923ac4d0448a4, type: 2}
+    head: {fileID: 11400000, guid: b3293209f4f03c249860b1ea25f86948, type: 2}
   ScorePoint: {fileID: 11400000, guid: d5d85d366ffe8254cba2026203c2f288, type: 2}
   lr_prefab: {fileID: 1201343536750635622, guid: 1f9dc95a986a9c74eb816dfa4ce7eba1,
     type: 3}
@@ -201,5 +201,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
