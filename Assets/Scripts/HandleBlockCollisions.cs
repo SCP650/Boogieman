@@ -74,7 +74,7 @@ public class HandleBlockCollisions : MonoBehaviour
 
                 HapticAction.Execute(0, 0.2f, 30, 0.5f, hapticController);
                 Instantiate(goodParticlePrefab, transform.position, Quaternion.identity);
-                ScorePoint.Invoke(1);
+                ScorePoint.Invoke(50);
                 Destroy(gameObject);
             }
             yield return null;
