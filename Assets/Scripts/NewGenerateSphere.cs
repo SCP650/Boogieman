@@ -21,7 +21,7 @@ public class NewGenerateSphere : MonoBehaviour
     [SerializeField] Material right;
     [SerializeField] AttackController leftAttackController;
     [SerializeField] AttackController rightAttackController;
-    private float scaler = 0.8f;
+    private float scaler = 0.75f;
     // [SerializeField] Vector3Ref rightAttackPos; // this is confusing, this should be both left and right attack pos
     
     private int counter = 0;

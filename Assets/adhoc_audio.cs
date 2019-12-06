@@ -29,7 +29,7 @@ public class adhoc_audio : MonoBehaviour
 
 
 
-        void onEnable()
+        void OnEnable()
         {
             StartCoroutine(p());
         }
