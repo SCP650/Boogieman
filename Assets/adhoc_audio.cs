@@ -37,13 +37,17 @@ public class adhoc_audio : MonoBehaviour
     {
         if (i == b.Length - 1)
         {
-            ass.PlayOneShot(truce);
-            yield return new WaitUntil(() => !ass.isPlaying);
-            yield return new WaitForSeconds(.5f);
         }
         ass.PlayOneShot(score.val > b[i].threshold ? b[i].good : b[i].bad);
         if (i == b.Length - 1)
         {
+            if (b[i].threshold < score.val)
+            {
+                yield return new WaitUntil(() => !ass.isPlaying);
+                yield return new WaitForSeconds(.5f);
+                ass.PlayOneShot(truce);
+                
+            }
             yield return new WaitUntil(() => !ass.isPlaying);
             yield return new WaitForSeconds(.5f);
             ass.PlayOneShot(smellyoulater);
