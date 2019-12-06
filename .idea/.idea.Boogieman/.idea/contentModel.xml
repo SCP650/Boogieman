@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="adhoc_audio.cs" t="Include" />
         <e p="BoilerPlate" t="Include">
           <e p="BoolEvent.cs" t="Include" />
           <e p="BoolRef.cs" t="Include" />
@@ -141,7 +142,11 @@
         </e>
         <e p="session_instance.cs" t="Include" />
         <e p="Shaders" t="Include">
-          <e p="GlitterShader.shader" t="Include" />
+          <e p="GlassSparkles.shader" t="Include" />
+          <e p="Simplex3D.cginc" t="Include" />
+          <e p="Sparkles.shader" t="Include" />
+          <e p="SparklesCG.cginc" t="Include" />
+          <e p="SpecularSparkles.shader" t="Include" />
         </e>
         <e p="SteamVR" t="Include">
           <e p="Editor" t="Include">
@@ -440,6 +445,7 @@
           <e p="SteamVR_Input_ActionSets.cs" t="Include" />
           <e p="SteamVR_Input_Initialization.cs" t="Include" />
         </e>
+        <e p="sum_event.cs" t="Include" />
       </e>
       <e p="Boogieman.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
