@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3088899965123457096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643428331160889062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b867423a5375f34eb13ebd6ed2ccd1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScorePoint: {fileID: 11400000, guid: d5d85d366ffe8254cba2026203c2f288, type: 2}
 --- !u!108 &1975217164716904642
 Light:
   m_ObjectHideFlags: 0
@@ -73,13 +60,13 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!108 &7644543016028128939
+--- !u!108 &7681728385849637568
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7942524653886332874}
+  m_GameObject: {fileID: 3990851986129321807}
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
@@ -253,13 +240,27 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!108 &7681728385849637568
+--- !u!114 &3088899965123457096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643428331160889062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b867423a5375f34eb13ebd6ed2ccd1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScorePoint: {fileID: 11400000, guid: d5d85d366ffe8254cba2026203c2f288, type: 2}
+  scoreIncreaseNumber: 2
+--- !u!108 &7644543016028128939
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3990851986129321807}
+  m_GameObject: {fileID: 7942524653886332874}
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
