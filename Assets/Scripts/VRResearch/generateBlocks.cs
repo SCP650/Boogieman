@@ -5,7 +5,7 @@ using UnityEngine;
 public class generateBlocks : MonoBehaviour
 {
 
-    private List<Block> blocks;
+/*    private List<Block> blocks;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +20,5 @@ public class generateBlocks : MonoBehaviour
             //TODO: intantiate the blocks 
             yield return new WaitForSeconds(time);
         }
-    }
+    }*/
 }
