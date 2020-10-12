@@ -8,7 +8,6 @@ public class generateBlocks : MonoBehaviour
 {
 
     private List<Block> blocks;
-    []
 
     public void GetBlock(string songname)
     {
