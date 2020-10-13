@@ -6,7 +6,8 @@ public class saber : MonoBehaviour
 {
     public LayerMask layer;
     private Vector3 previousPos;
-    public int Dir; 
+    private float rotation;
+    private int toleration;
     void Start()
     {
         
@@ -18,9 +19,14 @@ public class saber : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward,out hit, 1, layer)) ;
         {
-            if (Vector3.Angle(transform.position - previousPos, hit.transform.up) > Dir)
+            rotation = Vector3.Angle(transform.position - previousPos, hit.transform.up);
+            if (hit.transform.gameObject.tag == "beat")
             {
-                Destroy(hit.transform.gameObject);
+                var HisDir = hit.transform.GetComponent<beat>().Dir;
+                if (rotation >= HisDir - toleration || rotation <= HisDir + toleration)//if our hit is at the required angle +- toleration
+                {
+                    Destroy(hit.transform.gameObject);
+                }
             }
         }
         previousPos = transform.position;
