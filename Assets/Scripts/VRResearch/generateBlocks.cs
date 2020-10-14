@@ -10,25 +10,40 @@ public class generateBlocks : MonoBehaviour
     [SerializeField] GameObject RedBlock;
     [SerializeField] GameObject BlueBlock;
     private List<Block> blocks;
+    private MapFile map;
+    private Information description;
 
+    public void GetBlock(string songname, string infofile)
+    {
+        using (StreamReader x = File.OpenText(infofile))
+        {
+            string info = x.ReadToEnd();
+            description = JsonConvert.DeserializeObject<Information>(info);
+        }
+
+        using (StreamReader r = File.OpenText(songname))
+        {
+            string song = r.ReadToEnd();
+            map = JsonConvert.DeserializeObject<MapFile>(song);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         //TODO: Adrian: return a list of block that contains block informaion
-       GetBlock("Assets/ExpertPlus.json");
-        StartCoroutine(Generate(blocks));
-    }
+        GetBlock("Assets/Normal.json", "Assets/info.json");
+        blocks = map._notes;
+        float bps = description._beatsPerMinute / 60;
+        Debug.Log(bps);
 
-
-    public void GetBlock(string songname)
-    {
-        using (StreamReader r = File.OpenText(songname))
+        //change time to difference in seconds
+        for (int i = 0; i < blocks.Count - 1; i++)
         {
-            string song = r.ReadToEnd();
-            blocks = JsonConvert.DeserializeObject<List<Block>>(song);
+            blocks[i]._time = (blocks[i + 1]._time - blocks[i]._time) / bps;
         }
 
+        StartCoroutine(Generate(blocks));
     }
 
     private IEnumerator Generate(List<Block> blocks)
@@ -40,7 +55,7 @@ public class generateBlocks : MonoBehaviour
             GameObject gb;
             if (B._type == 0)
             {
-               gb =  Instantiate(RedBlock);
+                gb = Instantiate(RedBlock);
             }
             else
             {
@@ -54,7 +69,7 @@ public class generateBlocks : MonoBehaviour
     private Vector3 getPosition(int col, int row)
     {
         float y = 1.5f + row * 0.5f;
-        float x = -1 + col *0.5f;
+        float x = -1 + col * 0.5f;
         return new Vector3(x, y, transform.position.z);
     }
 }
