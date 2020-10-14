@@ -16,7 +16,7 @@ public class saber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
+       /* RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward,out hit, 1, layer) && hit.transform != null)
         {
             rotation = Vector3.Angle(transform.position - previousPos, hit.transform.up);
@@ -32,7 +32,27 @@ public class saber : MonoBehaviour
                     Destroy(hit.transform.gameObject);
                 }
             }
-        }
+        }*/
         previousPos = transform.position;
+    }
+
+    //When the Primitive collides with the walls, it will reverse direction
+    private void OnTriggerEnter(Collider other)
+    {
+        rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
+        if (other.transform.gameObject.tag == "beat")
+        {
+/*            var HisDir = other.transform.GetComponent<beat>().Dir;
+            Debug.Log("His dir");
+            Debug.Log(HisDir);
+            Debug.Log("My dir");
+            Debug.Log(rotation);
+            if ((HisDir - toleration) <= rotation && rotation <= (HisDir + toleration))//if our hit is at the required angle +- toleration
+            {*/
+                Destroy(other.transform.gameObject);
+            //}
+        }
+
+
     }
 }
