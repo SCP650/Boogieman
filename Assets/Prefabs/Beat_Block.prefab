@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722488632473050866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -58,6 +58,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f360ee25cbcdc8d4fbbb7777adda4596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: 0
+  dir: 3
+  Omnidirectional: 0
+  RedMaterial: {fileID: 2100000, guid: 3b66462ab7aba554898929c20adedf4c, type: 2}
+  RedOmniMaterial: {fileID: 2100000, guid: 8dde28accbab22a46b18e9bfb92c91d9, type: 2}
+  BlueMaterial: {fileID: 2100000, guid: 93ce08e89bcd4e24280ad83bc400ae81, type: 2}
+  BlueOmniMaterial: {fileID: 2100000, guid: 53943166873a97041b2158ad742bbabb, type: 2}
+  leftSide: {fileID: 2329352502412289427}
+  rightSide: {fileID: 2809384984818704773}
 --- !u!1001 &1969539675576497944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +155,18 @@ PrefabInstance:
 --- !u!4 &2080536150811545843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f7734abf0701e444bd9019c422ca035,
+    type: 3}
+  m_PrefabInstance: {fileID: 1969539675576497944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2329352502412289427 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4253280567622488715, guid: 2f7734abf0701e444bd9019c422ca035,
+    type: 3}
+  m_PrefabInstance: {fileID: 1969539675576497944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2809384984818704773 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4780072770720950627, guid: 2f7734abf0701e444bd9019c422ca035,
     type: 3}
   m_PrefabInstance: {fileID: 1969539675576497944}
   m_PrefabAsset: {fileID: 0}

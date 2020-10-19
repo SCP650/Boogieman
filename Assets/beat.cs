@@ -4,17 +4,81 @@ using UnityEngine;
 
 public class beat : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float Dir;
+    //Color Enums 
+    public enum Color { blue, red }
+    public Color color;
+
+    //Color Direction enums 
+    public enum Dir{top, left, right, bottom }
+    public Dir dir;
+    public bool Omnidirectional = false;
+    private float direction;
+
+
+    //Materials variables
+    public Material RedMaterial;
+    public Material RedOmniMaterial;
+    public Material BlueMaterial;
+    public Material BlueOmniMaterial;
+    public MeshRenderer leftSide;
+    public MeshRenderer rightSide;
+
+    private bool materialSet = false;
+    
     void Start()
     {
-        gameObject.transform.Rotate(0.0f, 0.0f, Dir);
-        Debug.Log(gameObject.tag);
+
+        if (!materialSet)
+        {
+            SetBlock();
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetBlock()
     {
-        
+        switch (dir)
+        {
+            case Dir.top:
+                direction = 0.0f;
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            case Dir.bottom:
+                direction = 180.0f;
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                break;
+            case Dir.right:
+                direction = 90.0f;
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                break;
+            case Dir.left:
+                direction = 270.0f;
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                break;
+        }
+        switch (color)
+        {
+            case Color.blue:
+                if (Omnidirectional)
+                {
+                    leftSide.material = BlueOmniMaterial;
+                    rightSide.material = BlueOmniMaterial;
+                    break;
+                }
+                rightSide.material = BlueMaterial;
+                leftSide.material = BlueMaterial;
+                break;
+            case Color.red:
+                if (Omnidirectional)
+                {
+                    leftSide.material = RedOmniMaterial;
+                    rightSide.material = RedOmniMaterial;
+                    break;
+                }
+                leftSide.material = RedMaterial;
+                rightSide.material = RedMaterial;
+                break;
+        }
+        materialSet = true;
     }
 }
