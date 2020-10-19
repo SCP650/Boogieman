@@ -7,11 +7,12 @@ public class beat : MonoBehaviour
     //Color Enums 
     public enum Color { blue, red }
     public Color color;
-
+    private int blueLayer = 8;
+    private int redLayer = 9;
     //Color Direction enums 
     public enum Dir{top, left, right, bottom }
     public Dir dir;
-    public bool Omnidirectional = false;
+    public bool Omnidirectional = true;
     private float direction;
 
 
@@ -37,28 +38,11 @@ public class beat : MonoBehaviour
 
     public void SetBlock()
     {
-        switch (dir)
-        {
-            case Dir.top:
-                direction = 0.0f;
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-                break;
-            case Dir.bottom:
-                direction = 180.0f;
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
-                break;
-            case Dir.right:
-                direction = 90.0f;
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
-                break;
-            case Dir.left:
-                direction = 270.0f;
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
-                break;
-        }
+
         switch (color)
         {
             case Color.blue:
+                gameObject.layer = blueLayer;
                 if (Omnidirectional)
                 {
                     leftSide.material = BlueOmniMaterial;
@@ -69,6 +53,7 @@ public class beat : MonoBehaviour
                 leftSide.material = BlueMaterial;
                 break;
             case Color.red:
+                gameObject.layer = redLayer; 
                 if (Omnidirectional)
                 {
                     leftSide.material = RedOmniMaterial;
@@ -79,6 +64,29 @@ public class beat : MonoBehaviour
                 rightSide.material = RedMaterial;
                 break;
         }
-        materialSet = true;
+        if (!Omnidirectional) //only rotates if we're not omnidirectional, there's no point to rotate if we are
+        {
+            switch (dir)
+            {
+                case Dir.top:
+                    direction = 0.0f;
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    break;
+                case Dir.bottom:
+                    direction = 180.0f;
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                    break;
+                case Dir.right:
+                    direction = 90.0f;
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                    break;
+                case Dir.left:
+                    direction = 270.0f;
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                    break;
+            }
+            materialSet = true;
+        }
+        
     }
 }
