@@ -32,7 +32,7 @@ public class generateBlocks : MonoBehaviour
     void Start()
     {
         //TODO: Adrian: return a list of block that contains block informaion
-        GetBlock("Assets/Normal.json", "Assets/info.json");
+        GetBlock("Assets/Resources/Normal.json", "Assets/Resources/info.json");
         blocks = map._notes;
         float bps = description._beatsPerMinute / 60;
         Debug.Log(bps);
