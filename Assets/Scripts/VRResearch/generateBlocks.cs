@@ -35,7 +35,6 @@ public class generateBlocks : MonoBehaviour
         GetBlock("Assets/Resources/Normal.json", "Assets/Resources/info.json");
         blocks = map._notes;
         float bps = description._beatsPerMinute / 60;
-        Debug.Log(bps);
 
         //change time to difference in seconds
         for (int i = 0; i < blocks.Count - 1; i++)
