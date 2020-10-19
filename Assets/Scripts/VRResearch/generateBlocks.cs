@@ -7,8 +7,8 @@ using System.IO;
 public class generateBlocks : MonoBehaviour
 {
 
-    [SerializeField] GameObject RedBlock;
-    [SerializeField] GameObject BlueBlock;
+    [SerializeField] GameObject oneBlock;
+ 
     private List<Block> blocks;
     private MapFile map;
     private Information description;
@@ -55,15 +55,53 @@ public class generateBlocks : MonoBehaviour
             GameObject gb;
             if (B._type == 0)
             {
-                gb = Instantiate(RedBlock);
+                gb = Instantiate(oneBlock);
+                beat b = gb.GetComponent<beat>();
+                b.color = beat.Color.red;
+                b.dir = getDirection(B._cutDirection);
+
+
             }
             else
             {
-                gb = Instantiate(BlueBlock);
+                gb = Instantiate(oneBlock);
+          
+                beat b = gb.GetComponent<beat>();
+                b.color = beat.Color.blue;
+                b.dir = getDirection(B._cutDirection);
+
             }
+
             gb.transform.position = getPosition(B._lineIndex, B._lineLayer);
-            yield return new WaitForSeconds(B._time);
+            if(B._time == 0)
+            {
+                continue;
+            }
+            else
+            {
+                yield return new WaitForSeconds(B._time);
+            }
+
         }
+    }
+
+    private beat.Dir getDirection(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                return beat.Dir.top;
+            
+            case 1:
+                return beat.Dir.bottom;
+            case 2:
+                return beat.Dir.left;
+           
+            default:
+                return beat.Dir.right;
+               
+        }
+
     }
 
     private Vector3 getPosition(int col, int row)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 722488632473050870}
   - component: {fileID: 722488632473050867}
   - component: {fileID: 1356782753292280165}
+  - component: {fileID: 514808653784966984}
   m_Layer: 9
   m_Name: Beat_Block
   m_TagString: Untagged
@@ -67,6 +68,19 @@ MonoBehaviour:
   BlueOmniMaterial: {fileID: 2100000, guid: 53943166873a97041b2158ad742bbabb, type: 2}
   leftSide: {fileID: 2329352502412289427}
   rightSide: {fileID: 2809384984818704773}
+--- !u!114 &514808653784966984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722488632473050866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48eaf8fa8d7df4b2097a6199ae116f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1001 &1969539675576497944
 PrefabInstance:
   m_ObjectHideFlags: 0
