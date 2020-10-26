@@ -9,10 +9,15 @@ public class generateBlocks : MonoBehaviour
 
     [SerializeField] GameObject oneBlock;
     [SerializeField] GameObject oneBomb;
+    [Tooltip("Difference between player and spawner divided by speed")]
+    [SerializeField] float bufferTime = 2.5f;
  
     private List<Block> blocks;
     private MapFile map;
     private Information description;
+    private List<Obstacle> obstacles;
+    private List<float> BlockTimeDiff = new List<float>();
+    
 
     public void GetBlock(string songname, string infofile)
     {
@@ -33,25 +38,60 @@ public class generateBlocks : MonoBehaviour
     void Start()
     {
         //TODO: Adrian: return a list of block that contains block informaion
+
         GetBlock("Assets/Resources/Normal.json", "Assets/Resources/info.json");
         blocks = map._notes;
+        obstacles = map._obstacles;
         float bps = description._beatsPerMinute / 60;
 
         //change time to difference in seconds
-        for (int i = 0; i < blocks.Count - 1; i++)
+        BlockTimeDiff.Add(blocks[0]._time / bps - bufferTime);
+       
+        for (int i = 1; i < blocks.Count; i++)
         {
-            blocks[i]._time = (blocks[i + 1]._time - blocks[i]._time) / bps;
+         
+            BlockTimeDiff.Add((blocks[i]._time - blocks[i-1]._time) / bps);
         }
 
+        //change time to difference in seconds
+       
+        for (int i = 1; i < obstacles.Count; i++)
+        {
+            obstacles[i]._time = (obstacles[i]._time - obstacles[i-1]._time) / bps;
+           
+        }
+        obstacles[0]._time /= bps;
+        obstacles[0]._duration /= bps;
+
         StartCoroutine(Generate(blocks));
+        //StartCoroutine(generateObstacles(obstacles));
+
+    }
+
+    private IEnumerator generateObstacles(List<Obstacle> obsticles)
+    {
+
+        foreach (Obstacle O in obsticles)
+        {
+            //Debug.Log(O._time);
+            yield return null;
+        }
     }
 
     private IEnumerator Generate(List<Block> blocks)
     {
-        foreach (Block B in blocks)
-        {
-            Debug.Log(B._time);
-            //TODO: intantiate the blocks
+
+        for (int i =0; i< blocks.Count; i++)
+        {   
+        
+            Block B = blocks[i];
+            Debug.Log(BlockTimeDiff[i]);
+            if (BlockTimeDiff[i] != 0)
+            {
+                yield return new WaitForSeconds(BlockTimeDiff[i]);
+            }
+
+     
             GameObject gb;
             if (B._type == 0)
             {
@@ -76,14 +116,6 @@ public class generateBlocks : MonoBehaviour
             }
 
             gb.transform.position = getPosition(B._lineIndex, B._lineLayer);
-            if(B._time == 0)
-            {
-                continue;
-            }
-            else
-            {
-                yield return new WaitForSeconds(B._time);
-            }
 
         }
     }
