@@ -8,6 +8,7 @@ public class generateBlocks : MonoBehaviour
 {
 
     [SerializeField] GameObject oneBlock;
+    [SerializeField] GameObject oneBomb;
  
     private List<Block> blocks;
     private MapFile map;
@@ -60,6 +61,9 @@ public class generateBlocks : MonoBehaviour
                 b.dir = getDirection(B._cutDirection);
 
 
+            }
+            else if (B._type == 3) {
+                gb = Instantiate(oneBomb);
             }
             else
             {
