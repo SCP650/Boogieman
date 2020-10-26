@@ -5,7 +5,7 @@ using UnityEngine;
 public class bomb : MonoBehaviour
 {
     //just check on collision enter
-    private ParticleSystem explosion;
+    public ParticleSystem explosion;
     public int pointVal = -4;
     
     void OnDestroy() {

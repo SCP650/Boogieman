@@ -35,6 +35,8 @@ public class saber : MonoBehaviour
             //{ 
                 Destroy(other.transform.gameObject);
             //}
+        } else if (other.transform.gameObject.tag == "bomb") {
+            Destroy(other.gameObject);
         }
 
 
