@@ -12,6 +12,7 @@ public class generateBlocks : MonoBehaviour
     private List<Block> blocks;
     private MapFile map;
     private Information description;
+    private List<Obstacle> obstacles;
 
     public void GetBlock(string songname, string infofile)
     {
@@ -34,6 +35,7 @@ public class generateBlocks : MonoBehaviour
         //TODO: Adrian: return a list of block that contains block informaion
         GetBlock("Assets/Resources/Normal.json", "Assets/Resources/info.json");
         blocks = map._notes;
+        obstacles = map._obstacles;
         float bps = description._beatsPerMinute / 60;
 
         //change time to difference in seconds
@@ -41,15 +43,33 @@ public class generateBlocks : MonoBehaviour
         {
             blocks[i]._time = (blocks[i + 1]._time - blocks[i]._time) / bps;
         }
+        //change time to difference in seconds
+        for (int i = 0; i < obstacles.Count - 1; i++)
+        {
+            obstacles[i]._time = (obstacles[i + 1]._time - obstacles[i]._time) / bps;
+            obstacles[i]._duration = (obstacles[i]._duration)/bps;
+        }
 
         StartCoroutine(Generate(blocks));
+        StartCoroutine(generateObstacles(obstacles));
+
+    }
+
+    private IEnumerator generateObstacles(List<Obstacle> obsticles)
+    {
+
+        foreach (Obstacle O in obsticles)
+        {
+            Debug.Log(O._time);
+            yield return null;
+        }
     }
 
     private IEnumerator Generate(List<Block> blocks)
     {
         foreach (Block B in blocks)
         {
-            Debug.Log(B._time);
+           
             //TODO: intantiate the blocks
             GameObject gb;
             if (B._type == 0)
