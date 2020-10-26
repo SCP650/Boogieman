@@ -42,8 +42,13 @@ public class saber : MonoBehaviour
         
             if ((rotation - toleration) <= 180 && 180 <= (rotation + toleration))//if our hit is at the required angle +- toleration
             {
-                Destroy(other.transform.gameObject);
+                Destroy(other.gameObject);
             }
+        }
+         else if (other.transform.gameObject.tag == "bomb") {
+            //take off points
+            //play crappy note
+            Destroy(other.gameObject);
         }
         else
         {
@@ -51,9 +56,7 @@ public class saber : MonoBehaviour
             //play crappy note
             Debug.Log("Play crappy note here");
             //Destroy the object
-            Destroy(other.transform.gameObject);
+            Destroy(other.gameObject);
         }
-
-
     }
 }

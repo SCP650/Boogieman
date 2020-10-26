@@ -14,6 +14,7 @@ public class beat : MonoBehaviour
     public Dir dir;
     public bool Omnidirectional = true;
     private float direction;
+    public int pointVal = 4;
 
 
     //Materials variables

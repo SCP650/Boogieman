@@ -7,5 +7,5 @@ public class MapFile : MonoBehaviour
     public string _version;
     public List<Block> _events;
     public List<Block> _notes;
-    public List<Block> _obstacles;
+    public List<Obstacle> _obstacles;
 }
