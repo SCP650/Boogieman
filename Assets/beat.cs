@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class beat : MonoBehaviour
 {
+
+    //Mine stuff
+    public bool isMine = false;
+    public MeshRenderer mineMesh;
+    private int mineLayer = 10;
+
     //Color Enums 
     public enum Color { blue, red }
     public Color color;
     private int blueLayer = 8;
     private int redLayer = 9;
+
+    
     //Color Direction enums 
     public enum Dir{top, left, right, bottom }
     public Dir dir;
@@ -22,11 +30,13 @@ public class beat : MonoBehaviour
     public Material RedOmniMaterial;
     public Material BlueMaterial;
     public Material BlueOmniMaterial;
+    //Mesh Variables
     public MeshRenderer leftSide;
     public MeshRenderer rightSide;
 
+
     private bool materialSet = false;
-    
+
     void Start()
     {
 
@@ -39,7 +49,17 @@ public class beat : MonoBehaviour
 
     public void SetBlock()
     {
-
+        if (isMine)
+        {
+            gameObject.layer = mineLayer;
+            mineMesh.GetComponent<Renderer>().enabled = true;
+            leftSide.GetComponent<Renderer>().enabled = false;
+            rightSide.GetComponent<Renderer>().enabled = false;
+            return;
+        }
+        mineMesh.GetComponent<Renderer>().enabled = false;
+        leftSide.GetComponent<Renderer>().enabled = true;
+        rightSide.GetComponent<Renderer>().enabled = true;
         switch (color)
         {
             case Color.blue:
