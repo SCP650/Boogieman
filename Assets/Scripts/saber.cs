@@ -47,12 +47,15 @@ public class saber : MonoBehaviour
         }
          else if (other.transform.gameObject.tag == "bomb") {
             //take off points
+
             //play crappy note
+            //Tutorial: https://www.youtube.com/watch?v=r5VrBu_FaPw
             Destroy(other.gameObject);
         }
         else
         {
             //take off points
+
             //play crappy note
             Debug.Log("Play crappy note here");
             //Destroy the object

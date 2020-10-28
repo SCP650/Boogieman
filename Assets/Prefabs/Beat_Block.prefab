@@ -60,8 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMine: 0
-  mineMesh: {fileID: -7511558181221131132, guid: 50864c86825af6d4e9aa1a423ad4225a,
-    type: 3}
+  mineMesh: {fileID: 8893084351021395940}
   color: 0
   dir: 3
   Omnidirectional: 0
@@ -260,6 +259,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 50864c86825af6d4e9aa1a423ad4225a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 50864c86825af6d4e9aa1a423ad4225a,
         type: 3}
       propertyPath: m_Name
@@ -267,3 +271,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50864c86825af6d4e9aa1a423ad4225a, type: 3}
+--- !u!23 &8893084351021395940 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 50864c86825af6d4e9aa1a423ad4225a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7830353168840373088}
+  m_PrefabAsset: {fileID: 0}

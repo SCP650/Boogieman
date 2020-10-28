@@ -40,7 +40,7 @@ public class beat : MonoBehaviour
     void Start()
     {
 
-        if (!materialSet)
+        if (!materialSet) //If block was set beforehand, we don't need to set it again during runtime
         {
             SetBlock();
         }
