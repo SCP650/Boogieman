@@ -52,14 +52,14 @@ public class saber : MonoBehaviour
             //Tutorial: https://www.youtube.com/watch?v=r5VrBu_FaPw
             Destroy(other.gameObject);
         }
-        else
-        {
-            //take off points
+        //else
+        //{
+        //    //take off points
 
-            //play crappy note
-            Debug.Log("Play crappy note here");
-            //Destroy the object
-            Destroy(other.gameObject);
-        }
+        //    //play crappy note
+        //    Debug.Log("Play crappy note here");
+        //    //Destroy the object
+        //    Destroy(other.gameObject);
+        //}
     }
 }
