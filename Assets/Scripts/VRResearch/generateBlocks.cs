@@ -100,7 +100,17 @@ public class generateBlocks : MonoBehaviour
              
                 float z = O._duration * 10;//block moving speed
                 gb.transform.localScale = new Vector3(x, y, z);
-                gb.transform.position = getPosition(O._lineIndex, 0);
+                gb.transform.position = getPosition(O._lineIndex+1, 0);
+            }else if(O._type == 1)
+            {
+                GameObject gb = Instantiate(ObsticlePreFab);
+                float x = O._width * DistanceBetweenBlocks; //all four cols
+
+                float y = DistanceBetweenBlocks;
+
+                float z = O._duration * 10;//block moving speed
+                gb.transform.localScale = new Vector3(x, y, z);
+                gb.transform.position = getPosition(2, O._lineIndex + 1);
             }
         }
 
