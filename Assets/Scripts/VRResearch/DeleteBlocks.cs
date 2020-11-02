@@ -6,7 +6,7 @@ public class DeleteBlocks : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
+ 
         Destroy(other.gameObject);
     }
 }
