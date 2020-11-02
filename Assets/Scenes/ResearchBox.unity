@@ -246,8 +246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneBlock: {fileID: 722488632473050866, guid: f718e7779a575344bb32ef4c30697ce7, type: 3}
-  oneBomb: {fileID: 722488632473050866, guid: 7a9ce4e483ec0f54b942b13f9ca5069d, type: 3}
+  ObsticlePreFab: {fileID: 327247183484515239, guid: b57c71bb9e2544dd4942fc955afa3333,
+    type: 3}
+  oneBomb: {fileID: 722488632473050866, guid: f718e7779a575344bb32ef4c30697ce7, type: 3}
   bufferTime: 2.5
+  DistanceBetweenBlocks: 0.5
 --- !u!23 &1682279533
 MeshRenderer:
   m_ObjectHideFlags: 0

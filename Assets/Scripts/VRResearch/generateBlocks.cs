@@ -132,6 +132,7 @@ public class generateBlocks : MonoBehaviour
             }
             else if (B._type == 3) {
                 gb = Instantiate(oneBomb);
+                gb.GetComponent<beat>().isMine = true;
             }
             else
             {
