@@ -8,15 +8,19 @@ public class generateBlocks : MonoBehaviour
 {
 
     [SerializeField] GameObject oneBlock;
+    [SerializeField] GameObject ObsticlePreFab;
     [Tooltip("Difference between player and spawner divided by speed")]
     [SerializeField] float bufferTime = 2.5f;
+    [SerializeField] float DistanceBetweenBlocks = 0.5f;
+
+ 
  
     private List<Block> blocks;
     private MapFile map;
     private Information description;
     private List<Obstacle> obstacles;
     private List<float> BlockTimeDiff = new List<float>();
-    
+    private List<float> ObsticleTimeDiff = new List<float>();
 
     public void GetBlock(string songname, string infofile)
     {
@@ -52,27 +56,45 @@ public class generateBlocks : MonoBehaviour
         }
 
         //change time to difference in seconds
-       
+        ObsticleTimeDiff.Add(obstacles[0]._time / bps - bufferTime);
+
+        obstacles[0]._duration /= bps;
         for (int i = 1; i < obstacles.Count; i++)
         {
-            obstacles[i]._time = (obstacles[i]._time - obstacles[i-1]._time) / bps;
-           
+            ObsticleTimeDiff.Add((obstacles[i]._time - obstacles[i - 1]._time) / bps);
+            obstacles[i]._duration /= bps;
+
         }
-        obstacles[0]._time /= bps;
-        obstacles[0]._duration /= bps;
+      
 
         StartCoroutine(Generate(blocks));
-        //StartCoroutine(generateObstacles(obstacles));
+        StartCoroutine(generateObstacles(obstacles));
 
     }
 
     private IEnumerator generateObstacles(List<Obstacle> obsticles)
     {
 
-        foreach (Obstacle O in obsticles)
+        for(int i = 0; i<obsticles.Count;i++)
         {
-            //Debug.Log(O._time);
-            yield return null;
+            Obstacle O = obsticles[i];
+            if (ObsticleTimeDiff[i] != 0)
+            {
+                yield return new WaitForSeconds(ObsticleTimeDiff[i]);
+            }
+
+
+            if(O._type == 0) //a verticle block 
+            {
+                GameObject gb = Instantiate(ObsticlePreFab);
+                float x = O._width * DistanceBetweenBlocks;
+
+                float y = 3 * DistanceBetweenBlocks;//all three rows
+             
+                float z = O._duration * 10;//block moving speed
+                gb.transform.localScale = new Vector3(x, y, z);
+                gb.transform.position = getPosition(O._lineIndex, 0);
+            }
         }
     }
 
@@ -83,7 +105,6 @@ public class generateBlocks : MonoBehaviour
         {   
         
             Block B = blocks[i];
-            Debug.Log(BlockTimeDiff[i]);
             if (BlockTimeDiff[i] != 0)
             {
                 yield return new WaitForSeconds(BlockTimeDiff[i]);
@@ -137,8 +158,13 @@ public class generateBlocks : MonoBehaviour
 
     private Vector3 getPosition(int col, int row)
     {
-        float y = 1.5f + row * 0.5f;
-        float x = -1 + col * 0.5f;
+        float y = 1.5f + row * DistanceBetweenBlocks;
+        float x = getX(col);
         return new Vector3(x, y, transform.position.z);
+    }
+
+    private float getX(int col)
+    {
+        return -1 + col *DistanceBetweenBlocks;
     }
 }
