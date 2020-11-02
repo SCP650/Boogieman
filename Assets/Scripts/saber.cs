@@ -40,26 +40,21 @@ public class saber : MonoBehaviour
         {
             Debug.Log(rotation);
         
-            if ((rotation - toleration) <= 180 && 180 <= (rotation + toleration))//if our hit is at the required angle +- toleration
+            if ((rotation - toleration) <= 180 && 180 <= (rotation + toleration) && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
-                Destroy(other.gameObject);
+                //do something with points/play sound?
             }
-        }
-         else if (other.transform.gameObject.tag == "bomb") {
-            //take off points
-
-            //play crappy note
-            //Tutorial: https://www.youtube.com/watch?v=r5VrBu_FaPw
+            else
+            {
+                //do something with points/play sound?
+                Debug.Log("Play crappy note here");
+            }
             Destroy(other.gameObject);
         }
-        else
-        {
-            //take off points
-
-            //play crappy note
-            Debug.Log("Play crappy note here");
-            //Destroy the object
+        else if (other.transform.gameObject.tag == "bomb") {
+            //do something with points/play sound?
             Destroy(other.gameObject);
         }
+        
     }
 }
