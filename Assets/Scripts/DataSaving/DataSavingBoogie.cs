@@ -15,8 +15,8 @@ public static class DataSavingBoogie {
 
 	static string[] DataHeader = {
 		"Trial Date", "Baseline HR", "Baseline SO2",
-		"Incongruent Accuracy (total correct trials)", "Incongruent Accuracy %",
-	    "Congruent Accuracy (total correct trials)",   "Congruent Accuracy %",
+		"Incongruent Correct (total correct trials)", "Incongruent Accuracy %",
+	    "Congruent Correct (total correct trials)",   "Congruent Accuracy %",
 		"Total Correct", "Total Correct %", "Total Trials", "Total Incorrect (wrong direction)", "Total Misses (out of time)", "Total Failed Trials",
 	    "Average Incongruent Reaction Time", "Avergage Congruent Reaction Time", "Average Reaction Time",
 	    "Total_Incongruent_Trials", "Total_Congruent_Trials", "Total_Errors_Incongruent", "Total_Errors_Congruent", "Total_Correct_Incongruent", "Total_Correct_Congruent",
