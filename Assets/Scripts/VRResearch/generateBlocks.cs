@@ -8,7 +8,11 @@ public class generateBlocks : MonoBehaviour
 {
 
     [SerializeField] GameObject oneBlock;
+ 
     [SerializeField] GameObject ObsticlePreFab;
+ 
+    [SerializeField] GameObject oneBomb;
+ 
     [Tooltip("Difference between player and spawner divided by speed")]
     [SerializeField] float bufferTime = 2.5f;
     [SerializeField] float DistanceBetweenBlocks = 0.5f;
@@ -41,6 +45,7 @@ public class generateBlocks : MonoBehaviour
     void Start()
     {
         //TODO: Adrian: return a list of block that contains block informaion
+
         GetBlock("Assets/Resources/Normal.json", "Assets/Resources/info.json");
         blocks = map._notes;
         obstacles = map._obstacles;
@@ -51,6 +56,7 @@ public class generateBlocks : MonoBehaviour
        
         for (int i = 1; i < blocks.Count; i++)
         {
+ 
          
             BlockTimeDiff.Add((blocks[i]._time - blocks[i-1]._time) / bps);
         }
@@ -66,6 +72,7 @@ public class generateBlocks : MonoBehaviour
 
         }
       
+
 
         StartCoroutine(Generate(blocks));
         StartCoroutine(generateObstacles(obstacles));
@@ -96,6 +103,7 @@ public class generateBlocks : MonoBehaviour
                 gb.transform.position = getPosition(O._lineIndex, 0);
             }
         }
+
     }
 
     private IEnumerator Generate(List<Block> blocks)
@@ -105,6 +113,7 @@ public class generateBlocks : MonoBehaviour
         {   
         
             Block B = blocks[i];
+
             if (BlockTimeDiff[i] != 0)
             {
                 yield return new WaitForSeconds(BlockTimeDiff[i]);
@@ -121,6 +130,9 @@ public class generateBlocks : MonoBehaviour
 
 
             }
+            else if (B._type == 3) {
+                gb = Instantiate(oneBomb);
+            }
             else
             {
                 gb = Instantiate(oneBlock);
@@ -132,7 +144,6 @@ public class generateBlocks : MonoBehaviour
             }
 
             gb.transform.position = getPosition(B._lineIndex, B._lineLayer);
-         
 
         }
     }
