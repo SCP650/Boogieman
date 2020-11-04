@@ -19,7 +19,7 @@ public class PointManager : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collider other) {
+    private void OnCollisionEnter(Collision other) {
         // float rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
         if (other.transform.gameObject.tag == "beat")
         {
@@ -27,12 +27,12 @@ public class PointManager : MonoBehaviour
             var HisDir = other.transform.GetComponent<beat>().dir;
             // if ((HisDir - toleration) <= rotation && rotation <= (HisDir + toleration))//if our hit is at the required angle +- toleration
             // { 
-                points += other.GetComponent<beat>().pointVal;
+                points += other.gameObject.GetComponent<beat>().pointVal;
                 //TODO: display particle effects
                 Destroy(other.transform.gameObject);
             // }
         } else if (other.transform.gameObject.tag == "bomb") {
-            points += other.GetComponent<bomb>().pointVal;
+            points += other.gameObject.GetComponent<bomb>().pointVal;
             Destroy(other.gameObject);
         }
     }

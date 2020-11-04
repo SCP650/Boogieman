@@ -8,7 +8,7 @@ public class ResetHeadsetPos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UnityEngine.XR.InputTracking.Recenter();
     }
 
     // Update is called once per frame
@@ -16,7 +16,6 @@ public class ResetHeadsetPos : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            UnityEngine.XR.InputTracking.Recenter();
         }
     }
 }
