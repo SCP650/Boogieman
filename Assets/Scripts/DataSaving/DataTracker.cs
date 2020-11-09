@@ -9,8 +9,8 @@ public class DataTracker : MonoBehaviour {
 	//   TODO - check this!
 	[HideInInspector] public string ID;
 
-	[HideInInspector] public int baseline_hr = NYI_int;
-	[HideInInspector] public int baseline_so2 = NYI_int;
+	[HideInInspector] public int baseline_hr;
+	[HideInInspector] public int baseline_so2;
 
 	[HideInInspector] public int incongruent_correct;
 	[HideInInspector] public int congruent_correct;
@@ -49,12 +49,17 @@ public class DataTracker : MonoBehaviour {
 	// Start is called before the first frame update
 	void Start() {
 		reset_tracked_data();
+		// Testing. TODO - REMOVE THIS:
+		test_save();
 	}
 
 
 	// Initializes all the tracked data variables to default values.
 	public void reset_tracked_data() {
 		ID = "[MISSING]";
+
+		baseline_hr = NYI_int;
+		baseline_so2 = NYI_int;
 
 		incongruent_correct = 0;
 		congruent_correct = 0;
@@ -72,8 +77,8 @@ public class DataTracker : MonoBehaviour {
 
 		total_time = 0;
 
-		final_hr = 0;
-		final_so2 = 0;
+		final_hr = NYI_int;
+		final_so2 = NYI_int;
 
 		enjoyment = 0; // 1-5
 		would_u_play_this_again = false; // True = yes, False = no.
@@ -149,7 +154,7 @@ public class DataTracker : MonoBehaviour {
 		//};
 
 		// Compute session data
-		string trialDate = System.DateTime.Today.ToString();
+		string trialDate = System.DateTime.Now.ToString();
 
 		// incongruent and congruent
 		int incongruent_errors = incongruent_incorrect + incongruent_misses;
@@ -170,7 +175,7 @@ public class DataTracker : MonoBehaviour {
 
 		float total_accuracy = 100.0f * total_correct / total_trials;
 
-		int total_incorrect = incongruent_incorrect + congruent_correct;
+		int total_incorrect = incongruent_incorrect + congruent_incorrect;
 		int total_misses = incongruent_misses + congruent_misses;
 
 		int total_errors_trials = incongruent_errors + congruent_errors;
@@ -224,4 +229,44 @@ public class DataTracker : MonoBehaviour {
 		//learningCurveDataString = "";
 	}
 
+
+	// Call this to test the save function
+	private void test_save() {
+		// Reset the data first
+		reset_tracked_data();
+
+		// Fill in test data
+		string nice_date_and_time = System.DateTime.Now.ToString().Replace("/", "_").Replace(":", "_");
+		ID = "[TEST " + nice_date_and_time + "]";
+
+		baseline_hr = 1;
+		baseline_so2 = 1;
+
+		incongruent_correct = 1;
+		congruent_correct = 2;
+
+		incongruent_incorrect = 3; // wrong direction
+		congruent_incorrect = 4; // wrong direction
+
+		incongruent_misses = 5; // didn't hit block
+		congruent_misses = 6; // didn't hit block
+
+		incongruent_reaction_time_acc = 7.0f; // accumulates the reaction times of every incongruent block
+		congruent_reaction_time_acc = 8.0f; // accumulates the reaction times of every congruent block
+
+		highest_level_completed = 9;
+
+		total_time = 10.0f;
+
+		final_hr = 11;
+		final_so2 = 12;
+
+		enjoyment = 3; // 1-5
+		would_u_play_this_again = true; // True = yes, False = no.
+		positive_affect = 15;
+		negative_affect = 16;
+
+		// Call the save function
+		Save();
+	}
 }
