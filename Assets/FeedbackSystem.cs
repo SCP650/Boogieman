@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FeedbackSystem : MonoBehaviour
 {
@@ -11,43 +12,45 @@ public class FeedbackSystem : MonoBehaviour
     // where to show the feedback, could be based on where beat is
     // [SerializeField] private Transform feedbackLocation;
     [SerializeField] private int displayTime;
-    [SerializeField] private GameObject goodDisplay;
-    [SerializeField] private GameObject badDisplay;
 
-    public void negativeFeedback(int toRemove, Transform spawnLocation) {
-        feedbackScore -= toRemove;
-        StartCoroutine(ShowFeedback(FeedbackType.Bad, spawnLocation));
+    //TODO: adjust this object's height to the player's height?
+    [SerializeField] private GameObject textDisplay;
+    [SerializeField] private AudioClip goodNoise;
+    [SerializeField] private AudioClip badNoise;
+
+    public void negativeFeedback(/*int toRemove*/) {
+        // feedbackScore -= toRemove;
+        StopAllCoroutines();
+        StartCoroutine(ShowFeedback(FeedbackType.Bad));
     }
 
-    public void positiveFeedback(int toAdd, Transform spawnLocation) {
-        feedbackScore += toAdd;
-        StartCoroutine(ShowFeedback(FeedbackType.Good, spawnLocation));
+    public void positiveFeedback(/*int toAdd*/) {
+        // feedbackScore += toAdd;
+        StopAllCoroutines();
+        StartCoroutine(ShowFeedback(FeedbackType.Good));
     }
 
-    IEnumerator ShowFeedback(FeedbackType b, Transform spawnLocation) {
+    IEnumerator ShowFeedback(FeedbackType b) {
+        TMP_Text t = textDisplay.GetComponent<TMP_Text>();
+
+        // Note that good and bad noises will cut each other off
+        // if accessed at the same time
         switch (b) {
             case FeedbackType.Good:
-                GameObject g = Instantiate(goodDisplay, spawnLocation);
-                yield return new WaitForSeconds(displayTime);
-                Destroy(g);
+                t.text = "GOOD";
+                t.color = Color.green;
+                GetComponent<AudioSource>().PlayOneShot(goodNoise);
                 break;
             case FeedbackType.Bad:
-                GameObject g2 = Instantiate(badDisplay, spawnLocation);
-                yield return new WaitForSeconds(displayTime);
-                Destroy(g2);
+                t.text = "BAD";
+                t.color = Color.red;
+                GetComponent<AudioSource>().PlayOneShot(badNoise);
                 break;
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        yield return new WaitForSeconds(displayTime);
+        t.text = "";
+        t.color = Color.white;
+        yield return null;
     }
 }
