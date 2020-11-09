@@ -44,14 +44,16 @@ public class saber : MonoBehaviour
             {
                 Debug.Log("Play good note here");
                 FeedbackSystem.S.positiveFeedback();
+				DataTracker.on_slice(true, true, 10.0f);
                 //do something with points/play sound?
                 //TODO: this is not working, will always land in the else statement
             }
             else
             {
                 FeedbackSystem.S.negativeFeedback();
-                //do something with points/play sound?
-                Debug.Log("Play crappy note here");
+				DataTracker.on_slice(true, false, 10.0f);
+				//do something with points/play sound?
+				Debug.Log("Play crappy note here");
             }
             Destroy(other.gameObject);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 
 public enum BoogieType { Intervention, Showcase };
+public enum ExperimentalCondition { Sedentary, Exergame, Exercise, Control }
 
 public static class DataSavingBoogie {
 	static string DataFilePath = @"ResearchData/InterventionData.csv";
@@ -39,7 +40,7 @@ public static class DataSavingBoogie {
 
 
 	// Call this to save trial data into the .csv file
-	public static void SaveData(string ID, string[] newData) {
+	public static void SaveData(string ID, ExperimentalCondition condition, string[] newData) {
 		if (CurrentBoogieType == BoogieType.Showcase) {
 			return;
 		}
@@ -48,7 +49,7 @@ public static class DataSavingBoogie {
 			ID = "(No ID entered)";
 		}
 
-		string[] newInfoArray = createInfoArray(ID);
+		string[] newInfoArray = createInfoArray(ID, condition);
 
 		// Save backup of data
 		SaveBackup(ID, newInfoArray, newData);
@@ -129,11 +130,11 @@ public static class DataSavingBoogie {
 	}
 
 	// Create the info array
-	private static string[] createInfoArray(string ID) {
+	private static string[] createInfoArray(string ID, ExperimentalCondition condition) {
 		string[] infoArray = new string[InfoHeader.Length];
 
 		infoArray[0] = ID;
-		//infoArray[1] = universalGM._group.ToString();
+		infoArray[1] = condition.ToString();
 
 		return infoArray;
 	}

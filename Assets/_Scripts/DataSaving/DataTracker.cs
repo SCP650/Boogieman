@@ -2,65 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataTracker : MonoBehaviour {
+public class DataTracker {
 
-	// Input/Tracked data
+	// Input data
 	// Note - when adding/changing these, make sure to initialize them in reset_tracked_data()
 	//   TODO - check this!
-	[HideInInspector] public string ID;
+	public static string ID;
+	public static ExperimentalCondition condition;
 
-	[HideInInspector] public int baseline_hr;
-	[HideInInspector] public int baseline_so2;
+	public static int baseline_hr;
+	public static int baseline_so2;
 
-	[HideInInspector] public int incongruent_correct;
-	[HideInInspector] public int congruent_correct;
+	public static int highest_level_completed;
 
-	[HideInInspector] public int incongruent_incorrect; // wrong direction
-	[HideInInspector] public int congruent_incorrect; // wrong direction
+	public static float total_time;
 
-	[HideInInspector] public int incongruent_misses; // didn't hit block
-	[HideInInspector] public int congruent_misses; // didn't hit block
+	public static int final_hr;
+	public static int final_so2;
 
-	[HideInInspector] public float incongruent_reaction_time_acc; // accumulates the reaction times of every incongruent block
-	[HideInInspector] public float congruent_reaction_time_acc; // accumulates the reaction times of every congruent block
+	public static int enjoyment; // 1-5
+	public static bool would_u_play_this_again; // True = yes, False = no.
+	public static int positive_affect;
+	public static int negative_affect;
 
-	[HideInInspector] public int highest_level_completed;
+	// Tracked data
+	private static int incongruent_correct;
+	private static int congruent_correct;
 
-	[HideInInspector] public float total_time;
+	private static int incongruent_incorrect; // wrong direction
+	private static int congruent_incorrect; // wrong direction
 
-	[HideInInspector] public int final_hr;
-	[HideInInspector] public int final_so2;
+	private static int incongruent_misses; // didn't hit block
+	private static int congruent_misses; // didn't hit block
 
-	[HideInInspector] public int enjoyment; // 1-5
-	[HideInInspector] public bool would_u_play_this_again; // True = yes, False = no.
-	[HideInInspector] public int positive_affect;
-	[HideInInspector] public int negative_affect;
+	private static float incongruent_reaction_time_acc; // accumulates the reaction times of every incongruent block
+	private static float congruent_reaction_time_acc; // accumulates the reaction times of every congruent block
+
 	// Note - when adding/changing these, make sure to initialize them in reset_tracked_data()
 
 
 	// Learning curve data
-	private string learningCurveDataString;
+	private static string learningCurveDataString;
 
 	// Constants
 	private const string NYI = "NOT YET IMPLEMENTED"; // TODO - Implement all uses of this
 	private const int NYI_int = -1; // TODO - implement all uses of this
 
 
-	// Start is called before the first frame update
-	void Start() {
-		reset_tracked_data();
-		// Testing. TODO - REMOVE THIS:
-		test_save();
-	}
+	// TODO - move this to a "DataTrackingTester.cs" MonoBehaviour
+	//// Start is called before the first frame update
+	//void Start() {
+	//	reset_tracked_data();
+	//	// Testing. TODO - REMOVE THIS:
+	//	test_save();
+	//}
 
 
 	// Initializes all the tracked data variables to default values.
-	public void reset_tracked_data() {
+	public static void reset_tracked_data() {
 		ID = "[MISSING]";
+		condition = ExperimentalCondition.Exergame;
 
 		baseline_hr = NYI_int;
 		baseline_so2 = NYI_int;
-
+		
 		incongruent_correct = 0;
 		congruent_correct = 0;
 
@@ -87,20 +92,59 @@ public class DataTracker : MonoBehaviour {
 	}
 
 
-	// ----- STRING UTIL -----
+	// ----- DATA INTERFACE -----
 
-	string s(float v) {
-		return v.ToString();
+	// When a block is sliced (whether it's correct or incorrect
+	public static void on_slice(bool congruent, bool correct, float reaction_time) {
+		if (congruent && correct) {
+			congruent_correct++;
+		} else if (congruent && !correct) {
+			congruent_incorrect++;
+		} else if (!congruent && correct) {
+			incongruent_correct++;
+		} else if (!congruent && !correct) {
+			incongruent_incorrect++;
+		}
+
+		if (congruent) {
+			congruent_reaction_time_acc += reaction_time;
+		} else {
+			incongruent_reaction_time_acc += reaction_time;
+		}
 	}
-	string s(int v) {
-		return v.ToString();
+
+
+	// When a block is completely missed
+	public static void on_miss(bool congruent, float reaction_time) {
+		// TODO - what is reaction_time supposed to be here...
+		if (congruent) {
+			congruent_misses++;
+			congruent_reaction_time_acc += reaction_time;
+		} else {
+			incongruent_misses++;
+			incongruent_reaction_time_acc += reaction_time;
+		}
+	}
+
+
+	// ----- INT/BOOL/STRING UTIL -----
+
+	static int i(bool b) {
+		return b ? 1 : 0;
+	}
+
+	static string s(float v, bool N_A = false) {
+		return N_A ? "n/a" : v.ToString();
+	}
+	static string s(int v, bool N_A = false) {
+		return N_A ? "n/a" : v.ToString();
 	}
 
 
 	// ----- DATA SAVING FUNCTIONS -----
 
 	// Save the data for one individual trial
-	public void SaveSingleTrial(int response) {
+	public static void SaveSingleTrial(int response) {
 		// Learning Curve Header
 		//{ TODO };
 
@@ -120,7 +164,7 @@ public class DataTracker : MonoBehaviour {
 
 
 	// Save all the data for this session
-	public void Save() {
+	public static void Save() {
 		//string[] DataHeader = {
 		//	"Trial Date",
 		//	"Baseline HR",
@@ -156,6 +200,8 @@ public class DataTracker : MonoBehaviour {
 		// Compute session data
 		string trialDate = System.DateTime.Now.ToString();
 
+		bool N_A = (condition == ExperimentalCondition.Exercise || condition == ExperimentalCondition.Control);
+
 		// incongruent and congruent
 		int incongruent_errors = incongruent_incorrect + incongruent_misses;
 		int congruent_errors =   congruent_incorrect +   congruent_misses;
@@ -163,10 +209,10 @@ public class DataTracker : MonoBehaviour {
 		int incongruent_total = incongruent_correct + incongruent_errors;
 		int congruent_total   =   congruent_correct + congruent_errors;
 
-		float incongruent_accuracy = 100.0f * incongruent_correct / incongruent_total;
+		float incongruent_accuracy = N_A ? 0.0f : 100.0f * incongruent_correct / incongruent_total;
 		float   congruent_accuracy = 100.0f *   congruent_correct /   congruent_total;
 
-		float incongruent_reaction_time = incongruent_reaction_time_acc / incongruent_total; // TODO - is this over total? Or just correct?
+		float incongruent_reaction_time = N_A ? 0.0f : incongruent_reaction_time_acc / incongruent_total; // TODO - is this over total? Or just correct?
 		float   congruent_reaction_time =   congruent_reaction_time_acc /   congruent_total; // TODO - is this over total? Or just correct?
 
 		// totals
@@ -197,16 +243,16 @@ public class DataTracker : MonoBehaviour {
 			s(total_incorrect),
 			s(total_misses),
 			s(total_errors_trials),
-			s(incongruent_reaction_time),
+			s(incongruent_reaction_time, N_A),
 			s(congruent_reaction_time),
 			s(avg_reaction_time),
-			s(incongruent_total),
+			s(incongruent_total, N_A),
 			s(congruent_total),
-			s(incongruent_errors),
+			s(incongruent_errors, N_A),
 			s(congruent_errors),
-			s(incongruent_correct),
+			s(incongruent_correct, N_A),
 			s(congruent_correct),
-			s(incongruent_accuracy),
+			s(incongruent_accuracy, N_A),
 			s(congruent_accuracy),
 			s(highest_level_completed),
 			s(total_time),
@@ -220,7 +266,7 @@ public class DataTracker : MonoBehaviour {
 			s(negative_affect)
 		};
 
-		DataSavingBoogie.SaveData(ID, info);
+		DataSavingBoogie.SaveData(ID, condition, info);
 		reset_tracked_data();
 
 		// Also save all the single trial data
@@ -231,13 +277,14 @@ public class DataTracker : MonoBehaviour {
 
 
 	// Call this to test the save function
-	private void test_save() {
+	private static void test_save() {
 		// Reset the data first
 		reset_tracked_data();
 
 		// Fill in test data
 		string nice_date_and_time = System.DateTime.Now.ToString().Replace("/", "_").Replace(":", "_");
 		ID = "[TEST " + nice_date_and_time + "]";
+		condition = ExperimentalCondition.Exergame;
 
 		baseline_hr = 1;
 		baseline_so2 = 1;

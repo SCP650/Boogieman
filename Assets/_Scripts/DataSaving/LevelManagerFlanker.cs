@@ -56,9 +56,9 @@ public class LevelManagerFlanker : MonoBehaviour {
     public GameObject jar;
 
 	//The time limit for the level
-	private float aliveTime;					 //The audio sources
+	private float aliveTime = 0.0f;					 //The audio sources
 	/*The time that Frankie spawned*/			 public AudioClip pos;
-	private float spawnTime;           			 public AudioClip neg;
+	private float spawnTime = 0.0f;           			 public AudioClip neg;
 
 	[SerializeField]
 	private Text devInfo;						 public List<Sprite> rewards;
@@ -66,7 +66,7 @@ public class LevelManagerFlanker : MonoBehaviour {
 												 private int successesPerBlock;
 
 	[SerializeField]							
-	GameObject jarAnim;							  [SerializeField]
+	GameObject jarAnim = null;							  [SerializeField]
 												  ParticleSystem particles;
 
 	public AudioClip[] music;					public bool exercise;
