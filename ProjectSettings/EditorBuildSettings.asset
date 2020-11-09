@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/old/GreyBox2.0.unity
+    path: Assets/_Scenes/old/GreyBox2.0.unity
     guid: 5051e9afea8d6434e8695496b7fb93ce
   - enabled: 1
-    path: Assets/Scenes/ColorBox4.0.unity
+    path: Assets/_Scenes/ColorBox4.0.unity
     guid: b9d5d633af4114b5eb926729a81bd710
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/_Scenes/Menu.unity
     guid: 0aea1c8b9d4994a4684bdad8823bfd92
   - enabled: 1
-    path: Assets/Scenes/ResearchBox.unity
+    path: Assets/_Scenes/ResearchBox.unity
     guid: 80e835851f4b542b987940e3bdc15469
   m_configObjects: {}
