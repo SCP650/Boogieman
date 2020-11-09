@@ -9,6 +9,10 @@ public class FeedbackSystem : MonoBehaviour
     private int feedbackScore;
     public static FeedbackSystem S;
 
+    void Awake() {
+        if (S == null) S = this;
+    }
+
     // where to show the feedback, could be based on where beat is
     // [SerializeField] private Transform feedbackLocation;
     [SerializeField] private int displayTime;
