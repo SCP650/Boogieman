@@ -42,8 +42,10 @@ public class saber : MonoBehaviour
         
             if ((rotation - toleration) <= 180 && 180 <= (rotation + toleration) && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
+                Debug.Log("Play good note here");
                 FeedbackSystem.S.positiveFeedback();
                 //do something with points/play sound?
+                //TODO: this is not working, will always land in the else statement
             }
             else
             {
