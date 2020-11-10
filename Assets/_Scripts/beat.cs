@@ -5,6 +5,7 @@ using UnityEngine;
 public class beat : MonoBehaviour
 {
 
+    public bool isStroop = false;
     //Mine stuff
     public bool isMine = false;
     public MeshRenderer mineMesh;
@@ -90,19 +91,23 @@ public class beat : MonoBehaviour
             switch (dir)
             {
                 case Dir.top:
-                    direction = 0.0f;
+                    if (isStroop) { direction = 180.0f; }
+                    else { direction = 0.0f; }
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 case Dir.bottom:
-                    direction = 180.0f;
+                    if (isStroop) { direction = 0.0f; }
+                    else { direction = 180.0f; }
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
                 case Dir.right:
-                    direction = 90.0f;
+                    if (isStroop) { direction = 270.0f; }
+                    else { direction = 90.0f; }
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
                 case Dir.left:
-                    direction = 270.0f;
+                    if (isStroop) { direction = 90.0f; }
+                    else { direction = 270.0f; }
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
             }
