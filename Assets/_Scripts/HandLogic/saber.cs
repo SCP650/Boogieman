@@ -39,7 +39,27 @@ public class saber : MonoBehaviour
         if (other.transform.gameObject.tag == "beat")
         {
             //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
-            if (((rotation + other.transform.rotation.z) >= 180 - toleration) && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
+            beat beatObject = (beat)(other.transform.gameObject.GetComponent<beat>());
+            bool validRot = rotation + other.transform.rotation.z >= (180 - toleration);
+            if (beatObject.isStroop)
+            {
+                switch(beatObject.dir)
+                {
+                    case beat.Dir.top:
+                        validRot = rotation + 0 >= (180 - toleration);
+                        break;
+                    case beat.Dir.bottom:
+                        validRot = rotation + 180 >= (180 - toleration);
+                        break;
+                    case beat.Dir.right:
+                        validRot = rotation + 90 >= (180 - toleration);
+                        break;
+                    case beat.Dir.left:
+                        validRot = rotation + 270 >= (180 - toleration);
+                        break;
+                }
+            }
+            if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
                 Debug.Log("Play good note here");
                 FeedbackSystem.S.positiveFeedback();
