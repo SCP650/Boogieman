@@ -39,7 +39,7 @@ public class saber : MonoBehaviour
         if (other.transform.gameObject.tag == "beat")
         {
             //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
-            beat beatObject = (beat)(other.transform.gameObject.GetComponent<beat>());
+            beat beatObject = other.transform.gameObject.GetComponent<beat>();
             bool validRot = rotation + other.transform.rotation.z >= (180 - toleration);
             if (beatObject.isStroop)
             {
