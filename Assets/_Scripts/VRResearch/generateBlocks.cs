@@ -71,8 +71,9 @@ public class generateBlocks : MonoBehaviour
             obstacles[i]._duration /= bps;
 
         }
-      
 
+		// Reset data tracker before the song starts
+		DataTracker.reset_tracked_data();
 
         StartCoroutine(Generate(blocks));
         StartCoroutine(generateObstacles(obstacles));
@@ -156,8 +157,11 @@ public class generateBlocks : MonoBehaviour
 
             gb.transform.position = getPosition(B._lineIndex, B._lineLayer);
 
-        }
-    }
+		}
+		// After all the blocks have spawned, save the data.
+		// TODO - have to wait until all the blocks are actually gone too (sliced or missed)
+		DataTracker.Save();
+	}
 
     private beat.Dir getDirection(int i)
     {

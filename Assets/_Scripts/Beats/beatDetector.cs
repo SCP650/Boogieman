@@ -20,8 +20,7 @@ public class beatDetector : MonoBehaviour
     {
         if (other.transform.gameObject.tag == "beat")
         {
-            //Dom's stuff goes here!
-            Destroy(other.gameObject);
+			Destroy(other.gameObject);
         }
     }
 }
