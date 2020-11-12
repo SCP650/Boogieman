@@ -214,7 +214,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &318705010
+--- !u!43 &289080607
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -568,40 +568,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!21 &655963992
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &666906851
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,12 +795,47 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 655963992}
+      objectReference: {fileID: 1482315034}
     - target: {fileID: 3260171796379952011, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 318705010}
+      objectReference: {fileID: 289080607}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: audioClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d65352a4e84584d1e8ed0979081257c0, type: 3}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 11b24b582da2d4d9bb60561612dd4657, type: 3}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: audioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5444a293e028e4d1cb8f142ad79f1cc3, type: 3}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: audioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c04307a8189447e9b3552fc663adedb, type: 3}
+    - target: {fileID: 4796869156996597031, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+        type: 3}
+      propertyPath: audioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 03cc13a5d9d7e44e5b0b8af4a7a545f1, type: 3}
     - target: {fileID: 4796869156996597049, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -1262,6 +1263,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1482315034
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1521531747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1507,6 +1542,19 @@ MonoBehaviour:
   oneBomb: {fileID: 722488632473050866, guid: f718e7779a575344bb32ef4c30697ce7, type: 3}
   bufferTime: 2.5
   DistanceBetweenBlocks: 0.5
+  musicPlayer: {fileID: 1697511238}
+  songBlockArray:
+  - Assets/Resources/JBS_Normal.json
+  - Assets/Resources/halsey_Normal.json
+  - Assets/Resources/LITR_easy.json
+  - Assets/Resources/bubble_tea_Normal.json
+  - Assets/Resources/HTN_easy.json
+  songInfoArray:
+  - Assets/Resources/JBS_info.json
+  - Assets/Resources/halsey_info.json
+  - Assets/Resources/LITR_info.json
+  - Assets/Resources/bubble_tea_info.json
+  - Assets/Resources/HTN_info.json
 --- !u!23 &1682279533
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1568,3 +1616,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1697511238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4796869156996597050, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
+    type: 3}
+  m_PrefabInstance: {fileID: 685102933}
+  m_PrefabAsset: {fileID: 0}
