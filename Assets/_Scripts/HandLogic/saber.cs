@@ -63,7 +63,7 @@ public class saber : MonoBehaviour
             {
                 Debug.Log("Play good note here");
                 FeedbackSystem.S.positiveFeedback();
-                DataTracker.on_slice(true, true, 10.0f);
+                DataTracker.on_slice(true, true, 10.0f); // TODO - set congruent and reaction time here
                 //do something with points/play sound?
                 //should be working now
 
@@ -71,7 +71,7 @@ public class saber : MonoBehaviour
             else
             {
                 FeedbackSystem.S.negativeFeedback();
-				DataTracker.on_slice(true, false, 10.0f);
+				DataTracker.on_slice(true, false, 10.0f); // TODO - set congruent and reaction time here
 				//do something with points/play sound?
 				Debug.Log("Play crappy note here");
             }
