@@ -6,7 +6,7 @@ using System.IO;
 
 public class generateBlocks : MonoBehaviour
 {
-
+    
     [SerializeField] GameObject oneBlock;
 
     [SerializeField] GameObject ObsticlePreFab;
@@ -28,6 +28,8 @@ public class generateBlocks : MonoBehaviour
 
 
     public GameObject musicPlayer;
+
+    public bool isStroop = false;
 
     [SerializeField]
     List<string> songBlockArray;
@@ -150,6 +152,7 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.red;
                 b.dir = getDirection(B._cutDirection);
+                b.isStroop = isStroop;
 
 
             }
@@ -165,6 +168,7 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.blue;
                 b.dir = getDirection(B._cutDirection);
+                b.isStroop = isStroop;
 
             }
 
