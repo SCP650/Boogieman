@@ -6,6 +6,7 @@ using TMPro;
 public class FeedbackSystem : MonoBehaviour
 {
     private enum FeedbackType {Good, Bad};
+    public enum SaberSide { Left, Right, DoesntMatter };
     private int feedbackScore;
     public static FeedbackSystem S;
 
@@ -19,22 +20,25 @@ public class FeedbackSystem : MonoBehaviour
 
     //TODO: adjust this object's height to the player's height?
     [SerializeField] private GameObject textDisplay;
-    [SerializeField] private AudioClip goodNoise;
-    [SerializeField] private AudioClip badNoise;
+    [SerializeField] private AudioClip[] goodNoisesLeft;
+    [SerializeField] private AudioClip[] goodNoisesRight;
+
+    [SerializeField] private AudioClip[] badNoises;
+
 
     public void negativeFeedback(/*int toRemove*/) {
         // feedbackScore -= toRemove;
         StopAllCoroutines();
-        StartCoroutine(ShowFeedback(FeedbackType.Bad));
+        StartCoroutine(ShowFeedback(FeedbackType.Bad, SaberSide.DoesntMatter));
     }
 
-    public void positiveFeedback(/*int toAdd*/) {
+    public void positiveFeedback(SaberSide saberSide) {
         // feedbackScore += toAdd;
         StopAllCoroutines();
-        StartCoroutine(ShowFeedback(FeedbackType.Good));
+        StartCoroutine(ShowFeedback(FeedbackType.Good,saberSide));
     }
 
-    IEnumerator ShowFeedback(FeedbackType b) {
+    IEnumerator ShowFeedback(FeedbackType b, SaberSide saberSide) {
         TMP_Text t = textDisplay.GetComponent<TMP_Text>();
 
         // Note that good and bad noises will cut each other off
@@ -43,12 +47,22 @@ public class FeedbackSystem : MonoBehaviour
             case FeedbackType.Good:
                 t.text = "GOOD";
                 t.color = Color.green;
-                GetComponent<AudioSource>().PlayOneShot(goodNoise);
+                switch(saberSide)
+                {
+                    case SaberSide.Left:
+                        GetComponent<AudioSource>().PlayOneShot(goodNoisesLeft[Random.Range(0, goodNoisesLeft.Length)]);
+                        break;
+                    case SaberSide.Right:
+                        GetComponent<AudioSource>().PlayOneShot(goodNoisesRight[Random.Range(0, goodNoisesRight.Length)]);
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case FeedbackType.Bad:
                 t.text = "BAD";
                 t.color = Color.red;
-                GetComponent<AudioSource>().PlayOneShot(badNoise);
+                GetComponent<AudioSource>().PlayOneShot(badNoises[Random.Range(0, badNoises.Length)]);
                 break;
         }
 
