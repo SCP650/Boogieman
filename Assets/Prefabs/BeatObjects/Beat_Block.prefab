@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 722488632473050867}
   - component: {fileID: 1356782753292280165}
   - component: {fileID: 514808653784966984}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Beat_Block
   m_TagString: beat
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722488632473050866}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000004371139}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -63,13 +63,15 @@ MonoBehaviour:
   isMine: 0
   mineMesh: {fileID: 8893084351021395940}
   color: 0
-  dir: 3
+  dir: 1
   Omnidirectional: 0
   pointVal: 4
   RedMaterial: {fileID: 2100000, guid: 46ad84512ca171645bc04dfcb9335139, type: 2}
   RedOmniMaterial: {fileID: 2100000, guid: ef5e8859369d4b145ad721605ced0797, type: 2}
+  RedMaterialStoop: {fileID: 2100000, guid: 96ca0d807880a854ba38e2eaafbe65f7, type: 2}
   BlueMaterial: {fileID: 2100000, guid: 3b42968945112904e85a4202568a4c2a, type: 2}
   BlueOmniMaterial: {fileID: 2100000, guid: a8d243afd12b34748ab7ee8063c7d490, type: 2}
+  BlueMaterialStoop: {fileID: 2100000, guid: 3b42968945112904e85a4202568a4c2a, type: 2}
   leftSide: {fileID: 2329352502412289427}
   rightSide: {fileID: 2809384984818704773}
 --- !u!114 &514808653784966984
@@ -151,11 +153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 93ce08e89bcd4e24280ad83bc400ae81, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b42968945112904e85a4202568a4c2a, type: 2}
     - target: {fileID: -4780072770720950627, guid: 2f7734abf0701e444bd9019c422ca035,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f7734abf0701e444bd9019c422ca035,
         type: 3}
@@ -166,7 +168,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 93ce08e89bcd4e24280ad83bc400ae81, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b42968945112904e85a4202568a4c2a, type: 2}
     - target: {fileID: 4253280567622488715, guid: 2f7734abf0701e444bd9019c422ca035,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -176,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 4253280567622488715, guid: 2f7734abf0701e444bd9019c422ca035,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f7734abf0701e444bd9019c422ca035, type: 3}
@@ -263,7 +265,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 50864c86825af6d4e9aa1a423ad4225a,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 50864c86825af6d4e9aa1a423ad4225a,
         type: 3}

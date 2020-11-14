@@ -29,8 +29,11 @@ public class beat : MonoBehaviour
     //Materials variables
     public Material RedMaterial;
     public Material RedOmniMaterial;
+    public Material RedMaterialStoop;
     public Material BlueMaterial;
+
     public Material BlueOmniMaterial;
+    public Material BlueMaterialStoop;
     //Mesh Variables
     public MeshRenderer leftSide;
     public MeshRenderer rightSide;
@@ -63,12 +66,18 @@ public class beat : MonoBehaviour
         rightSide.GetComponent<Renderer>().enabled = true;
         switch (color)
         {
-            case Color.blue:
+            case Color.blue: //TODO make this a function
                 gameObject.layer = blueLayer;
                 if (Omnidirectional)
                 {
                     leftSide.material = BlueOmniMaterial;
                     rightSide.material = BlueOmniMaterial;
+                    break;
+                }
+                if (isStroop)
+                {
+                    leftSide.material = BlueMaterialStoop;
+                    rightSide.material = BlueMaterialStoop;
                     break;
                 }
                 rightSide.material = BlueMaterial;
@@ -80,6 +89,12 @@ public class beat : MonoBehaviour
                 {
                     leftSide.material = RedOmniMaterial;
                     rightSide.material = RedOmniMaterial;
+                    break;
+                }
+                if (isStroop)
+                {
+                    leftSide.material = RedMaterialStoop;
+                    rightSide.material = RedMaterialStoop;
                     break;
                 }
                 leftSide.material = RedMaterial;
