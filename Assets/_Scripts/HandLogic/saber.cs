@@ -62,7 +62,7 @@ public class saber : MonoBehaviour
             if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
                 Debug.Log("Play good note here");
-                //FeedbackSystem.S.positiveFeedback();
+                FeedbackSystem.S.positiveFeedback();
                 DataTracker.on_slice(true, true, 10.0f); // TODO - set congruent and reaction time here
                 //do something with points/play sound?
                 //should be working now
@@ -70,7 +70,7 @@ public class saber : MonoBehaviour
             }
             else
             {
-                //FeedbackSystem.S.negativeFeedback();
+                FeedbackSystem.S.negativeFeedback();
 				DataTracker.on_slice(true, false, 10.0f); // TODO - set congruent and reaction time here
 				//do something with points/play sound?
 				Debug.Log("Play crappy note here");
