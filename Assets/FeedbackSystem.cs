@@ -9,7 +9,8 @@ public class FeedbackSystem : MonoBehaviour
     public enum SaberSide { Left, Right, DoesntMatter };
     private int feedbackScore;
     public static FeedbackSystem S;
-
+    public AudioSource audioleft;
+    public AudioSource audioright;
     void Awake() {
         if (S == null) S = this;
     }
@@ -24,7 +25,6 @@ public class FeedbackSystem : MonoBehaviour
     [SerializeField] private AudioClip[] goodNoisesRight;
 
     [SerializeField] private AudioClip[] badNoises;
-
 
     public void negativeFeedback(/*int toRemove*/) {
         // feedbackScore -= toRemove;
@@ -50,10 +50,10 @@ public class FeedbackSystem : MonoBehaviour
                 switch(saberSide)
                 {
                     case SaberSide.Left:
-                        GetComponent<AudioSource>().PlayOneShot(goodNoisesLeft[Random.Range(0, goodNoisesLeft.Length)]);
+                        audioleft.PlayOneShot(goodNoisesLeft[Random.Range(0, goodNoisesLeft.Length)]);
                         break;
                     case SaberSide.Right:
-                        GetComponent<AudioSource>().PlayOneShot(goodNoisesRight[Random.Range(0, goodNoisesRight.Length)]);
+                        audioright.PlayOneShot(goodNoisesRight[Random.Range(0, goodNoisesRight.Length)]);
                         break;
                     default:
                         break;
@@ -62,7 +62,7 @@ public class FeedbackSystem : MonoBehaviour
             case FeedbackType.Bad:
                 t.text = "BAD";
                 t.color = Color.red;
-                GetComponent<AudioSource>().PlayOneShot(badNoises[Random.Range(0, badNoises.Length)]);
+                audioright.PlayOneShot(badNoises[Random.Range(0, badNoises.Length)]);
                 break;
         }
 
