@@ -41,7 +41,8 @@ public class saber : MonoBehaviour
             //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
             beat beatObject = other.transform.gameObject.GetComponent<beat>();
             bool validRot = rotation + other.transform.rotation.z >= (180 - toleration);
-            if (beatObject.isStroop)
+            
+        /*    if (beatObject.isStroop)
             {
                 switch(beatObject.dir)
                 {
@@ -58,24 +59,48 @@ public class saber : MonoBehaviour
                         validRot = rotation + 270 >= (180 - toleration);
                         break;
                 }
-            }
+            }*/
+            
             if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
                 Debug.Log("Play good note here");
-                if (layer == 9)
+                if (beatObject.isStroop)//will be replace by manager.isStroop
                 {
-                    FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
+                    FeedbackSystem.S.negativeFeedback();
                 }
                 else
                 {
-                    FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
+                    if (layer == 9)
+                    {
+                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
+                    }
+                    else
+                    {
+                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
+                    }
                 }
+               
                 DataTracker.on_slice(true, true, 10.0f); // TODO - set congruent and reaction time here
 
             }
             else
             {
-                FeedbackSystem.S.negativeFeedback();
+                if (beatObject.isStroop)//will be replace by manager.isStroop
+                {
+                    if (layer == 9)
+                    {
+                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
+                    }
+                    else
+                    {
+                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
+                    }
+                }
+                else
+                {
+                    FeedbackSystem.S.negativeFeedback();
+                }
+                
 				DataTracker.on_slice(true, false, 10.0f); // TODO - set congruent and reaction time here
 				//do something with points/play sound?
 				Debug.Log("Play crappy note here");
@@ -89,4 +114,5 @@ public class saber : MonoBehaviour
         }
         
     }
+     
 }

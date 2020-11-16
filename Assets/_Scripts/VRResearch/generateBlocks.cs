@@ -70,8 +70,6 @@ public class generateBlocks : MonoBehaviour
 
         for (int i = 1; i < blocks.Count; i++)
         {
-
-
             BlockTimeDiff.Add((blocks[i]._time - blocks[i - 1]._time) / bps);
         }
 
@@ -83,7 +81,6 @@ public class generateBlocks : MonoBehaviour
         {
             ObsticleTimeDiff.Add((obstacles[i]._time - obstacles[i - 1]._time) / bps);
             obstacles[i]._duration /= bps;
-
         }
 
         // Reset data tracker before the song starts
@@ -183,20 +180,39 @@ public class generateBlocks : MonoBehaviour
 
     private beat.Dir getDirection(int i)
     {
-        switch (i)
+        if (isStroop)
         {
-            case 0:
-                return beat.Dir.top;
+            switch (i)
+            {
+                case 0:
+                    return beat.Dir.bottom;
+                case 1:
+                    return beat.Dir.top;
+                case 2:
+                    return beat.Dir.right;
 
-            case 1:
-                return beat.Dir.bottom;
-            case 2:
-                return beat.Dir.left;
+                default:
+                    return beat.Dir.left;
 
-            default:
-                return beat.Dir.right;
-
+            }
         }
+        else
+        {
+            switch (i)
+            {
+                case 0:
+                    return beat.Dir.top;
+                case 1:
+                    return beat.Dir.bottom;
+                case 2:
+                    return beat.Dir.left;
+
+                default:
+                    return beat.Dir.right;
+
+            }
+        }
+
 
     }
 

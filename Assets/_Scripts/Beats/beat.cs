@@ -5,7 +5,7 @@ using UnityEngine;
 public class beat : MonoBehaviour
 {
 
-    public bool isStroop = false;
+    public bool isStroop = false; //will be replaced with adrian's manager
     //Mine stuff
     public bool isMine = false;
     public MeshRenderer mineMesh;
@@ -74,12 +74,12 @@ public class beat : MonoBehaviour
                     rightSide.material = BlueOmniMaterial;
                     break;
                 }
-                if (isStroop)
+              /*  if (isStroop)
                 {
                     leftSide.material = BlueMaterialStoop;
                     rightSide.material = BlueMaterialStoop;
                     break;
-                }
+                }*/
                 rightSide.material = BlueMaterial;
                 leftSide.material = BlueMaterial;
                 break;
@@ -91,12 +91,12 @@ public class beat : MonoBehaviour
                     rightSide.material = RedOmniMaterial;
                     break;
                 }
-                if (isStroop)
+           /*     if (isStroop)
                 {
                     leftSide.material = RedMaterialStoop;
                     rightSide.material = RedMaterialStoop;
                     break;
-                }
+                }*/
                 leftSide.material = RedMaterial;
                 rightSide.material = RedMaterial;
                 break;
@@ -106,23 +106,27 @@ public class beat : MonoBehaviour
             switch (dir)
             {
                 case Dir.top:
-                    if (isStroop) { direction = 180.0f; }
-                    else { direction = 0.0f; }
+                    /*   if (isStroop) { direction = 180.0f; }
+                       else { direction = 0.0f; }*/
+                    direction = 0.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
                     break;
                 case Dir.bottom:
-                    if (isStroop) { direction = 0.0f; }
-                    else { direction = 180.0f; }
+                    /*  if (isStroop) { direction = 0.0f; }
+                      else { direction = 180.0f; }*/
+                    direction = 180.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
                 case Dir.right:
-                    if (isStroop) { direction = 270.0f; }
-                    else { direction = 90.0f; }
+                    /*if (isStroop) { direction = 270.0f; }
+                    else { direction = 90.0f; }*/
+                    direction = 90.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
                 case Dir.left:
-                    if (isStroop) { direction = 90.0f; }
-                    else { direction = 270.0f; }
+                    /* if (isStroop) { direction = 90.0f; }
+                     else { direction = 270.0f; }*/
+                    direction = 270.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
             }
