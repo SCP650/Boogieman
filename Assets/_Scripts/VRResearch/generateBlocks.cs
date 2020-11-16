@@ -29,7 +29,8 @@ public class generateBlocks : MonoBehaviour
 
     public GameObject musicPlayer;
 
-    public bool isStroop = false;
+    public bool isStroop = false; // Interface with Adrian
+    public bool isSeating = false; //Interface with Adrian 
 
     [SerializeField]
     List<string> songBlockArray;
