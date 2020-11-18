@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3276783321670802705}
   - component: {fileID: 3180018441496931711}
   - component: {fileID: 4796869156771334078}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ Camera:
   m_GameObject: {fileID: 3260035999944245589}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3260171796376766633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b5c32af89b2eb4fb9c0c6bc711f658, type: 3}
   m_Name: 
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3260171796376766633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c1e30e12cf29cd4cba6779f919a8dcd, type: 3}
   m_Name: 
@@ -691,8 +691,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e574f151c3677e54fb02ebe837aaa420, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: d65352a4e84584d1e8ed0979081257c0, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 0.31
   m_Pitch: 1
   Loop: 0
@@ -790,6 +790,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 4796869156996597049}
+  index: 0
+  audioClips:
+  - {fileID: 8300000, guid: d65352a4e84584d1e8ed0979081257c0, type: 3}
+  - {fileID: 8300000, guid: 11b24b582da2d4d9bb60561612dd4657, type: 3}
+  - {fileID: 8300000, guid: 5444a293e028e4d1cb8f142ad79f1cc3, type: 3}
+  - {fileID: 8300000, guid: 7c04307a8189447e9b3552fc663adedb, type: 3}
+  - {fileID: 8300000, guid: 03cc13a5d9d7e44e5b0b8af4a7a545f1, type: 3}
 --- !u!1 &4796869157511374264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1212,16 @@ PrefabInstance:
       propertyPath: layer.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 4021414090646331177, guid: 6bd57c7b920ac6e4e9f668d03d76fa71,
+        type: 3}
+      propertyPath: layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021414090646331177, guid: 6bd57c7b920ac6e4e9f668d03d76fa71,
+        type: 3}
+      propertyPath: OwningController
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4625027145810082209, guid: 6bd57c7b920ac6e4e9f668d03d76fa71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1274,7 +1291,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dfb1c83284836e7478b2ac4178f91a65, type: 2}
+      objectReference: {fileID: 2100000, guid: 46ad84512ca171645bc04dfcb9335139, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd57c7b920ac6e4e9f668d03d76fa71, type: 3}
 --- !u!4 &197739170880751885 stripped
@@ -1309,6 +1326,16 @@ PrefabInstance:
         type: 3}
       propertyPath: isRightHand
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021414090646331177, guid: 6bd57c7b920ac6e4e9f668d03d76fa71,
+        type: 3}
+      propertyPath: layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021414090646331177, guid: 6bd57c7b920ac6e4e9f668d03d76fa71,
+        type: 3}
+      propertyPath: OwningController
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4625027145810082209, guid: 6bd57c7b920ac6e4e9f668d03d76fa71,
         type: 3}
@@ -1384,7 +1411,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 64238db80366b4b409824575306fed3d, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b42968945112904e85a4202568a4c2a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd57c7b920ac6e4e9f668d03d76fa71, type: 3}
 --- !u!4 &197739169371970536 stripped
