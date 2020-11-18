@@ -10,6 +10,7 @@ public class saber : MonoBehaviour
     private int toleration = 40;
     public float maxAngle = 95;
     public Rigidbody rb;
+    public OVRInput.Controller OwningController;
 
 
     void Start()

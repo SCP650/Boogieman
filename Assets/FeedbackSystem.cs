@@ -25,10 +25,30 @@ public class FeedbackSystem : MonoBehaviour
     [SerializeField] private AudioClip[] goodNoisesRight;
 
     [SerializeField] private AudioClip[] badNoises;
+    private AudioClip Noise;
 
-    public void negativeFeedback(/*int toRemove*/) {
-        // feedbackScore -= toRemove;
+    public void TriggerVibration(AudioClip vibrationAudio, int controller)
+    {
+        if (vibrationAudio != null)
+        {
+            OVRHapticsClip clip = new OVRHapticsClip(vibrationAudio); //we crash here
+
+            if(controller == 0)
+            {
+                Debug.Log("dies on left controller");
+                OVRHaptics.LeftChannel.Preempt(clip);
+            }
+            else if (controller == 1)
+            {
+                Debug.Log("dies on right controller");
+                OVRHaptics.RightChannel.Preempt(clip);
+            }
+        }
+    }
+
+    public void negativeFeedback() {
         StopAllCoroutines();
+        
         StartCoroutine(ShowFeedback(FeedbackType.Bad, SaberSide.DoesntMatter));
     }
 
@@ -37,7 +57,7 @@ public class FeedbackSystem : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(ShowFeedback(FeedbackType.Good,saberSide));
     }
-
+    
     IEnumerator ShowFeedback(FeedbackType b, SaberSide saberSide) {
         TMP_Text t = textDisplay.GetComponent<TMP_Text>();
 
@@ -47,13 +67,17 @@ public class FeedbackSystem : MonoBehaviour
             case FeedbackType.Good:
                 t.text = "GOOD";
                 t.color = Color.green;
-                switch(saberSide)
+                switch (saberSide)
                 {
                     case SaberSide.Left:
-                        audioleft.PlayOneShot(goodNoisesLeft[Random.Range(0, goodNoisesLeft.Length)]);
+                        Noise = goodNoisesLeft[Random.Range(0, goodNoisesLeft.Length)];
+                        audioleft.PlayOneShot(Noise);
+                        //TriggerVibration(Noise, 0);
                         break;
                     case SaberSide.Right:
-                        audioright.PlayOneShot(goodNoisesRight[Random.Range(0, goodNoisesRight.Length)]);
+                        Noise = goodNoisesRight[Random.Range(0, goodNoisesRight.Length)];
+                        audioright.PlayOneShot(Noise);
+                        //TriggerVibration(Noise,1);
                         break;
                     default:
                         break;
