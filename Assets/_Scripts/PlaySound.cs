@@ -19,10 +19,4 @@ public class PlaySound : MonoBehaviour
         audio.clip = audioClips[index];
         audio.Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
