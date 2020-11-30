@@ -116,7 +116,7 @@ public class DataTracker {
 
 	// When a block is completely missed
 	public static void on_miss(bool congruent, float reaction_time) {
-		// TODO - what is reaction_time supposed to be here...
+		// TODO - should we actually accumulate reaction time for misses too?
 		if (congruent) {
 			congruent_misses++;
 			congruent_reaction_time_acc += reaction_time;
@@ -144,7 +144,7 @@ public class DataTracker {
 	// ----- DATA SAVING FUNCTIONS -----
 
 	// Save the data for one individual trial
-	public static void SaveSingleTrial(int response) {
+	public static void SaveSingleEvent(int response) {
 		// Learning Curve Header
 		//{ TODO };
 
@@ -160,6 +160,28 @@ public class DataTracker {
 		};
 
 		learningCurveDataString += "\n" + string.Join(",", data);
+	}
+
+
+	// Save the data for a whole song
+	public static void SaveSongData(int response) {
+		// TODO
+
+		// Learning Curve Header
+		//{ TODO };
+
+		// TODO - compute trial data here
+
+		// Assemble the data array here.
+		// Use trial number macro, so that DataSavingBoogie.cs can enumerate each day properly.
+		string[] data = {
+			/* trial.ToString(), */
+			DataSavingBoogie.learningCurveTrialMacro,
+			DataSavingBoogie.learningCurveDayMacro,
+			/* TODO */
+		};
+
+		//learningCurveDataString += "\n" + string.Join(",", data);
 	}
 
 
@@ -277,7 +299,7 @@ public class DataTracker {
 
 
 	// Call this to test the save function
-	private static void test_save() {
+	public static void test_save() {
 		// Reset the data first
 		reset_tracked_data();
 

@@ -48,6 +48,7 @@ public class saber : MonoBehaviour
                 {
                     FeedbackSystem.S.negativeFeedback();
                     Messenger.Broadcast("Badhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
                 }
                 else
                 {
@@ -60,8 +61,11 @@ public class saber : MonoBehaviour
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
                     }
                     Messenger.Broadcast("Goodhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
                 }
-                DataTracker.on_slice(true, true, 10.0f); // TODO - set congruent and reaction time here
+               
+                DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
+
             }
             else
             {
@@ -76,15 +80,15 @@ public class saber : MonoBehaviour
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
                     }
                     Messenger.Broadcast("Goodhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
                 }
                 else
                 {
                     FeedbackSystem.S.negativeFeedback();
                     Messenger.Broadcast("Badhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
                 }
                 
-				DataTracker.on_slice(true, false, 10.0f); // TODO - set congruent and reaction time here
-
             }
             Destroy(other.gameObject);
 
@@ -92,6 +96,7 @@ public class saber : MonoBehaviour
         else if (other.transform.gameObject.tag == "bomb") {
             Messenger.Broadcast("Badhit");
             FeedbackSystem.S.negativeFeedback();
+            // TODO - DataTracker save bomb hit
             Destroy(other.gameObject);
         }
         

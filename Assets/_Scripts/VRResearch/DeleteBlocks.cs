@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class DeleteBlocks : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
-    {
-		DataTracker.on_miss(true, 10.0f); // TODO - set congruent and reaction time here
-		Destroy(other.gameObject);
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.gameObject.tag == "beat") {
+            beat beatObject = other.transform.gameObject.GetComponent<beat>();
+            if (!beatObject) Debug.LogError("No beat component attached to gameObject with tag beat");
+            DataTracker.on_miss(!ExpManager.instance.stroopCondition, beatObject.time_since_creation());
+            Destroy(other.gameObject);
+        } else if (other.transform.gameObject.tag == "bomb") {
+            Destroy(other.gameObject);
+        }
     }
 }
