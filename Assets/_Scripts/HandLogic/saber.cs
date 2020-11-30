@@ -12,7 +12,7 @@ public class saber : MonoBehaviour
     public Rigidbody rb;
     public OVRInput.Controller OwningController;
 
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,22 +20,20 @@ public class saber : MonoBehaviour
         {
             Debug.Log("moan");
         }
+        Messenger.Broadcast("Goodhit");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       //rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
         previousPos = transform.position;
     }
 
     //When the Primitive collides with the walls, it will reverse direction
     private void OnTriggerEnter(Collider other)
-    //void OnCollisionEnter(Collision collision)
     {
         rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
-
-
         if (other.transform.gameObject.tag == "beat")
         {
             //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
@@ -45,10 +43,12 @@ public class saber : MonoBehaviour
             
             if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
-                Debug.Log("Play good note here");
-                if (beatObject.isStroop)//will be replace by manager.isStroop
+                //Debug.Log("Play good note here");
+                if (ExpManager.instance.stroopCondition) 
                 {
                     FeedbackSystem.S.negativeFeedback();
+                    Messenger.Broadcast("Badhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
                 }
                 else
                 {
@@ -60,14 +60,16 @@ public class saber : MonoBehaviour
                     {
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
                     }
+                    Messenger.Broadcast("Goodhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
                 }
                
-                DataTracker.on_slice(!beatObject.isStroop, true, beatObject.time_since_creation());
+                DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
 
             }
             else
             {
-                if (beatObject.isStroop)//will be replace by manager.isStroop
+                if (ExpManager.instance.stroopCondition) 
                 {
                     if (layer == 9)
                     {
@@ -77,21 +79,24 @@ public class saber : MonoBehaviour
                     {
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
                     }
+                    Messenger.Broadcast("Goodhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
                 }
                 else
                 {
                     FeedbackSystem.S.negativeFeedback();
+                    Messenger.Broadcast("Badhit");
+                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
                 }
                 
-				DataTracker.on_slice(!beatObject.isStroop, false, beatObject.time_since_creation());
-				//do something with points/play sound?
-				Debug.Log("Play crappy note here");
             }
             Destroy(other.gameObject);
 
         }
         else if (other.transform.gameObject.tag == "bomb") {
-            //do something with points/play sound?
+            Messenger.Broadcast("Badhit");
+            FeedbackSystem.S.negativeFeedback();
+            // TODO - DataTracker save bomb hit
             Destroy(other.gameObject);
         }
         

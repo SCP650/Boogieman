@@ -8,7 +8,7 @@ public class DeleteBlocks : MonoBehaviour
         if (other.transform.gameObject.tag == "beat") {
             beat beatObject = other.transform.gameObject.GetComponent<beat>();
             if (!beatObject) Debug.LogError("No beat component attached to gameObject with tag beat");
-            DataTracker.on_miss(!beatObject.isStroop, beatObject.time_since_creation());
+            DataTracker.on_miss(!ExpManager.instance.stroopCondition, beatObject.time_since_creation());
             Destroy(other.gameObject);
         } else if (other.transform.gameObject.tag == "bomb") {
             Destroy(other.gameObject);

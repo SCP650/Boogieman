@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExpManager : MonoBehaviour
 {
+    
     public enum songSelector
     {
         song1,
@@ -15,12 +16,24 @@ public class ExpManager : MonoBehaviour
 
     public static ExpManager instance;
     public PlaySound songPlayer;
-    public generateBlocks grid;
+    //public generateBlocks grid;
 
     public bool stroopCondition;
     public bool seatedCondition;
     public songSelector songChoice;
+    public int CurrCombo = 0;
 
+
+    public void GoodHit()
+    {
+        Debug.Log("hit!");
+        CurrCombo++;
+    }
+
+    public void BadHit()
+    {
+        CurrCombo = 0;
+    }
     private void Start()
     {
         LoadVars();
@@ -31,12 +44,21 @@ public class ExpManager : MonoBehaviour
         if (instance != null)
         {
             Destroy(gameObject);
+            return;
         }
         else
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        Messenger.AddListener("Goodhit", GoodHit);
+        Messenger.AddListener("Badhit", BadHit);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener("Goodhit", GoodHit);
+        Messenger.RemoveListener("Badhit", BadHit);
     }
 
     void LoadVars()
@@ -52,13 +74,7 @@ public class ExpManager : MonoBehaviour
         else if (songChoice == songSelector.song5)
             songPlayer.index = 4;
 
-        if (stroopCondition)
-            grid.isStroop = true;
-        else grid.isStroop = false;
 
-        if (seatedCondition)
-            grid.isSeating = true;
-        else grid.isSeating = false;
     }
 
 
