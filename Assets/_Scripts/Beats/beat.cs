@@ -38,10 +38,16 @@ public class beat : MonoBehaviour
     public MeshRenderer leftSide;
     public MeshRenderer rightSide;
 
-
     private bool materialSet = false;
 
-    void Start()
+    private float time_created;
+
+
+	private void Awake() {
+        time_created = Time.time;
+	}
+
+	void Start()
     {
 
         if (!materialSet) //If block was set beforehand, we don't need to set it again during runtime
@@ -134,4 +140,10 @@ public class beat : MonoBehaviour
         }
         
     }
+
+    
+    // Returns the amount of time that has passed since the block was created
+    public float time_since_creation() {
+        return Time.time - time_created;
+	}
 }

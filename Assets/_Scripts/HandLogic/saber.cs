@@ -62,7 +62,7 @@ public class saber : MonoBehaviour
                     }
                 }
                
-                DataTracker.on_slice(true, true, 10.0f); // TODO - set congruent and reaction time here
+                DataTracker.on_slice(!beatObject.isStroop, true, beatObject.time_since_creation());
 
             }
             else
@@ -83,7 +83,7 @@ public class saber : MonoBehaviour
                     FeedbackSystem.S.negativeFeedback();
                 }
                 
-				DataTracker.on_slice(true, false, 10.0f); // TODO - set congruent and reaction time here
+				DataTracker.on_slice(!beatObject.isStroop, false, beatObject.time_since_creation());
 				//do something with points/play sound?
 				Debug.Log("Play crappy note here");
             }
