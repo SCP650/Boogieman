@@ -93,6 +93,10 @@ public class generateBlocks : MonoBehaviour
 
     private IEnumerator generateObstacles(List<Obstacle> obsticles)
     {
+        // Don't generate obstacle if sitting condition
+        if (isSeating) {
+            yield break;
+        }
 
         for (int i = 0; i < obsticles.Count; i++)
         {
