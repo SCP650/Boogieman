@@ -20,7 +20,6 @@ public class saber : MonoBehaviour
         {
             Debug.Log("moan");
         }
-        Messenger.Broadcast("Goodhit");
 
     }
 
