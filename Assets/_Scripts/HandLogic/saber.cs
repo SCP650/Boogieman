@@ -12,7 +12,7 @@ public class saber : MonoBehaviour
     public Rigidbody rb;
     public OVRInput.Controller OwningController;
 
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,22 +20,20 @@ public class saber : MonoBehaviour
         {
             Debug.Log("moan");
         }
+        Messenger.Broadcast("Goodhit");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       //rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
         previousPos = transform.position;
     }
 
     //When the Primitive collides with the walls, it will reverse direction
     private void OnTriggerEnter(Collider other)
-    //void OnCollisionEnter(Collision collision)
     {
         rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
-
-
         if (other.transform.gameObject.tag == "beat")
         {
             //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
@@ -45,10 +43,11 @@ public class saber : MonoBehaviour
             
             if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
-                Debug.Log("Play good note here");
+                //Debug.Log("Play good note here");
                 if (beatObject.isStroop)//will be replace by manager.isStroop
                 {
                     FeedbackSystem.S.negativeFeedback();
+                    Messenger.Broadcast("Badhit");
                 }
                 else
                 {
@@ -60,10 +59,9 @@ public class saber : MonoBehaviour
                     {
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
                     }
+                    Messenger.Broadcast("Goodhit");
                 }
-               
                 DataTracker.on_slice(true, true, 10.0f); // TODO - set congruent and reaction time here
-
             }
             else
             {
@@ -77,21 +75,23 @@ public class saber : MonoBehaviour
                     {
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
                     }
+                    Messenger.Broadcast("Goodhit");
                 }
                 else
                 {
                     FeedbackSystem.S.negativeFeedback();
+                    Messenger.Broadcast("Badhit");
                 }
                 
 				DataTracker.on_slice(true, false, 10.0f); // TODO - set congruent and reaction time here
-				//do something with points/play sound?
-				Debug.Log("Play crappy note here");
+
             }
             Destroy(other.gameObject);
 
         }
         else if (other.transform.gameObject.tag == "bomb") {
-            //do something with points/play sound?
+            Messenger.Broadcast("Badhit");
+            FeedbackSystem.S.negativeFeedback();
             Destroy(other.gameObject);
         }
         
