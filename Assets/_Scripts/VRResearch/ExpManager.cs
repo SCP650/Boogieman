@@ -16,7 +16,7 @@ public class ExpManager : MonoBehaviour
 
     public static ExpManager instance;
     public PlaySound songPlayer;
-    public generateBlocks grid;
+    //public generateBlocks grid;
 
     public bool stroopCondition;
     public bool seatedCondition;
@@ -74,13 +74,7 @@ public class ExpManager : MonoBehaviour
         else if (songChoice == songSelector.song5)
             songPlayer.index = 4;
 
-        if (stroopCondition)
-            grid.isStroop = true;
-        else grid.isStroop = false;
 
-        if (seatedCondition)
-            grid.isSeating = true;
-        else grid.isSeating = false;
     }
 
 

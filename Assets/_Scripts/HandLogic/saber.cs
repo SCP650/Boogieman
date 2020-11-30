@@ -44,7 +44,7 @@ public class saber : MonoBehaviour
             if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
             {
                 //Debug.Log("Play good note here");
-                if (beatObject.isStroop)//will be replace by manager.isStroop
+                if (ExpManager.instance.stroopCondition) 
                 {
                     FeedbackSystem.S.negativeFeedback();
                     Messenger.Broadcast("Badhit");
@@ -65,7 +65,7 @@ public class saber : MonoBehaviour
             }
             else
             {
-                if (beatObject.isStroop)//will be replace by manager.isStroop
+                if (ExpManager.instance.stroopCondition) 
                 {
                     if (layer == 9)
                     {

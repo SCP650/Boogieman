@@ -29,7 +29,7 @@ public class generateBlocks : MonoBehaviour
 
     public GameObject musicPlayer;
 
-    public bool isStroop = false; // Interface with Adrian
+    //public bool isStroop = false; // Interface with Adrian
     public bool isSeating = false; //Interface with Adrian 
 
     [SerializeField]
@@ -154,7 +154,7 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.red;
                 b.dir = getDirection(B._cutDirection);
-                b.isStroop = isStroop;
+            
 
 
             }
@@ -170,7 +170,7 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.blue;
                 b.dir = getDirection(B._cutDirection);
-                b.isStroop = isStroop;
+             
 
             }
 
@@ -184,7 +184,7 @@ public class generateBlocks : MonoBehaviour
 
     private beat.Dir getDirection(int i)
     {
-        if (isStroop)
+        if (ExpManager.instance.stroopCondition)
         {
             switch (i)
             {

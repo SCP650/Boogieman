@@ -5,7 +5,7 @@ using UnityEngine;
 public class beat : MonoBehaviour
 {
 
-    public bool isStroop = false; //will be replaced with adrian's manager
+    
     //Mine stuff
     public bool isMine = false;
     public MeshRenderer mineMesh;
