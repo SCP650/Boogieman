@@ -54,12 +54,13 @@ public class saber : MonoBehaviour
                     if (layer == 9)
                     {
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
+                        Messenger.Broadcast("Goodhit");
                     }
                     else
                     {
                         FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
+                        Messenger.Broadcast("Goodhit");
                     }
-                    Messenger.Broadcast("Goodhit");
                     DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
                 }
                
