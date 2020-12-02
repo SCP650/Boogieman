@@ -14,7 +14,7 @@ public class PlaySound : MonoBehaviour
     List<AudioClip> audioClips;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         audio.clip = audioClips[index];
         audio.Play();

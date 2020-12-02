@@ -6,7 +6,7 @@ using System.IO;
 
 public class generateBlocks : MonoBehaviour
 {
-    
+
     [SerializeField] GameObject oneBlock;
 
     [SerializeField] GameObject ObsticlePreFab;
@@ -53,7 +53,7 @@ public class generateBlocks : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         musicPlayer = GameObject.Find("MusicPlayer");
         PlaySound playSoundScript = musicPlayer.GetComponent<PlaySound>();
@@ -94,7 +94,8 @@ public class generateBlocks : MonoBehaviour
     private IEnumerator generateObstacles(List<Obstacle> obsticles)
     {
         // Don't generate obstacle if sitting condition
-        if (isSeating) {
+        if (isSeating)
+        {
             yield break;
         }
 
@@ -154,7 +155,7 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.red;
                 b.dir = getDirection(B._cutDirection);
-            
+
 
 
             }
@@ -170,7 +171,7 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.blue;
                 b.dir = getDirection(B._cutDirection);
-             
+
 
             }
 
