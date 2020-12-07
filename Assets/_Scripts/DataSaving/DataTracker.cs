@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataTracker {
+public static class DataTracker {
 
 	// Input data
 	// Note - when adding/changing these, make sure to initialize them in reset_tracked_data()
@@ -19,6 +19,7 @@ public class DataTracker {
 
 	public static int final_hr;
 	public static int final_so2;
+	public static int HRV;
 
 	public static int enjoyment; // 1-5
 	public static bool would_u_play_this_again; // True = yes, False = no.
@@ -43,19 +44,12 @@ public class DataTracker {
 
 	// Learning curve data
 	private static string learningCurveDataString;
+	private static string songDataString;
 
 	// Constants
 	private const string NYI = "NOT YET IMPLEMENTED"; // TODO - Implement all uses of this
 	private const int NYI_int = -1; // TODO - implement all uses of this
 
-
-	// TODO - move this to a "DataTrackingTester.cs" MonoBehaviour
-	//// Start is called before the first frame update
-	//void Start() {
-	//	reset_tracked_data();
-	//	// Testing. TODO - REMOVE THIS:
-	//	test_save();
-	//}
 
 
 	// Initializes all the tracked data variables to default values.
@@ -84,6 +78,7 @@ public class DataTracker {
 
 		final_hr = NYI_int;
 		final_so2 = NYI_int;
+		HRV = NYI_int;
 
 		enjoyment = 0; // 1-5
 		would_u_play_this_again = false; // True = yes, False = no.
@@ -111,6 +106,7 @@ public class DataTracker {
 		} else {
 			incongruent_reaction_time_acc += reaction_time;
 		}
+		// TODO - SaveSingleEvent()
 	}
 
 
@@ -124,6 +120,7 @@ public class DataTracker {
 			incongruent_misses++;
 			incongruent_reaction_time_acc += reaction_time;
 		}
+		// TODO - SaveSingleEvent()
 	}
 
 
@@ -143,7 +140,8 @@ public class DataTracker {
 
 	// ----- DATA SAVING FUNCTIONS -----
 
-	// Save the data for one individual trial
+	// Save the data for one individual event (a slice, a miss, a bomb, etc.). This is for learning curve data.
+	// See LevelManagerFlanker.SaveSingleTrial() for reference.
 	public static void SaveSingleEvent(int response) {
 		// Learning Curve Header
 		//{ TODO };
@@ -165,9 +163,9 @@ public class DataTracker {
 
 	// Save the data for a whole song
 	public static void SaveSongData(int response) {
-		// TODO
+		// TODO - add this song data to the main data too. OR accumulate song data and main data simultaneously.
 
-		// Learning Curve Header
+		// Song Data Header (should this just mirror the main data header?)
 		//{ TODO };
 
 		// TODO - compute trial data here
@@ -181,7 +179,7 @@ public class DataTracker {
 			/* TODO */
 		};
 
-		//learningCurveDataString += "\n" + string.Join(",", data);
+		songDataString += "\n" + string.Join(",", data);
 	}
 
 
@@ -249,7 +247,6 @@ public class DataTracker {
 		int total_errors_trials = incongruent_errors + congruent_errors;
 		float avg_reaction_time = (incongruent_reaction_time_acc + congruent_reaction_time_acc) / total_trials; // TODO - is this over total? Or just correct?
 
-		string HRV = NYI; // TODO - how to compute HRV?
 		string would_play_again = would_u_play_this_again ? "yes" : "no";
 
 		// Construct the data array
@@ -281,7 +278,7 @@ public class DataTracker {
 			// final input data
 			s(final_hr),
 			s(final_so2),
-			HRV,
+			s(HRV),
 			s(enjoyment),
 			would_play_again,
 			s(positive_affect),
@@ -289,12 +286,16 @@ public class DataTracker {
 		};
 
 		DataSavingBoogie.SaveData(ID, condition, info);
-		reset_tracked_data();
 
 		// Also save all the single trial data
 		//int trialsPerGame = trialsPerBlock * blocksPerLevel * levelsPerGame;
-		//DataSavingFlanker.SaveLearningCurveData(ID.text, learningCurveDataString, trialsPerGame);
-		//learningCurveDataString = "";
+		DataSavingBoogie.SaveLearningCurveData(ID, learningCurveDataString);
+		learningCurveDataString = "";
+
+		DataSavingBoogie.SaveSongData(ID, songDataString);
+		songDataString = "";
+
+		reset_tracked_data();
 	}
 
 

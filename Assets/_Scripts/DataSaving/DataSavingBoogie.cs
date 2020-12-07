@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public enum BoogieType { Intervention, Showcase };
 public enum ExperimentalCondition { Sedentary, Exergame, Exercise, Control }
@@ -10,6 +11,7 @@ public static class DataSavingBoogie {
 	static string DataFilePath = @"ResearchData/InterventionData.csv";
 	static string BackupInterventionDataPath = @"ResearchData/BackupInterventionData/";
 	static string LearningCurveDataPath = @"ResearchData/LearningCurve/";
+	static string SongDataPath = @"ResearchData/SongData/";
 
 	// Data Header -- NO IN-STRING COMMAS ALLOWED (it's in a .csv)
 	static string[] InfoHeader = { "ID", "Condition" };
@@ -32,7 +34,14 @@ public static class DataSavingBoogie {
 	public const string learningCurveDayMacro = "[day]";
 	public const string learningCurveTrialMacro = "[trial]";
 	public static string[] learningCurveTrialSep = { learningCurveTrialMacro };
-	public const System.StringSplitOptions lCTSplitOptions = System.StringSplitOptions.None;
+
+	// Song Data settings
+	static string[] songDataHeader = DataHeader;
+	static string songDataHeaderString = string.Join(",", songDataHeader);
+
+	public const string songDataDayMacro = "[day]";
+	public const string songDataTrialMacro = "[trial]";
+	public static string[] songDataTrialSep = { songDataTrialMacro };
 
 
 	// Other variables
@@ -129,6 +138,7 @@ public static class DataSavingBoogie {
 		return -1;
 	}
 
+
 	// Create the info array
 	private static string[] createInfoArray(string ID, ExperimentalCondition condition) {
 		string[] infoArray = new string[InfoHeader.Length];
@@ -158,6 +168,7 @@ public static class DataSavingBoogie {
 
 		return header;
 	}
+
 
 	// Add a prefix to every string in a string[]
 	private static string[] addPrefix(string[] array, string prefix) {
@@ -211,8 +222,10 @@ public static class DataSavingBoogie {
 	}
 
 
-	// Append a single trial to the learning curve data
-	public static void SaveLearningCurveData(string ID, string dataString, int trialsPerGame) {
+	// Append a single trial to the learning curve data.
+	// See DataSavingFlanker.SaveLearningCurveData()
+	public static void SaveLearningCurveData(string ID, string dataString) {
+		// TODO - rework this for Boogieman. Currently just copied from DataSavingFlanker.cs
 		if (!File.Exists(LearningCurveDataPath)) {
 			Directory.CreateDirectory(LearningCurveDataPath);
 		}
@@ -222,18 +235,42 @@ public static class DataSavingBoogie {
 		if (!File.Exists(path)) {
 			File.AppendAllText(path, learningCurveHeaderString);
 			day = "1";
-			dataString = replaceTrialMacros(dataString, 0);
+			dataString = replaceTrialMacros(dataString, 0, learningCurveTrialSep);
 		} else {
-			dataString = replaceTrialMacros(dataString, trialsPerGame);
+			//dataString = replaceTrialMacros(dataString, trialsPerGame);
 		}
 
 		dataString = dataString.Replace(learningCurveDayMacro, day);
 		File.AppendAllText(path, dataString);
 	}
 
+
+	// Append a single trial to the song data.
+	// See DataSavingFlanker.SaveLearningCurveData()
+	internal static void SaveSongData(string ID, string songDataString) {
+		// TODO - rework this for Boogieman SONG data. Currently just copied from DataSavingFlanker.cs
+		if (!File.Exists(SongDataPath)) {
+			Directory.CreateDirectory(SongDataPath);
+		}
+
+		string day = "2";
+		string path = SongDataPath + ID + "_SongData.csv";
+		if (!File.Exists(path)) {
+			File.AppendAllText(path, songDataHeaderString);
+			day = "1";
+			songDataString = replaceTrialMacros(songDataString, 0, songDataTrialSep);
+		} else {
+			//dataString = replaceTrialMacros(dataString, trialsPerGame);
+		}
+
+		songDataString = songDataString.Replace(songDataDayMacro, day);
+		File.AppendAllText(path, songDataString);
+	}
+
+
 	// Substitute each trial macro with the corresponding trial number
-	private static string replaceTrialMacros(string dataString, int firstTrial) {
-		string[] splits = dataString.Split(learningCurveTrialSep, lCTSplitOptions);
+	private static string replaceTrialMacros(string dataString, int firstTrial, string[] separator) {
+		string[] splits = dataString.Split(separator, System.StringSplitOptions.None);
 
 		for (int i = 1; i < splits.Length; i++) {
 			splits[i] = (firstTrial + i).ToString() + splits[i];
