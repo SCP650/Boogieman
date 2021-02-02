@@ -1,2 +1,2 @@
 # Boogieman
-A VR Dance Game Adapted for Psychological Research
+A VR Ryhtm Game Adapted for Psychological Research
