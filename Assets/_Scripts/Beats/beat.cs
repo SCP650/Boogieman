@@ -34,6 +34,7 @@ public class beat : MonoBehaviour
 
     public Material BlueOmniMaterial;
     public Material BlueMaterialStoop;
+
     //Mesh Variables
     public MeshRenderer leftSide;
     public MeshRenderer rightSide;

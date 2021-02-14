@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - beat
   - bomb
+  - obstacle
   layers:
   - Default
   - TransparentFX
