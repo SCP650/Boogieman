@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 3260171796378886671}
   - component: {fileID: 3260171796379952011}
   - component: {fileID: 3260171796370275051}
+  - component: {fileID: 4771127990473296748}
   m_Layer: 0
   m_Name: VrCharacter
   m_TagString: Untagged
@@ -292,6 +293,18 @@ MonoBehaviour:
   - {x: -1.65, y: 0.01, z: -1.275}
   - {x: -1.65, y: 0.01, z: 1.275}
   - {x: 1.65, y: 0.01, z: 1.275}
+--- !u!114 &4771127990473296748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260171796376766633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07969aa2f4560dd4080217eea63c2836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3260171796376916479
 GameObject:
   m_ObjectHideFlags: 0
