@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Camera m_MainCamera;
+    [SerializeField]
+    private InputManager inputManager;
 
+    private Camera m_MainCamera;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
