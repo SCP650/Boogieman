@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 174725039}
   - component: {fileID: 174725038}
   m_Layer: 5
-  m_Name: HeartRate (1)
+  m_Name: LevelInfo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f67de2e79e914f4f9df9acde9dad14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &245024594
+--- !u!43 &216148755
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1282,6 +1282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 487722258}
   - component: {fileID: 487722260}
+  - component: {fileID: 487722261}
   - component: {fileID: 487722259}
   m_Layer: 5
   m_Name: GameStats
@@ -1373,6 +1374,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487722257}
   m_CullTransparentMesh: 0
+--- !u!114 &487722261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487722257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479d9f2b71901ff42987deb54537f085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 0}
+  obstacleText: 'Total Obstacles:  '
+  obstacleOverallapedHealth: 'Player Obstacle Overlapped Health: '
+  totalBlocksMissed: Total blocks misses #
+  totalBlocksHit: Total Blocks Hit %
+  avgHitPrecision: 'Avg. Hit Precision: '
+  score: 'SCORE:'
+  combo: Combo
+  highestCombo: Highest Combo
+  stroopScore: 'Stroop Score: '
+  isStroop: 0
+  playerHealth: 'Player Health:'
 --- !u!1 &492940488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,12 +2108,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1007573237}
+      objectReference: {fileID: 1397465731}
     - target: {fileID: 3260171796379952011, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 245024594}
+      objectReference: {fileID: 216148755}
     - target: {fileID: 3276783321670802705, guid: c7cafca48b0b44f44bbabec2a4a4dac4,
         type: 3}
       propertyPath: m_BackGroundColor.r
@@ -2129,7 +2154,7 @@ GameObject:
   - component: {fileID: 716787213}
   - component: {fileID: 716787212}
   m_Layer: 5
-  m_Name: Level Info
+  m_Name: Level Info1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2617,40 +2642,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833017885}
   m_CullTransparentMesh: 0
---- !u!21 &1007573237
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1145346741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,6 +3671,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393157810}
   m_CullTransparentMesh: 0
+--- !u!21 &1397465731
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1489285103
 GameObject:
   m_ObjectHideFlags: 0
