@@ -195,9 +195,17 @@ public class generateBlocks : MonoBehaviour
                     return beat.Dir.top;
                 case 2:
                     return beat.Dir.right;
+                case 3:
+                    return beat.Dir.left;
+                case 4:
+                    return beat.Dir.bottomright;
+                case 5:
+                    return beat.Dir.bottomleft;
+                case 6:
+                    return beat.Dir.topright;
 
                 default:
-                    return beat.Dir.left;
+                    return beat.Dir.topleft;
 
             }
         }
@@ -211,9 +219,17 @@ public class generateBlocks : MonoBehaviour
                     return beat.Dir.bottom;
                 case 2:
                     return beat.Dir.left;
+                case 3:
+                    return beat.Dir.right;
+                case 4:
+                    return beat.Dir.topleft;
+                case 5:
+                    return beat.Dir.topright;
+                case 6:
+                    return beat.Dir.bottomleft;
 
                 default:
-                    return beat.Dir.right;
+                    return beat.Dir.bottomright;
 
             }
         }
