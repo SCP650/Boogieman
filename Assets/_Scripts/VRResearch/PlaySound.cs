@@ -7,16 +7,25 @@ public class PlaySound : MonoBehaviour
     [SerializeField]
     AudioSource audio;
 
-    [SerializeField]
-    public int index;
+    private int index;
 
     [SerializeField]
     List<AudioClip> audioClips;
+    private void Start()
+    {
+        Messenger.AddListener("Start", StartPlayingMusic);
 
-    // Start is called before the first frame update
-    void Awake()
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener("Start", StartPlayingMusic);
+    }
+    private void StartPlayingMusic()
     {
         audio.clip = audioClips[index];
         audio.Play();
     }
+      
+    
 }

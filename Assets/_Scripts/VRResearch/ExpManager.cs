@@ -23,7 +23,7 @@ public class ExpManager : MonoBehaviour
     public songSelector songChoice;
     private void Start()
     {
-        LoadVars();
+        //LoadVars();
     }
 
     private void Awake()
@@ -40,21 +40,46 @@ public class ExpManager : MonoBehaviour
         }
     }
 
-    void LoadVars()
+    public void StartGame()
+    {
+       
+        Messenger.Broadcast("Start");
+        
+    }
+        
+  
+
+    public int getCurrentSong()
     {
         if (songChoice == songSelector.song1)
-            songPlayer.index = 0;
+            return 0;
         else if (songChoice == songSelector.song2)
-            songPlayer.index = 1;
+            return 1;
         else if (songChoice == songSelector.song3)
-            songPlayer.index = 2;
+            return 2;
         else if (songChoice == songSelector.song4)
-            songPlayer.index = 3;
+            return 3;
         else if (songChoice == songSelector.song5)
-            songPlayer.index = 4;
-
-
+            return 4;
+        else
+            return 0;
     }
+
+    //void LoadVars()
+    //{
+    //    if (songChoice == songSelector.song1)
+    //        songPlayer.index = 0;
+    //    else if (songChoice == songSelector.song2)
+    //        songPlayer.index = 1;
+    //    else if (songChoice == songSelector.song3)
+    //        songPlayer.index = 2;
+    //    else if (songChoice == songSelector.song4)
+    //        songPlayer.index = 3;
+    //    else if (songChoice == songSelector.song5)
+    //        songPlayer.index = 4;
+
+
+    //}
 
 
 }

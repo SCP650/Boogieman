@@ -27,7 +27,6 @@ public class generateBlocks : MonoBehaviour
     private List<float> ObsticleTimeDiff = new List<float>();
 
 
-    public GameObject musicPlayer;
 
     //public bool isStroop = false; // Interface with Adrian
     public bool isSeating = false; //Interface with Adrian 
@@ -55,10 +54,15 @@ public class generateBlocks : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        musicPlayer = GameObject.Find("MusicPlayer");
-        PlaySound playSoundScript = musicPlayer.GetComponent<PlaySound>();
-        int songIndex = playSoundScript.index;
-        Debug.Log(songIndex);
+        Messenger.AddListener("Start", StartLoadingBlocks);
+    }
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener("Start", StartLoadingBlocks);
+    }
+    private void StartLoadingBlocks() { 
+     
+        int songIndex = ExpManager.instance.getCurrentSong();
 
         GetBlock(songBlockArray[songIndex], songInfoArray[songIndex]);
         blocks = map._notes;
