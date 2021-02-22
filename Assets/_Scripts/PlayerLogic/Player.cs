@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private InputManager inputManager;
-
+    [SerializeField]
+    private PostProcessVolume ObstacleVolume;
     private Camera m_MainCamera;
     bool isInObstacle = false;
     float obstacleDMG = 0.1f;
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
         //This gets the Main Camera (player's Camera) from the Scene
         m_MainCamera = Camera.main; //This gets a camera with the tag "MainCamera" on it. 
         m_MainCamera.enabled = true; //Should still be enabled by default, I believe...
+        ObstacleVolume.gameObject.SetActive(false); 
     }
 
     // Update is called once per frame
@@ -66,6 +69,7 @@ public class Player : MonoBehaviour
         StopCoroutine(HealSelf());
         //Start a coroutine called DamageSelf
         StartCoroutine(DamageSelf());
+        ObstacleVolume.gameObject.SetActive(true);
 
     }
 
@@ -76,6 +80,7 @@ public class Player : MonoBehaviour
         StopCoroutine(DamageSelf());
         //Start a coroutine called HealSelf
         StartCoroutine(HealSelf());
+        ObstacleVolume.gameObject.SetActive(false);
     }
 
     /*    private void OnTriggerEnter(Collider other)
