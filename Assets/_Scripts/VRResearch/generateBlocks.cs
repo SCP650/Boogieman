@@ -91,7 +91,11 @@ public class generateBlocks : MonoBehaviour
         DataTracker.reset_tracked_data();
 
         StartCoroutine(Generate(blocks));
-        StartCoroutine(generateObstacles(obstacles));
+        if (!ExpManager.instance.seatedCondition)
+        {
+            StartCoroutine(generateObstacles(obstacles));
+        }
+        
 
     }
 
