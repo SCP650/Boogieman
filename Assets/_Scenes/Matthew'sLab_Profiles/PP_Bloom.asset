@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: RB_PostProcProfile
+  m_Name: PP_Bloom
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 8609419842159494860}
