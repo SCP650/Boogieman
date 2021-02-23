@@ -20,6 +20,7 @@ public class ExpManager : MonoBehaviour
 
     public bool stroopCondition;
     public bool seatedCondition;
+    public bool gameStarted = false;
     public songSelector songChoice;
     private void Start()
     {
@@ -42,9 +43,11 @@ public class ExpManager : MonoBehaviour
 
     public void StartGame()
     {
-       
-        Messenger.Broadcast("Start");
-        
+       if (!gameStarted)
+        {
+            Messenger.Broadcast("Start");
+            gameStarted = true;
+        }
     }
         
   
