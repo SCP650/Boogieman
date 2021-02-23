@@ -59,7 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f360ee25cbcdc8d4fbbb7777adda4596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStroop: 0
   isMine: 0
   mineMesh: {fileID: 8893084351021395940}
   color: 0
@@ -265,8 +264,13 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 50864c86825af6d4e9aa1a423ad4225a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 50864c86825af6d4e9aa1a423ad4225a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9107ddfa4279afb4fa461cf59d6afeb1, type: 2}
     - target: {fileID: 919132149155446097, guid: 50864c86825af6d4e9aa1a423ad4225a,
         type: 3}
       propertyPath: m_Name
