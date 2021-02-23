@@ -23,6 +23,7 @@ public class PlaySound : MonoBehaviour
     }
     private void StartPlayingMusic()
     {
+        index = ExpManager.instance.getCurrentSong();
         audio.clip = audioClips[index];
         audio.Play();
     }
