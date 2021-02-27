@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.boogieman.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\Work\\Projects\\_ResearchProjects\\NeuroLab\\Boogieman\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\Github\\Boogieman-VRResearch\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Boogieman [Testing]"
