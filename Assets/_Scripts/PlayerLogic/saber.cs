@@ -32,7 +32,14 @@ public class saber : MonoBehaviour
     //When the Primitive collides with the walls, it will reverse direction
     private void OnTriggerEnter(Collider other)
     {
-        rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
+        //rotation = Vector3.Angle(transform.position - previousPos, other.transform.up);
+
+        Vector3 transformPosOnPlane = transform.position;
+        Vector3 previousPosOnPlane = previousPos;
+        transformPosOnPlane.z = 0;
+        previousPosOnPlane.z = 0;
+        rotation = Vector3.Angle(transformPosOnPlane - previousPosOnPlane, other.transform.up);
+
         if (other.transform.gameObject.tag == "beat")
         {
             //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
