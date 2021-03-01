@@ -1,0 +1,58 @@
+{
+  "_version": "2.0.0",
+  "_songName": "Still Alive",
+  "_songSubName": "- Portal",
+  "_songAuthorName": "Jonathan Coulton",
+  "_levelAuthorName": "Jokidum",
+  "_beatsPerMinute": 120,
+  "_songTimeOffset": 0,
+  "_shuffle": 0,
+  "_shufflePeriod": 0.5,
+  "_previewStartTime": 0.800000011920929,
+  "_previewDuration": 17.600000381469727,
+  "_songFilename": "song.egg",
+  "_coverImageFilename": "cover.jpg",
+  "_environmentName": "TriangleEnvironment",
+  "_customData": {
+    "_editor": "beatmapper",
+    "_editorSettings": {
+      "enabledFastWalls": false,
+      "modSettings": {}
+    }
+  },
+  "_difficultyBeatmapSets": [
+    {
+      "_beatmapCharacteristicName": "Standard",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "Expert",
+          "_difficultyRank": 7,
+          "_beatmapFilename": "Expert.dat",
+          "_noteJumpMovementSpeed": 12,
+          "_noteJumpStartBeatOffset": 0,
+          "_customData": {
+            "_editorOffset": -10,
+            "_requirements": []
+          }
+        }
+      ]
+    },
+    {
+      "_beatmapCharacteristicName": "Lightshow",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "Easy",
+          "_difficultyRank": 1,
+          "_beatmapFilename": "EasyLightshow.dat",
+          "_noteJumpMovementSpeed": 16,
+          "_noteJumpStartBeatOffset": 0,
+          "_customData": {
+            "_editorOffset": -10,
+            "_requirements": [],
+            "_difficultyLabel": "Lightshow"
+          }
+        }
+      ]
+    }
+  ]
+}

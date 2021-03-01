@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,10 @@ public class ExpManager : MonoBehaviour
         song2,
         song3,
         song4,
-        song5
+        song5,
+        song6,
+        song7,
+        song8,
     };
 
     public static ExpManager instance;
@@ -64,6 +67,12 @@ public class ExpManager : MonoBehaviour
             return 3;
         else if (songChoice == songSelector.song5)
             return 4;
+        else if (songChoice == songSelector.song6)
+            return 5;
+        else if (songChoice == songSelector.song7)
+            return 6;
+        else if (songChoice == songSelector.song8)
+            return 7;
         else
             return 0;
     }

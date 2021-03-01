@@ -1,0 +1,200 @@
+{
+  "_version": "2.0.0",
+  "_songName": "Lost in the Rhythm",
+  "_songSubName": "",
+  "_songAuthorName": "Jamie Berry ft. Octavia Rose",
+  "_levelAuthorName": "Funrankable",
+  "_beatsPerMinute": 121,
+  "_songTimeOffset": 0,
+  "_shuffle": 0.25,
+  "_shufflePeriod": 0.25,
+  "_previewStartTime": 50,
+  "_previewDuration": 15,
+  "_songFilename": "song.egg",
+  "_coverImageFilename": "cover.png",
+  "_environmentName": "BigMirrorEnvironment",
+  "_customData": {
+    "_contributors": [
+      {
+        "_role": "Mapper (Expert+)",
+        "_name": "LittleAsi",
+        "_iconPath": "littleasi.png"
+      },
+      {
+        "_role": "Mapper (Expert+)",
+        "_name": "Ryger",
+        "_iconPath": "Rycon.png"
+      },
+      {
+        "_role": "Mapper (Expert+)",
+        "_name": "baxter395",
+        "_iconPath": "baxman.png"
+      },
+      {
+        "_role": "Lighter",
+        "_name": "LittleAsi",
+        "_iconPath": "littleasi.png"
+      }
+    ],
+    "_customEnvironment": "",
+    "_customEnvironmentHash": ""
+  },
+  "_difficultyBeatmapSets": [
+    {
+      "_beatmapCharacteristicName": "Standard",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "Easy",
+          "_difficultyRank": 1,
+          "_beatmapFilename": "Easy.dat",
+          "_noteJumpMovementSpeed": 11,
+          "_noteJumpStartBeatOffset": 1,
+          "_customData": {
+            "_difficultyLabel": "      Normal",
+            "_editorOffset": 0,
+            "_editorOldOffset": 0,
+            "_warnings": [],
+            "_information": [],
+            "_suggestions": [],
+            "_requirements": []
+          }
+        },
+        {
+          "_difficulty": "Normal",
+          "_difficultyRank": 3,
+          "_beatmapFilename": "Normal.dat",
+          "_noteJumpMovementSpeed": 12,
+          "_noteJumpStartBeatOffset": 1,
+          "_customData": {
+            "_difficultyLabel": "      Expert",
+            "_editorOffset": 0,
+            "_editorOldOffset": 0,
+            "_colorLeft": {
+              "r": 0.8,
+              "g": 0.8,
+              "b": 0
+            },
+            "_colorRight": {
+              "r": 0,
+              "g": 0.8,
+              "b": 1
+            },
+            "_warnings": [],
+            "_information": [],
+            "_suggestions": [],
+            "_requirements": []
+          }
+        },
+        {
+          "_difficulty": "Hard",
+          "_difficultyRank": 5,
+          "_beatmapFilename": "Hard.dat",
+          "_noteJumpMovementSpeed": 14,
+          "_noteJumpStartBeatOffset": 0,
+          "_customData": {
+            "_difficultyLabel": "LittleAsi Ex+",
+            "_editorOffset": 0,
+            "_editorOldOffset": 0,
+            "_colorLeft": {
+              "r": 0.8,
+              "g": 0.8,
+              "b": 0
+            },
+            "_colorRight": {
+              "r": 0,
+              "g": 0.8,
+              "b": 1
+            },
+            "_warnings": [],
+            "_information": [],
+            "_suggestions": [],
+            "_requirements": []
+          }
+        },
+        {
+          "_difficulty": "Expert",
+          "_difficultyRank": 7,
+          "_beatmapFilename": "Expert.dat",
+          "_noteJumpMovementSpeed": 14,
+          "_noteJumpStartBeatOffset": 0,
+          "_customData": {
+            "_difficultyLabel": "Ryger Ex+",
+            "_editorOffset": 0,
+            "_editorOldOffset": 0,
+            "_colorLeft": {
+              "r": 0.9,
+              "g": 0.9,
+              "b": 0
+            },
+            "_colorRight": {
+              "r": 0,
+              "g": 0.9,
+              "b": 1.1
+            },
+            "_warnings": [],
+            "_information": [],
+            "_suggestions": [],
+            "_requirements": []
+          }
+        },
+        {
+          "_difficulty": "ExpertPlus",
+          "_difficultyRank": 9,
+          "_beatmapFilename": "ExpertPlus.dat",
+          "_noteJumpMovementSpeed": 16,
+          "_noteJumpStartBeatOffset": 0,
+          "_customData": {
+            "_difficultyLabel": "Baxter Ex+",
+            "_editorOffset": 0,
+            "_editorOldOffset": 0,
+            "_colorLeft": {
+              "r": 0.8,
+              "g": 0.8,
+              "b": 0
+            },
+            "_colorRight": {
+              "r": 0,
+              "g": 0.8,
+              "b": 1
+            },
+            "_warnings": [],
+            "_information": [],
+            "_suggestions": [],
+            "_requirements": []
+          }
+        }
+      ]
+    },
+    {
+      "_beatmapCharacteristicName": "Lightshow",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "Easy",
+          "_difficultyRank": 1,
+          "_beatmapFilename": "Lightshow.dat",
+          "_noteJumpMovementSpeed": 12,
+          "_noteJumpStartBeatOffset": 0,
+          "_customData": {
+            "_difficultyLabel": "",
+            "_editorOffset": 0,
+            "_editorOldOffset": 0,
+            "_colorLeft": {
+              "r": 0.8,
+              "g": 0.8,
+              "b": 0
+            },
+            "_colorRight": {
+              "r": 0,
+              "g": 0.8,
+              "b": 1
+            },
+            "_warnings": [],
+            "_information": [],
+            "_suggestions": [],
+            "_requirements": []
+          }
+        }
+      ]
+    }
+  ]
+}

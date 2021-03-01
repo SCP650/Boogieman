@@ -1,0 +1,72 @@
+{
+  "_version": "2.0.0",
+  "_songName": "Fitbeat",
+  "_songSubName": "",
+  "_songAuthorName": "Jaroslav Beck",
+  "_levelAuthorName": "DefDoof",
+  "_beatsPerMinute": 107.49,
+  "_previewStartTime": 12.2,
+  "_previewDuration": 30,
+  "_songTimeOffset": 0,
+  "_shuffle": 0,
+  "_shufflePeriod": 0.5,
+  "_coverImageFilename": "cover.jpg",
+  "_songFilename": "song.egg",
+  "_environmentName": "FitBeatEnvironment",
+  "_allDirectionsEnvironmentName": "GlassDesertEnvironment",
+  "_customData": {
+    "_editors": {
+      "_lastEditedBy": "ChroMapper",
+      "ChroMapper": {
+        "version": "0.7.338"
+      }
+    },
+    "_contributors": [
+      {
+        "_name": "DefDoof",
+        "_role": "Mapper",
+        "_iconPath": "DefDoof.png"
+      }
+    ]
+  },
+  "_difficultyBeatmapSets": [
+    {
+      "_beatmapCharacteristicName": "Standard",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "Easy",
+          "_difficultyRank": 1,
+          "_beatmapFilename": "EasyStandard.dat",
+          "_noteJumpMovementSpeed": 16,
+          "_noteJumpStartBeatOffset": -0.6
+        },
+        {
+          "_difficulty": "Normal",
+          "_difficultyRank": 3,
+          "_beatmapFilename": "NormalStandard.dat",
+          "_noteJumpMovementSpeed": 18,
+          "_noteJumpStartBeatOffset": 0.25
+        },
+        {
+          "_difficulty": "ExpertPlus",
+          "_difficultyRank": 9,
+          "_beatmapFilename": "ExpertPlusStandard.dat",
+          "_noteJumpMovementSpeed": 22,
+          "_noteJumpStartBeatOffset": -0.1
+        }
+      ]
+    },
+    {
+      "_beatmapCharacteristicName": "90Degree",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "ExpertPlus",
+          "_difficultyRank": 9,
+          "_beatmapFilename": "ExpertPlus90Degree.dat",
+          "_noteJumpMovementSpeed": 21,
+          "_noteJumpStartBeatOffset": -0.1
+        }
+      ]
+    }
+  ]
+}
