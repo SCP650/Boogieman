@@ -23,7 +23,7 @@ public class ExpManager : MonoBehaviour
 
     public bool stroopCondition;
     public bool seatedCondition;
-    public bool gameStarted = false;
+    private bool gameStarted = false;
     public songSelector songChoice;
     private void Start()
     {
