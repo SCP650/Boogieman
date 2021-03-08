@@ -6,13 +6,13 @@ public class saber : MonoBehaviour
 {
     public int layer;
     private Vector3 previousPos;
-    private float rotation;
+    private float rotation; //our current rotation at time of collision
     private int toleration = 40;
-    public float maxAngle = 95;
     public Rigidbody rb;
     public OVRInput.Controller OwningController;
+    private bool validRot = false;
 
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,63 +42,38 @@ public class saber : MonoBehaviour
 
         if (other.transform.gameObject.tag == "beat")
         {
-            //(rotation - toleration) <= 180 && 180 <= (rotation + toleration)
             beat beatObject = other.transform.gameObject.GetComponent<beat>();
-            bool validRot = rotation + other.transform.rotation.z >= (180 - toleration);
-            
-            
-            if (validRot && layer == other.transform.gameObject.layer)//if our hit is at the required angle +- toleration
+            if (ExpManager.instance.stroopCondition)
             {
-                //Debug.Log("Play good note here");
-                if (ExpManager.instance.stroopCondition) 
-                {
-                    FeedbackSystem.S.negativeFeedback();
-                    Messenger.Broadcast("Badhit");
-                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
-                }
-                else
-                {
-                    if (layer == 9)
-                    {
-                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
-                        Messenger.Broadcast("Goodhit");
-                    }
-                    else
-                    {
-                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
-                        Messenger.Broadcast("Goodhit");
-                    }
-                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
-                }
-               
-                DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
+                validRot = rotation + other.transform.rotation.z <= (0 + toleration); //opposite check
 
             }
             else
             {
-                if (ExpManager.instance.stroopCondition) 
+                validRot = rotation + other.transform.rotation.z >= (180 - toleration);
+            }
+
+            if (validRot && layer == other.transform.gameObject.layer)
+            {//if our hit is at the required angle +- toleration
+                if (layer == 9)
                 {
-                    if (layer == 9)
-                    {
-                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
-                    }
-                    else
-                    {
-                        FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
-                    }
+                    FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Left);
                     Messenger.Broadcast("Goodhit");
-                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
                 }
                 else
                 {
-                    FeedbackSystem.S.negativeFeedback();
-                    Messenger.Broadcast("Badhit");
-                    DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
+                    FeedbackSystem.S.positiveFeedback(FeedbackSystem.SaberSide.Right);
+                    Messenger.Broadcast("Goodhit");
                 }
-                
+                DataTracker.on_slice(!ExpManager.instance.stroopCondition, true, beatObject.time_since_creation());
+            }
+            else // this is a problem 
+            {
+                FeedbackSystem.S.negativeFeedback();
+                Messenger.Broadcast("Badhit");
+                DataTracker.on_slice(!ExpManager.instance.stroopCondition, false, beatObject.time_since_creation());
             }
             Destroy(other.gameObject);
-
         }
         else if (other.transform.gameObject.tag == "bomb") {
             Messenger.Broadcast("Badhit");
