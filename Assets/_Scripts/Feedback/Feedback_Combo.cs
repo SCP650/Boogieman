@@ -11,8 +11,8 @@ public class Feedback_Combo : MonoBehaviour
 
     private void Start()
     {
-        comboField.text = combo + "";
-        scoreField.text = score + "";
+        comboField.text = ExpManager.instance.combo.ToString() + "";
+        scoreField.text = ExpManager.instance.score.ToString() + "";
     }
 
     private void Awake()
@@ -27,7 +27,7 @@ public class Feedback_Combo : MonoBehaviour
 
     public void UpdateUI()
     {
-        comboField.text = combo + "";
-        scoreField.text = score + "";
+        comboField.text = ExpManager.instance.combo.ToString() + "";
+        scoreField.text = ExpManager.instance.score.ToString() + "";
     }
 }

@@ -56,6 +56,11 @@ public class ExpManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener("Goodhit", GoodHit);
+        Messenger.RemoveListener("Badhit", BadHit);
+    }
     public void GoodHit()
     {
         combo++;
