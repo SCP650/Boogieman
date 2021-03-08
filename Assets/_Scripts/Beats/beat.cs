@@ -137,19 +137,19 @@ public class beat : MonoBehaviour
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
                 case Dir.topright:
-                    direction = 45.0f;
-                    gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
-                    break;
-                case Dir.topleft:
                     direction = 315.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
+                case Dir.topleft:
+                    direction = 45.0f;
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
+                    break;
                 case Dir.bottomright:
-                    direction = 135.0f;
+                    direction = 225.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
                 case Dir.bottomleft:
-                    direction = 225.0f;
+                    direction = 135.0f;
                     gameObject.transform.rotation = Quaternion.Euler(0, 0, direction);
                     break;
 
