@@ -26,7 +26,7 @@ public class FeedBack_Bar : MonoBehaviour
 
     public static float GetHealthBarValue()
     {
-        return Bar.fillAmount;
+        return Bar.fillAmount * 100.0f;
     }
 
     /// <summary>
@@ -71,7 +71,7 @@ public class FeedBack_Bar : MonoBehaviour
         else if (currVal + value <= ExpManager.instance.maxPlayerHealth)
         {
             SetHealthBarValue(currVal + value);
-            ExpManager.instance.currPlayerHealth = (currVal * 100.0f) + value;
+            ExpManager.instance.currPlayerHealth = (currVal) + value;
         }
     }
     public void GoodHit()
