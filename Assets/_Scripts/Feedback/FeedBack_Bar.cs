@@ -4,28 +4,24 @@ using UnityEngine.UI;
 public class FeedBack_Bar : MonoBehaviour
 {
     private static Image Bar;
-    public float incrementby = 0.01f;
-    public float decrementby = 0.1f;
-    public float startVal = 0.5f;
-    /// <summary>
-    /// Sets the health bar value
-    /// </summary>
-    /// <param name="value">should be between 0 to 1</param>
+    private float incBy = 1f;
+    private float decBy = 10f;
+
+    //this takes a float value 0 <= value <= 100
     public static void SetHealthBarValue(float value)
     {
-        Bar.fillAmount = value;
-/*        if (Bar.fillAmount < 0.2f)
+        if (!(value > 100) && !(value < 0))
         {
-            SetHealthBarColor(Color.red);
+            Bar.fillAmount = value / 100;
         }
-        else if (Bar.fillAmount < 0.4f)
+        else if (value >= 100)
         {
-            SetHealthBarColor(Color.yellow);
+            Bar.fillAmount = 1.0f;
         }
-        else
+        else // value < 0
         {
-            SetHealthBarColor(Color.green);
-        }*/
+            Bar.fillAmount = 0f;
+        }
     }
 
     public static float GetHealthBarValue()
@@ -48,8 +44,8 @@ public class FeedBack_Bar : MonoBehaviour
     private void Start()
     {
         Bar = GetComponent<Image>();
-        SetHealthBarValue(startVal);
-        decrementby *= -1;
+        SetHealthBarValue(ExpManager.instance.currPlayerHealth);
+        decBy *= -1;
     }
 
     private void Awake()
@@ -71,18 +67,20 @@ public class FeedBack_Bar : MonoBehaviour
         {
             Messenger.Broadcast("GameOver");
             SetHealthBarValue(0.0f);
-            return;
         }
-        SetHealthBarValue(currVal + value);
+        else if (currVal + value <= ExpManager.instance.maxPlayerHealth)
+        {
+            SetHealthBarValue(currVal + value);
+            ExpManager.instance.currPlayerHealth = (currVal * 100.0f) + value;
+        }
     }
     public void GoodHit()
     {
-        AddHealthBarValue(incrementby);
-
+        AddHealthBarValue(ExpManager.instance.incHealthBy);
     }
 
     public void BadHit()
     {
-        AddHealthBarValue(decrementby);
+        AddHealthBarValue(ExpManager.instance.decHealthBy);
     }
 }

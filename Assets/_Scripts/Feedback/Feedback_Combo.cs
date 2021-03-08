@@ -17,29 +17,17 @@ public class Feedback_Combo : MonoBehaviour
 
     private void Awake()
     {
-        Messenger.AddListener("Goodhit", GoodHit);
-        Messenger.AddListener("Badhit", BadHit);
+        Messenger.AddListener("UpdateUI", UpdateUI);
     }
 
     private void OnDestroy()
     {
-        Messenger.RemoveListener("Goodhit", GoodHit);
-        Messenger.RemoveListener("Badhit", BadHit);
+        Messenger.RemoveListener("UpdateUI", UpdateUI);
     }
 
-    public void GoodHit()
+    public void UpdateUI()
     {
-        combo++;
         comboField.text = combo + "";
-        score++;
         scoreField.text = score + "";
-
-    }
-
-    public void BadHit()
-    {
-        comboField.text = 0 + "";
-        largestCombo = combo;
-        combo = 0;
     }
 }

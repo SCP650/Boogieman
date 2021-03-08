@@ -24,6 +24,16 @@ public class ExpManager : MonoBehaviour
     public bool stroopCondition;
     public bool seatedCondition;
     private bool gameStarted = false;
+
+    public float maxPlayerHealth = 100.0f;
+    public float currPlayerHealth = 50.0f;
+    public float incHealthBy = 1f;
+    public float decHealthBy = 10f;
+
+    public int score = 0;
+    public int combo = 0;
+    public int maxCombo = 0;
+
     public songSelector songChoice;
     private void Start()
     {
@@ -40,8 +50,24 @@ public class ExpManager : MonoBehaviour
         else
         {
             instance = this;
+            Messenger.AddListener("Goodhit", GoodHit);
+            Messenger.AddListener("Badhit", BadHit);
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void GoodHit()
+    {
+        combo++;
+        score++;
+        Messenger.Broadcast("UpdateUI");
+    }
+
+    public void BadHit()
+    {
+        maxCombo = combo;
+        combo = 0;
+        Messenger.Broadcast("UpdateUI");
     }
 
     public void StartGame()
