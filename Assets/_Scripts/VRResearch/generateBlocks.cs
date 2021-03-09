@@ -54,12 +54,30 @@ public class generateBlocks : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Messenger.AddListener("Start", StartLoadingBlocks);
+        Messenger.AddListener("Start", StartSongs);
     }
     private void OnDestroy()
     {
-        Messenger.RemoveListener("Start", StartLoadingBlocks);
+        Messenger.RemoveListener("Start", StartSongs);
     }
+
+    private void Start()
+    {
+        StartLoadingBlocks();
+    }
+
+    private void StartSongs()
+    {
+        // Reset data tracker before the song starts
+        DataTracker.reset_tracked_data();
+
+        StartCoroutine(Generate(blocks));
+        if (!ExpManager.instance.seatedCondition)
+        {
+            StartCoroutine(generateObstacles(obstacles));
+        }
+    }
+
     private void StartLoadingBlocks() { 
      
         int songIndex = ExpManager.instance.getCurrentSong();
@@ -87,14 +105,7 @@ public class generateBlocks : MonoBehaviour
             obstacles[i]._duration /= bps;
         }
 
-        // Reset data tracker before the song starts
-        DataTracker.reset_tracked_data();
-
-        StartCoroutine(Generate(blocks));
-        if (!ExpManager.instance.seatedCondition)
-        {
-            StartCoroutine(generateObstacles(obstacles));
-        }
+        
         
 
     }
