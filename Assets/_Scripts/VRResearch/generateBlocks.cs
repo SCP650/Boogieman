@@ -112,11 +112,7 @@ public class generateBlocks : MonoBehaviour
 
     private IEnumerator generateObstacles(List<Obstacle> obsticles)
     {
-        // Don't generate obstacle if sitting condition
-        if (isSeating)
-        {
-            yield break;
-        }
+        
 
         for (int i = 0; i < obsticles.Count; i++)
         {
@@ -127,7 +123,7 @@ public class generateBlocks : MonoBehaviour
             }
 
 
-            if (O._type == 0) //a verticle block 
+            if (O._type == 0) //a verticle block,  Full height wall
             {
                 GameObject gb = Instantiate(ObsticlePreFab);
                 float x = O._width * DistanceBetweenBlocks;
@@ -143,11 +139,11 @@ public class generateBlocks : MonoBehaviour
                 GameObject gb = Instantiate(ObsticlePreFab);
                 float x = O._width * DistanceBetweenBlocks; //all four cols
 
-                float y = DistanceBetweenBlocks;
+                float y = DistanceBetweenBlocks*2; //only two rows for ducking
 
                 float z = O._duration * 10;//block moving speed
                 gb.transform.localScale = new Vector3(x, y, z);
-                gb.transform.position = getPosition(2, O._lineIndex + 1);
+                gb.transform.position = getPosition(O._lineIndex + 1,2);
             }
         }
 
@@ -258,7 +254,7 @@ public class generateBlocks : MonoBehaviour
 
     private Vector3 getPosition(int col, int row)
     {
-        float y = 1.5f + row * DistanceBetweenBlocks;
+        float y = 1.2f + 0.5f* row * DistanceBetweenBlocks;
         float x = getX(col);
         return new Vector3(x, y, transform.position.z);
     }
