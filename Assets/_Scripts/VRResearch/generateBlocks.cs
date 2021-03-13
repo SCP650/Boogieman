@@ -137,13 +137,14 @@ public class generateBlocks : MonoBehaviour
             else if (O._type == 1)
             {
                 GameObject gb = Instantiate(ObsticlePreFab);
-                float x = O._width * DistanceBetweenBlocks; //all four cols
+                float x = O._width * DistanceBetweenBlocks; 
 
                 float y = DistanceBetweenBlocks*2; //only two rows for ducking
 
                 float z = O._duration * 10;//block moving speed
                 gb.transform.localScale = new Vector3(x, y, z);
-                gb.transform.position = getPosition(O._lineIndex + 1,2);
+                 
+                gb.transform.position = getPosition(O._width == 4? 2: O._lineIndex,2);
             }
         }
 
@@ -254,7 +255,7 @@ public class generateBlocks : MonoBehaviour
 
     private Vector3 getPosition(int col, int row)
     {
-        float y = 1.2f + 0.5f* row * DistanceBetweenBlocks;
+        float y = 1.4f + 0.5f* row * DistanceBetweenBlocks;
         float x = getX(col);
         return new Vector3(x, y, transform.position.z);
     }
