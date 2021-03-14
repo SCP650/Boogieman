@@ -15,6 +15,8 @@ public class ExpManager : MonoBehaviour
         song6,
         song7,
         song8,
+        song9,
+        song10,
     };
 
     public static ExpManager instance;
@@ -104,6 +106,10 @@ public class ExpManager : MonoBehaviour
             return 6;
         else if (songChoice == songSelector.song8)
             return 7;
+        else if (songChoice == songSelector.song9)
+            return 8;
+        else if (songChoice == songSelector.song10)
+            return 9;
         else
             return 0;
     }
