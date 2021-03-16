@@ -19,7 +19,7 @@ public class beat : MonoBehaviour
 
     
     //Color Direction enums 
-    public enum Dir{top, left, right, bottom, topright, topleft, bottomright, bottomleft}
+    public enum Dir{top, left, right, bottom, topright, topleft, bottomright, bottomleft, omni}
     public Dir dir;
     public bool Omnidirectional = true;
     private float direction;

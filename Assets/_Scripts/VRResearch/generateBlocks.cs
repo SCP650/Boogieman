@@ -171,9 +171,8 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.red;
                 b.dir = getDirection(B._cutDirection);
-
-
-
+                if (b.dir == beat.Dir.omni) 
+                   b.Omnidirectional = true;    
             }
             else if (B._type == 3)
             {
@@ -187,8 +186,8 @@ public class generateBlocks : MonoBehaviour
                 beat b = gb.GetComponent<beat>();
                 b.color = beat.Color.blue;
                 b.dir = getDirection(B._cutDirection);
-
-
+                if (b.dir == beat.Dir.omni) 
+                   b.Omnidirectional = true;
             }
 
             gb.transform.position = getPosition(B._lineIndex, B._lineLayer);
@@ -219,9 +218,11 @@ public class generateBlocks : MonoBehaviour
                     return beat.Dir.topright;
                 case 6:
                     return beat.Dir.bottomleft;
+                case 7:
+                    return beat.Dir.bottomright;
 
                 default:
-                    return beat.Dir.bottomright;
+                    return beat.Dir.omni;
 
             }
         }
@@ -243,9 +244,11 @@ public class generateBlocks : MonoBehaviour
                     return beat.Dir.bottomleft;
                 case 6:
                     return beat.Dir.topright;
+                case 7:
+                    return beat.Dir.topleft;
 
                 default:
-                    return beat.Dir.topleft;
+                    return beat.Dir.omni;
 
             }
         }
