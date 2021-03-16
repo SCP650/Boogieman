@@ -206,22 +206,22 @@ public class generateBlocks : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    return beat.Dir.bottom;
-                case 1:
                     return beat.Dir.top;
+                case 1:
+                    return beat.Dir.bottom;
                 case 2:
                     return beat.Dir.right;
                 case 3:
                     return beat.Dir.left;
                 case 4:
-                    return beat.Dir.bottomright;
+                    return beat.Dir.topleft;
                 case 5:
-                    return beat.Dir.bottomleft;
-                case 6:
                     return beat.Dir.topright;
+                case 6:
+                    return beat.Dir.bottomleft;
 
                 default:
-                    return beat.Dir.topleft;
+                    return beat.Dir.bottomright;
 
             }
         }
