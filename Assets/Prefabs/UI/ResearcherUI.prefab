@@ -517,7 +517,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6809458982663754101}
   m_Direction: 2
   m_Value: 0.00000015258789
-  m_Size: 0.66663915
+  m_Size: 0.66659594
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -581,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 0}
+  txt: {fileID: 6809458981275723998}
   obstacleText: 'Total Obstacles:  '
   obstacleOverallapedHealth: 'Player Obstacle Overlapped Health: '
   totalBlocksMissed: Total blocks misses #
@@ -590,7 +591,6 @@ MonoBehaviour:
   combo: Combo
   highestCombo: Highest Combo
   stroopScore: 'Stroop Score: '
-  isStroop: 0
   playerHealth: 'Player Health:'
 --- !u!114 &6809458981275723998
 MonoBehaviour:
@@ -1000,7 +1000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00060974766, y: 100}
+  m_AnchoredPosition: {x: 0.00060974766, y: 99.99998}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &6809458981567754849

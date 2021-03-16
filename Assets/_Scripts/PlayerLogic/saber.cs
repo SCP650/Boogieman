@@ -46,14 +46,13 @@ public class saber : MonoBehaviour
             if (ExpManager.instance.stroopCondition)
             {
                 validRot = rotation + other.transform.rotation.z <= (0 + toleration); //opposite check
-
             }
             else
             {
                 validRot = rotation + other.transform.rotation.z >= (180 - toleration);
             }
 
-            if (validRot && layer == other.transform.gameObject.layer)
+            if ((validRot || beatObject.Omnidirectional) && layer == other.transform.gameObject.layer)
             {//if our hit is at the required angle +- toleration
                 if (layer == 9)
                 {

@@ -42,6 +42,7 @@ public class ExpManager : MonoBehaviour
         //LoadVars();
     }
 
+
     private void Awake()
     {
         if (instance != null)
@@ -86,8 +87,19 @@ public class ExpManager : MonoBehaviour
         }
     }
         
-  
+  // if false, set to true and vice versa
+  // returns curr stroopcondition
+    public void toggleStroop()
+    {
+        stroopCondition = !stroopCondition;
+    }
 
+    //if false set it to true and vice versa
+    // returns current seatedCondition
+    public void toggleSeated()
+    {
+        seatedCondition = !seatedCondition;
+    }
     public int getCurrentSong()
     {
         if (songChoice == songSelector.song1)
