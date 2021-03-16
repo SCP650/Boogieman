@@ -102,28 +102,30 @@ public class ExpManager : MonoBehaviour
     }
     public int getCurrentSong()
     {
-        if (songChoice == songSelector.song1)
-            return 0;
-        else if (songChoice == songSelector.song2)
-            return 1;
-        else if (songChoice == songSelector.song3)
-            return 2;
-        else if (songChoice == songSelector.song4)
-            return 3;
-        else if (songChoice == songSelector.song5)
-            return 4;
-        else if (songChoice == songSelector.song6)
-            return 5;
-        else if (songChoice == songSelector.song7)
-            return 6;
-        else if (songChoice == songSelector.song8)
-            return 7;
-        else if (songChoice == songSelector.song9)
-            return 8;
-        else if (songChoice == songSelector.song10)
-            return 9;
-        else
-            return 0;
+        switch (songChoice)
+        {
+            case songSelector.song1:
+              return 0;
+            case songSelector.song2:
+              return 1;
+            case songSelector.song3:
+              return 2;
+            case songSelector.song4:
+              return 3;
+            case songSelector.song5:
+              return 4;
+            case songSelector.song6:
+              return 5;
+            case songSelector.song7:
+              return 6;
+            case songSelector.song8:
+              return 7;
+            case songSelector.song9:
+              return 8;
+            case songSelector.song10:
+              return 9;
+        }
+        return 0;
     }
 
     //void LoadVars()
